@@ -1,0 +1,71 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+.hero-section {
+    background-image: linear-gradient($light-grey, $white);
+
+    padding: {
+        left: 5rem;
+        right: 5rem;
+    };
+
+    &__labels {
+        &__subtitle {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+
+                @include size(150px, 2px);
+
+                bottom: -30px;
+
+                background: $light-title;
+            }
+
+            & h2 {
+                @include font(2rem, 600, $light-title);
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                position: relative;
+
+                display: flex;
+                align-items: center;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+
+                    @include size(20px, 20px);
+                    background-color: $light-yellow;
+
+                    border-radius: 50%;
+
+                    right: calc(100% + 10px);
+                }
+            }
+
+            & p {
+                @include font(1rem, 300, $light-title);
+                text-transform: uppercase;
+
+                letter-spacing: 2px;
+            }
+        }
+
+        &__hero-link {
+            max-width: 400px;
+
+            & p {
+                @include font(1rem, 300, $light-title);
+
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    &__title {
+        @include font(clamp(2rem, 10vw, 10rem), 800, $light-title);
+        white-space: nowrap;
+    }
+}
