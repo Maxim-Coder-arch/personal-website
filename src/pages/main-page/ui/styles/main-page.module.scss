@@ -1,5 +1,6 @@
-@use "../../../../app/styles/scss/colors" as *;
+@use "../../../../app/styles/scss/includes" as *;
 
 .main-page-layer {
-    background-color: $bg-color;
+    display: flex;
+    flex-direction: column;
 }
