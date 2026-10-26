@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./styles/css/globals.css";
 
 import "./styles/scss/globals.scss";
+import { Menu } from "../widgets/menu";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,6 +14,7 @@ const RootLayout = ({ children }: LayoutProps<"/">) => {
   return (
     <html lang="en">
       <body>
+        <Menu />
         {children}
       </body>
     </html>
