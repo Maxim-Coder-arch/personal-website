@@ -1,0 +1,26 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+.hero-nav {
+    z-index: 1000;
+
+    &__sections {
+        width: fit-content;
+        min-height: 30px;
+
+        margin-top: 1.5rem;
+
+        background-color: $bg-color;
+
+        & ul {
+            & li {
+                @include font(1rem, 100, $light-grey);
+                text-transform: lowercase;
+            }
+        }
+    }
+}
+
+.active {
+    background-color: $white;
+    color: $bg-color !important;
+}
