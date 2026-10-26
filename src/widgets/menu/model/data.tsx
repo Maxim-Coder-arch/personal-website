@@ -18,6 +18,6 @@ export const menuItems: IMenuItems[] = [
     },
     {
         itemLabel: "Проекты",
-        itemLink: "/s",
+        itemLink: "/c",
     },
 ];
