@@ -1,26 +1,157 @@
 @use "../../../../app/styles/scss/includes" as *;
 
 .hero-nav {
+    position: fixed;
     z-index: 1000;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    padding: 0 1rem;
+
+    pointer-events: none;
 
     &__sections {
+        position: relative;
+
         width: fit-content;
-        min-height: 30px;
+        max-width: 100%;
 
         margin-top: 1.5rem;
+        padding: 0.35rem;
 
-        background-color: $bg-color;
+        background-color: rgba($bg-color, 0.88);
+        border: 1px solid rgba($white, 0.08);
+        border-radius: 999px;
 
-        & ul {
-            & li {
-                @include font(1rem, 100, $light-grey);
-                text-transform: lowercase;
-            }
+        box-shadow:
+            0 8px 30px rgba($bg-color, 0.12),
+            inset 0 1px 0 rgba($white, 0.06);
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        pointer-events: auto;
+
+        ul {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            gap: 0.25rem;
+            margin: 0;
+            padding: 0;
+
+            list-style: none;
+        }
+    }
+
+    &__item {
+        position: relative;
+        isolation: isolate;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0;
+        border-radius: 999px;
+
+        @include font(0.9rem, 400, $light-grey);
+
+        white-space: nowrap;
+        cursor: pointer;
+
+        transition: color 250ms ease;
+
+        a {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 0.4rem;
+            padding: 0.65rem 1rem;
+
+            color: inherit;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $bg-color;
+        }
+    }
+
+    &__bubble {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+
+        border-radius: inherit;
+        background-color: $white;
+        pointer-events: none;
+    }
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        svg {
+            display: block;
+
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    &__label {
+        display: inline-block;
+    }
+
+    .active {
+        color: $bg-color;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-nav {
+        padding: 0 0.75rem;
+
+        &__sections {
+            width: fit-content;
+            max-width: 100%;
+
+            margin-top: 1rem;
+            padding: 0.25rem;
+        }
+
+        &__sections ul {
+            gap: 0.15rem;
+        }
+
+        &__item a {
+            gap: 0.3rem;
+            padding: 0.6rem 0.75rem;
+
+            font-size: 0.8rem;
+        }
+
+        &__icon svg {
+            width: 0.9rem;
+            height: 0.9rem;
         }
     }
 }
 
-.active {
-    background-color: $white;
-    color: $bg-color !important;
+@media (prefers-reduced-motion: reduce) {
+    .hero-nav__item {
+        transition: none;
+    }
 }
