@@ -12,7 +12,7 @@ export const MenuLayout = ({
 }: MenuLayoutProps) => {
     return (
         <motion.nav
-            className={`${styles["hero-nav"]} w-full fixed flex justify-center`}
+            className={`${styles["hero-nav"]} w-full fixed flex justify-center items-center`}
             initial={
                 shouldReduceMotion
                     ? false

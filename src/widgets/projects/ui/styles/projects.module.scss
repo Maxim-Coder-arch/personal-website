@@ -1,0 +1,51 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+.projects-section {
+    background-color: $bg-color;
+
+    &__heading {
+        & h2 {
+            @include font(3rem, 800, $white);
+        }
+
+        &__more-projects {
+            & a {
+                @include font(1.5rem, 300, $white);
+
+                background-color: rgba($light-yellow, .1);
+
+                position: relative;
+                overflow: hidden;
+                isolation: isolate;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+
+                    background-color: $white;
+
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+
+                    z-index: -1;
+
+                    transform: scaleX(0);
+                    transform-origin: left;
+
+                    transition: transform .3s ease-in-out;
+                }
+
+                &:hover::before {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                }
+
+                &:not(:hover)::before {
+                    transform-origin: right;
+                }
+            }
+        }
+    }
+}
