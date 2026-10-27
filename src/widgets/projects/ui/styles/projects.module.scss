@@ -12,11 +12,15 @@
             & a {
                 @include font(1.5rem, 300, $white);
 
-                background-color: rgba($light-yellow, .1);
+                background-color: rgba($white, .1);
+
+                outline: solid .5px rgba($white, .2);
 
                 position: relative;
                 overflow: hidden;
                 isolation: isolate;
+
+                transition: color .3s ease-in-out;
 
                 &::before {
                     content: "";
@@ -35,11 +39,17 @@
                     transform-origin: left;
 
                     transition: transform .3s ease-in-out;
+
+                    border-radius: 1.5rem;
                 }
 
-                &:hover::before {
-                    transform: scaleX(1);
-                    transform-origin: left;
+                &:hover {
+                    color: $bg-color;
+
+                    &::before {
+                        transform: scaleX(1);
+                        transform-origin: left;
+                    }
                 }
 
                 &:not(:hover)::before {
