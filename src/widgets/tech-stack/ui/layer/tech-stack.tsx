@@ -1,5 +1,8 @@
+"use client";
+
 import { ReactElement } from "react";
 import styles from "../styles/tech-stack.module.scss";
+import { motion, useReducedMotion } from "framer-motion";
 
 export interface ITecnology {
     id: string;
@@ -239,21 +242,69 @@ export const tecnologies: ITecnology[] = [
 
 interface TechStackCardProps {
     technology: ITecnology;
+    index: number;
 }
 
-export const TechStackCard = ({ technology }: TechStackCardProps) => {
+export const TechStackCard = ({
+    technology,
+    index,
+}: TechStackCardProps) => {
+    const shouldReduceMotion = useReducedMotion();
+
     return (
-        <article className={styles["tech-stack__card"]}>
+        <motion.article
+            className={styles["tech-stack__card"]}
+            initial={
+                shouldReduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: 32, scale: 0.98 }
+            }
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            whileHover={
+                shouldReduceMotion
+                    ? undefined
+                    : { y: -6, transition: { duration: 0.25 } }
+            }
+            transition={{
+                duration: shouldReduceMotion ? 0 : 0.55,
+                delay: shouldReduceMotion ? 0 : index * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+        >
             <div className={styles["tech-stack__card-icons"]}>
-                {technology.icons.map((icon) => (
-                    <div
+                {technology.icons.map((icon, iconIndex) => (
+                    <motion.div
                         key={icon.id}
                         className={styles["tech-stack__card-icons__icon"]}
                         title={icon.pointerLabel}
-                        aria-label={icon.pointerLabel}
+                        whileHover={
+                            shouldReduceMotion
+                                ? undefined
+                                : {
+                                      scale: 1.1,
+                                      y: -3,
+                                  }
+                        }
+                        transition={{
+                            duration: 0.2,
+                            ease: "easeOut",
+                        }}
+                        initial={
+                            shouldReduceMotion
+                                ? false
+                                : { opacity: 0, scale: 0.8 }
+                        }
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        style={{
+                            transitionDelay: shouldReduceMotion
+                                ? "0ms"
+                                : `${iconIndex * 45}ms`,
+                        }}
                     >
                         {icon.svgImage}
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
@@ -266,10 +317,9 @@ export const TechStackCard = ({ technology }: TechStackCardProps) => {
                     {technology.description}
                 </p>
             </div>
-        </article>
+        </motion.article>
     );
 };
-
 
 export const TechStack = () => {
     return (
@@ -288,16 +338,19 @@ export const TechStack = () => {
                         <h3>Те самые технологии</h3>
                     </div>
                 </div>
-
+                
                 <div className={styles["tech-stack__grid"]}>
-                    {tecnologies.map((technology) => (
-                       <div
+                    {tecnologies.map((technology, index) => (
+                        <div
                             key={technology.id}
                             className={
                                 styles[`tech-stack__card-wrapper--${technology.id}`]
                             }
                         >
-                            <TechStackCard technology={technology} />
+                            <TechStackCard
+                                technology={technology}
+                                index={index}
+                            />
                         </div>
                     ))}
                 </div>
