@@ -1,4 +1,6 @@
-import { IProject, ProjectStructureBuilder } from "../../model/types";
+import { IProject } from "@/src/shared/types/global-types";
+
+import { ProjectStructureBuilder } from "../../model/types";
 
 export const projectStructureBuilder = (projectsData: ProjectStructureBuilder, limit: number = 10) => {
     const generated: IProject[] = [];

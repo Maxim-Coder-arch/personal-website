@@ -16,7 +16,7 @@ export const ViewAllProjects = ({
                 href={href}
                 className="flex items-center gap-4 px-6 py-3 rounded-3xl"
             >
-                <span>Все проекты</span>
+                <span>Подробнее</span>
                 <ArrowRightUp />
             </Link>
         </div>
