@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 
-import { ArrowRightUp } from "@/src/shared/icons/arrow-right-up";
+import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
 
 import { ViewAllProjectsProps } from "../../../model/types";
 
@@ -16,7 +16,7 @@ export const ViewAllProjects = ({
                 href={href}
                 className="flex items-center gap-4 px-6 py-3 rounded-3xl"
             >
-                <span>Все проекты</span>
+                <span>Подробнее</span>
                 <ArrowRightUp />
             </Link>
         </div>

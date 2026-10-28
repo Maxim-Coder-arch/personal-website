@@ -1,5 +1,5 @@
-import { ArrowBottomIcon } from "@/src/shared/icons/arrow-bottom";
-import { GithubIcon } from "@/src/shared/icons/github";
+import { ArrowBottomIcon } from "@/src/shared/icons/arrowes/arrow-bottom";
+import { GithubIcon } from "@/src/shared/icons/firm-icons/github";
 
 import { 
     heroArrowHover, 

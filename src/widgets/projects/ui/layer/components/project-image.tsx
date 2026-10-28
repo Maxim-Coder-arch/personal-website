@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 
-import { ArrowRightUp } from "@/src/shared/icons/arrow-right-up";
+import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
 
 import { ProjectImageProps } from "../../../model/types";
 

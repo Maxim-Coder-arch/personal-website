@@ -1,5 +1,6 @@
+import { IProject } from "@/src/shared/types/global-types";
+
 import { projectStructureBuilder } from "../lib/helpers/projects-builder";
-import { IProject } from "./types";
 
 export const projects: IProject[] = [...projectStructureBuilder([]), ...projectStructureBuilder([{
     title: "SoftByte Learn",
