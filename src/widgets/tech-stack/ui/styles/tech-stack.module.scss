@@ -1,5 +1,15 @@
 @use "../../../../app/styles/scss/includes" as *;
 
 .tech-stack {
-    
+    background-color: $bg-color;
+
+    &__heading {
+        & h2 {
+            @include font(clamp(10rem, 1.15vw, 1.3rem), 800, $white);
+        }
+
+        & h3 {
+            @include font(clamp(5rem, 1.15vw, 1.3rem), 800, $light-grey);
+        }
+    }
 }
