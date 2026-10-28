@@ -191,29 +191,115 @@ export const tecnologies: ITecnology[] = [
             },
         ],
     },
+    {
+        id: "5",
+        title: "Frontend",
+        description: "Мое основное направление. Эти технологии я знаю лучше всего",
+        icons: [
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+            {
+                id: `icon-${crypto.randomUUID()}`,
+                svgImage: <JsIcon />, 
+                pointerLabel: "Javascript",
+            },
+        ],
+    },
 ]
+
+
+
+interface TechStackCardProps {
+    technology: ITecnology;
+}
+
+export const TechStackCard = ({ technology }: TechStackCardProps) => {
+    return (
+        <article className={styles["tech-stack__card"]}>
+            <div className={styles["tech-stack__card-icons"]}>
+                {technology.icons.map((icon) => (
+                    <div
+                        key={icon.id}
+                        className={styles["tech-stack__card-icons__icon"]}
+                        title={icon.pointerLabel}
+                        aria-label={icon.pointerLabel}
+                    >
+                        {icon.svgImage}
+                    </div>
+                ))}
+            </div>
+
+            <div className={styles["tech-stack__card-content"]}>
+                <h4 className={styles["tech-stack__card-title"]}>
+                    {technology.title}
+                </h4>
+
+                <p className={styles["tech-stack__card-description"]}>
+                    {technology.description}
+                </p>
+            </div>
+        </article>
+    );
+};
+
 
 export const TechStack = () => {
     return (
         <section id="tech-stack">
-            <div className={`${styles["tech-stack"]} min-h-screen py-8 px-6 flex flex-col gap-8`}>
-                <div className={`${styles["tech-stack__heading"]} w-full flex flex-col`}>
+            <div
+                className={`${styles["tech-stack"]} min-h-screen py-8 px-6 flex flex-col gap-8`}
+            >
+                <div
+                    className={`${styles["tech-stack__heading"]} w-full flex flex-col`}
+                >
                     <div className="w-full flex justify-start">
                         <h2>Tech stack</h2>
                     </div>
+
                     <div className="w-full flex justify-end">
                         <h3>Те самые технологии</h3>
                     </div>
                 </div>
 
-                <div className={`${styles["tech-stack__grid"]}`}>
-                    {tecnologies.map(tech => {
-                        return (
-                            <div key={tech.id} className={`${styles["tech-stack__grid__card"]}`}>
-                                {tech.title}
-                            </div>
-                        )
-                    })}
+                <div className={styles["tech-stack__grid"]}>
+                    {tecnologies.map((technology) => (
+                       <div
+                            key={technology.id}
+                            className={
+                                styles[`tech-stack__card-wrapper--${technology.id}`]
+                            }
+                        >
+                            <TechStackCard technology={technology} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
