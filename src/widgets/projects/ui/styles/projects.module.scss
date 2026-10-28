@@ -4,6 +4,10 @@
     background-color: $bg-color;
 
     &__heading {
+        border-bottom: dashed .5px rgba($white, .3);
+
+        padding-bottom: 2rem;
+
         & h2 {
             @include font(3rem, 800, $white);
         }
@@ -55,6 +59,43 @@
                 &:not(:hover)::before {
                     transform-origin: right;
                 }
+            }
+        }
+    }
+
+    &__project-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 32px;
+        
+        &__project-card {
+            overflow: hidden;
+
+            transition: background-color .3s ease-in-out;
+
+            &:hover {
+                background-color: rgba($white, .1);
+            }
+
+            &__image {
+                position: relative;
+
+                width: 100%;
+
+                min-height: 400px;
+
+                background-position: center;
+
+                background-size: cover;
+            }
+
+            & h3 {
+                @include font(2rem, 400, $light-title);
+            }
+
+            & span {
+                @include font(1rem, 400, $light-grey);
             }
         }
     }
