@@ -32,17 +32,21 @@
         gap: 12px;
     }
 
-    &__card-wrapper--1 {
+    &__card-wrapper {
+        min-width: 0;
+    }
+
+    &__card-wrapper--card-1 {
         grid-area: card-1;
     }
 
-    &__card-wrapper--2 {
+    &__card-wrapper--card-2 {
         grid-area: card-2;
     }
 
-    &__card-wrapper--3 {
+    &__card-wrapper--card-3 {
         grid-area: card-3;
-    }
+        }
 
     &__card {
         position: relative;

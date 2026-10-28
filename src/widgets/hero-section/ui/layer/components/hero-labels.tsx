@@ -7,7 +7,7 @@ import {
 
 import { IHeroLabels } from "../../../model/types";
 
-import { ArrowRightUp } from "@/src/shared/icons/arrow-right-up";
+import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
 import portret from "@/public/images/hero-screen.png";
 
 import { motion } from "framer-motion";

@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 
-import { ArrowRightUp } from "@/src/shared/icons/arrow-right-up";
+import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
 
 import { ViewAllProjectsProps } from "../../../model/types";
 

@@ -1,4 +1,4 @@
-import { HomeIcon } from "@/src/shared/icons/home";
+import { HomeIcon } from "@/src/shared/icons/globals/home";
 
 import { IMenuItems } from "./types";
 
