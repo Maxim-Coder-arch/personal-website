@@ -1,0 +1,460 @@
+
+@use "../../../../app/styles/scss/includes" as *;
+
+.projects-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background-color: $bg-color;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+
+        top: 12%;
+        left: -18rem;
+
+        width: 38rem;
+        height: 38rem;
+
+        border-radius: 50%;
+        background: rgba($white, 0.035);
+        filter: blur(120px);
+
+        pointer-events: none;
+    }
+
+    &__heading {
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-bottom: 2rem;
+
+        border-bottom: 1px dashed rgba($white, 0.2);
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+
+            h2 {
+                @include font(3.5rem, 800, $white);
+
+                letter-spacing: -0.06em;
+                line-height: 1.1;
+
+                span {
+                    color: rgba($white, 0.45);
+                }
+            }
+        }
+
+        &__more-projects {
+            a {
+                @include font(1.1rem, 400, $white);
+
+                position: relative;
+                isolation: isolate;
+                overflow: hidden;
+
+                background: rgba($white, 0.055);
+                outline: 1px solid rgba($white, 0.16);
+
+                transition:
+                    color 0.3s ease,
+                    outline-color 0.3s ease,
+                    background-color 0.3s ease;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+
+                    inset: 0;
+
+                    border-radius: inherit;
+                    background: $white;
+
+                    transform: scaleX(0);
+                    transform-origin: left;
+
+                    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+                }
+
+                &:hover {
+                    color: $bg-color;
+                    outline-color: rgba($white, 0.7);
+
+                    &::before {
+                        transform: scaleX(1);
+                        transform-origin: left;
+                    }
+                }
+
+                &:not(:hover)::before {
+                    transform-origin: right;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid $white;
+                    outline-offset: 4px;
+                }
+            }
+        }
+    }
+
+    &__eyebrow {
+        @include font(0.75rem, 500, $light-grey);
+
+        letter-spacing: 0.22em;
+    }
+
+    &__project-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 2rem;
+        align-items: start;
+    }
+
+    &__project-wrapper {
+        min-width: 0;
+    }
+
+    &__project-list__project-card {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
+        padding: 0.65rem;
+
+        border: 1px solid rgba($white, 0.1);
+        border-radius: 1.35rem;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba($white, 0.075),
+                rgba($white, 0.018) 48%,
+                rgba($white, 0.035)
+            );
+
+        box-shadow:
+            inset 0 1px 0 rgba($white, 0.055),
+            0 12px 40px rgba(0, 0, 0, 0.12);
+
+        text-decoration: none;
+
+        transition:
+            border-color 0.4s ease,
+            background-color 0.4s ease,
+            box-shadow 0.4s ease,
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+        &:hover {
+            border-color: rgba($white, 0.27);
+
+            background-color: rgba($white, 0.035);
+
+            box-shadow:
+                inset 0 1px 0 rgba($white, 0.13),
+                0 18px 55px rgba(0, 0, 0, 0.25),
+                0 0 35px rgba($white, 0.035);
+
+            transform: translateY(-5px);
+
+            .projects-section__project-list__project-card__image {
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+            .projects-section__project-image {
+                transform: scale(1.045);
+            }
+
+            .projects-section__project-open {
+                color: $bg-color;
+                background: $white;
+                border-color: $white;
+
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            .projects-section__project-title h3 {
+                color: $white;
+            }
+
+            .projects-section__project-number {
+                border-color: rgba($white, 0.35);
+                background: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid $white;
+            outline-offset: 5px;
+        }
+    }
+
+    &__project-list__project-card__image {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        width: 100%;
+        aspect-ratio: 1.45 / 1;
+
+        border-radius: 0.9rem;
+
+        background: rgba($white, 0.04);
+
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+
+            inset: 0;
+
+            opacity: 0;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    transparent 20%,
+                    rgba($white, 0.09) 45%,
+                    transparent 65%
+                );
+
+            transition: opacity 0.45s ease;
+
+            pointer-events: none;
+        }
+    }
+
+    &__project-image {
+        object-fit: cover;
+
+        transform: scale(1);
+
+        transition:
+            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.5s ease;
+
+        will-change: transform;
+    }
+
+    &__project-image-overlay {
+        position: absolute;
+        z-index: 1;
+
+        inset: 0;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.28),
+                transparent 25%,
+                transparent 60%,
+                rgba(0, 0, 0, 0.32)
+            );
+
+        pointer-events: none;
+    }
+
+    &__project-number {
+        position: absolute;
+        z-index: 2;
+
+        top: 1rem;
+        left: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 2.6rem;
+        min-height: 1.9rem;
+        padding: 0.25rem 0.6rem;
+
+        border: 1px solid rgba($white, 0.2);
+        border-radius: 2rem;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        color: $white;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        transition:
+            border-color 0.3s ease,
+            background-color 0.3s ease;
+    }
+
+    &__project-open {
+        position: absolute;
+        z-index: 2;
+
+        right: 1rem;
+        bottom: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2.8rem;
+        height: 2.8rem;
+
+        border: 1px solid rgba($white, 0.35);
+        border-radius: 50%;
+
+        background: rgba(0, 0, 0, 0.35);
+        color: $white;
+
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+
+        transform: translate(-3px, 3px) rotate(-8deg);
+
+        transition:
+            color 0.3s ease,
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+        svg {
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+    }
+
+    &__project-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        gap: 1rem;
+
+        padding: 1.15rem 0.45rem 0.55rem;
+    }
+
+    &__project-title {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        min-width: 0;
+
+        h3 {
+            @include font(1.65rem, 500, $light-title);
+
+            letter-spacing: -0.035em;
+            line-height: 1.2;
+
+            transition: color 0.3s ease;
+        }
+
+        span {
+            @include font(0.9rem, 400, $light-grey);
+
+            line-height: 1.5;
+        }
+    }
+
+    &__project-index {
+        flex-shrink: 0;
+
+        padding-bottom: 0.15rem;
+
+        color: rgba($white, 0.4);
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (max-width: 900px) {
+    .projects-section {
+        &__project-list {
+            gap: 1.25rem;
+        }
+
+        &__project-list__project-card__image {
+            aspect-ratio: 1.2 / 1;
+        }
+
+        &__project-title h3 {
+            font-size: 1.4rem;
+        }
+
+        &__project-index {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .projects-section {
+        &__heading {
+            align-items: flex-end;
+            gap: 1rem;
+
+            &-content h2 {
+                font-size: 2.6rem;
+            }
+
+            &__more-projects a {
+                gap: 0.5rem;
+                padding: 0.7rem 0.85rem;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+        }
+
+        &__project-list {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1rem;
+        }
+
+        &__project-list__project-card__image {
+            aspect-ratio: 1.35 / 1;
+        }
+
+        &__project-info {
+            padding: 0.9rem 0.3rem 0.4rem;
+        }
+
+        &__project-title h3 {
+            font-size: 1.45rem;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projects-section {
+        &__project-list__project-card,
+        &__project-list__project-card__image::after,
+        &__project-image,
+        &__project-open,
+        &__project-title h3,
+        &__project-number {
+            transition: none;
+        }
+
+        &__project-list__project-card:hover {
+            transform: none;
+        }
+    }
+}
