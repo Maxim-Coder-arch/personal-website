@@ -3,6 +3,7 @@ import { HeroSection } from "@/src/widgets/hero-section";
 import styles from "../styles/main-page.module.scss";
 import { Projects } from "@/src/widgets/projects";
 import { TechStack } from "@/src/widgets/tech-stack";
+import { Experience } from "@/src/widgets/experience/ui/layer/experience";
 
 export const MainPage = () => {
 
@@ -13,6 +14,7 @@ export const MainPage = () => {
             <HeroSection />
             <Projects />
             <TechStack />
+            <Experience />
         </div>
     )
 }
