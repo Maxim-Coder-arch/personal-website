@@ -1,0 +1,33 @@
+
+export interface IExperience {
+    id: string;
+    title: string;
+    description: string;
+}
+
+export const experience: IExperience[] = [
+    {
+        id: "1",
+        title: "Коммерческий опыт",
+        description:
+            "Работаю fullstack-разработчиком в консалтинговой компании, участвую в развитии и поддержке веб-приложений.",
+    },
+    {
+        id: "2",
+        title: "Фриланс",
+        description:
+            "Разрабатывал корпоративный сайт и CMS-систему для заказчика.",
+    },
+    {
+        id: "3",
+        title: "Собственные проекты",
+        description:
+            "Создавал веб-проекты разных направлений: корпоративные сайты, CMS- и CRM-системы, интернет-магазины.",
+    },
+    {
+        id: "4",
+        title: "Практика",
+        description:
+            "Проходил профессиональную практику в компании Preax.",
+    },
+];
