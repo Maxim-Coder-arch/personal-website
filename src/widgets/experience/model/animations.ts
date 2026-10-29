@@ -64,3 +64,27 @@ export const cardVariants = {
         },
     },
 };
+
+export const cardVariantsExperienceCard = {
+    hidden: {
+        opacity: 0,
+        y: animation.cards.offsetY,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: animation.cards.duration,
+            ease: animation.easing,
+        },
+    },
+};
+
+export const containerVariantsExperienceGrid = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: animation.cards.stagger,
+        },
+    },
+};

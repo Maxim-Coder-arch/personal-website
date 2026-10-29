@@ -1,9 +1,4 @@
-
-export interface IExperience {
-    id: string;
-    title: string;
-    description: string;
-}
+import { IExperience } from "./type";
 
 export const experience: IExperience[] = [
     {
