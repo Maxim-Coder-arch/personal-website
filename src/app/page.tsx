@@ -1,4 +1,4 @@
-import { MainPage } from "../pages/main-page";
+import { MainPage } from "../views/main-page";
 
 const Home = () => {
   return (

@@ -1,0 +1,222 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+.scenic {
+    width: 100%;
+    min-height: 100svh;
+
+    overflow: hidden;
+
+    background-color: $bg-color;
+
+    &__part {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        max-width: 1600px;
+
+        &:first-child {
+            justify-content: flex-start;
+        }
+
+        &:last-child {
+            justify-content: flex-start;
+            gap: clamp(16px, 2vw, 32px);
+        }
+
+        & h3 {
+            @include font(clamp(4rem, 18vw, 16rem), 800, $white);
+
+            line-height: 0.85;
+            letter-spacing: -0.075em;
+            white-space: nowrap;
+        }
+    }
+
+    &__title {
+        min-width: 0;
+    }
+
+    &__contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+
+        flex-shrink: 0;
+
+        padding: 16px 32px;
+        border-radius: 40px;
+
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        background: rgba($white, 0.055);
+        outline: 1px solid rgba($white, 0.16);
+
+        @include font(1.1rem, 400, $white);
+
+        transition:
+            color 0.3s ease,
+            outline-color 0.3s ease,
+            background-color 0.3s ease;
+
+        & span {
+            @include font(1rem, 800, $white);
+
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        & svg {
+            flex-shrink: 0;
+
+            color: $white;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        &::before {
+            content: "";
+
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+
+            border-radius: inherit;
+
+            background-color: $white;
+
+            transform: scaleX(0);
+            transform-origin: left;
+
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        &:hover {
+            outline-color: rgba($white, 0.7);
+
+            &::before {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            & span,
+            & svg {
+                color: $bg-color;
+            }
+
+            & svg {
+                transform: translate(3px, -3px);
+            }
+        }
+
+        &:not(:hover)::before {
+            transform-origin: right;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $white;
+            outline-offset: 4px;
+        }
+    }
+}
+
+// Tablet
+
+@media (max-width: 1024px) {
+    .scenic {
+        &__part {
+            & h3 {
+                font-size: clamp(5rem, 17vw, 12rem);
+            }
+        }
+
+        &__contact {
+            gap: 12px;
+            padding: 14px 24px;
+
+            & span {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+// Mobile
+
+@media (max-width: 768px) {
+    .scenic {
+        min-height: 80svh;
+
+        padding: 48px 20px;
+
+        &__part {
+            &:last-child {
+                flex-wrap: wrap;
+                gap: 28px;
+            }
+
+            & h3 {
+                font-size: clamp(3.5rem, 16vw, 8rem);
+                letter-spacing: -0.08em;
+            }
+        }
+
+        &__contact {
+            padding: 13px 22px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .scenic {
+        min-height: 70svh;
+
+        padding: 40px 16px;
+
+        &__part {
+            & h3 {
+                font-size: clamp(3rem, 15.5vw, 5rem);
+            }
+
+            &:last-child {
+                gap: 24px;
+            }
+        }
+
+        &__contact {
+            gap: 10px;
+            padding: 12px 20px;
+
+            & span {
+                font-size: 0.85rem;
+            }
+
+            & svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scenic {
+        &__contact {
+            transition: none;
+
+            &::before {
+                transition: none;
+            }
+
+            & svg,
+            & span {
+                transition: none;
+            }
+        }
+    }
+}
