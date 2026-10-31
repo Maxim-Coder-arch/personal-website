@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
-import "./styles/css/globals.css";
-
-import "./styles/scss/globals.scss";
 import { Menu } from "../widgets/menu";
+import { Footer } from "../widgets/footer";
+
+import "./styles/css/globals.css";
+import "./styles/scss/globals.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +17,7 @@ const RootLayout = ({ children }: LayoutProps<"/">) => {
       <body>
         <Menu />
         {children}
+        <Footer />
       </body>
     </html>
   );
