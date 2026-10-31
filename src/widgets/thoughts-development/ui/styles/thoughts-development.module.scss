@@ -105,13 +105,6 @@
         line-height: 1.5;
     }
 
-    &__date {
-        @include font(0.75rem, 500, rgba($light-grey, 0.5));
-
-        white-space: nowrap;
-        font-variant-numeric: tabular-nums;
-    }
-
     &__arrow {
         @include size(60px, 60px);
 
@@ -154,10 +147,6 @@
         &__content p {
             padding-left: 0;
             font-size: 0.85rem;
-        }
-
-        &__date {
-            display: none;
         }
 
         &__arrow {

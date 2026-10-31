@@ -1,7 +1,13 @@
 export interface IThought {
     id: string;
-    slug: string;
     title: string;
+    subtitle: string;
     text: string;
     createdAt: string;
+}
+
+export interface ThoughtsListItemProps {
+    thought: IThought;
+    index: number;
+    shouldReduceMotion: boolean | null;
 }

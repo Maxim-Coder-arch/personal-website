@@ -29,3 +29,27 @@ export const THOUGHTS_CONFIG = {
         rowMinHeight: 112,
     },
 } as const;
+
+export const itemVariants = {
+    hidden: {
+        opacity: 0,
+        y: THOUGHTS_CONFIG.animation.list.offsetY,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: THOUGHTS_CONFIG.animation.list.duration,
+            ease: THOUGHTS_CONFIG.animation.easing,
+        },
+    },
+};
+
+export const listVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: THOUGHTS_CONFIG.animation.list.stagger,
+        },
+    },
+};
