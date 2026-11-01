@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { Menu } from "../widgets/menu";
-import { Footer } from "../widgets/footer";
+import { Menu } from "../widgets/layout/menu";
+import { Footer } from "../widgets/layout/footer";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
