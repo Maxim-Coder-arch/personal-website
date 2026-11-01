@@ -4,6 +4,7 @@ import { menuItems } from "../../model/data";
 
 import { AnimatedListItem } from "./components/animated-list-item";
 import { MenuLayout } from "./components/menu-layout";
+import { MenuExtras } from "./components/menu-extras";
 
 import { useState } from "react";
 
@@ -35,6 +36,8 @@ export const Menu = () => {
                     onMouseEnter={() => setHoveredItem(item.itemLink)}
                 />
             ))}
+
+            <MenuExtras />
         </MenuLayout>
     );
 };
