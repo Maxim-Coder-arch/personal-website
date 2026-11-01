@@ -1,0 +1,150 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+.footer {
+    background-color: #e9e7e2;
+    color: #171717;
+
+    padding: 5rem 6% 2rem;
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        gap: 3rem;
+
+        padding-bottom: 5rem;
+    }
+
+    &__identity {
+        & h2 {
+            @include font(clamp(2.5rem, 6vw, 5.5rem), 800, #171717);
+
+            line-height: 0.95;
+            letter-spacing: -0.075em;
+
+            margin-top: 1.5rem;
+
+            & span {
+                color: #92917d;
+            }
+        }
+
+        & p {
+            @include font(1rem, 400, #77756e);
+
+            margin-top: 1rem;
+            letter-spacing: 0.02em;
+        }
+    }
+
+    &__eyebrow,
+    &__label {
+        @include font(0.7rem, 600, #89877f);
+
+        letter-spacing: 0.14em;
+    }
+
+    &__socials {
+        min-width: 190px;
+
+        & ul {
+            display: flex;
+            flex-direction: column;
+
+            margin-top: 1.5rem;
+        }
+
+        & li {
+            border-bottom: 1px solid rgba(#171717, 0.15);
+        }
+
+        & a {
+            @include font(1rem, 500, #171717);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 2rem;
+            padding: 0.9rem 0;
+
+            transition:
+                color 0.25s ease,
+                padding 0.25s ease;
+
+            & svg {
+                width: 17px;
+                height: 17px;
+
+                transition: transform 0.25s ease;
+            }
+
+            &:hover {
+                color: #89877f;
+                padding-left: 6px;
+
+                & svg {
+                    transform: translate(3px, -3px);
+                }
+            }
+
+            &:focus-visible {
+                outline: 2px solid #171717;
+                outline-offset: 5px;
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 1.5rem;
+
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(#171717, 0.18);
+
+        & span {
+            @include font(0.75rem, 400, #89877f);
+
+            letter-spacing: 0.015em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 4rem 6% 1.5rem;
+
+        &__main {
+            flex-direction: column;
+            gap: 3.5rem;
+
+            padding-bottom: 3.5rem;
+        }
+
+        &__socials {
+            width: 100%;
+        }
+
+        &__bottom {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 3.5rem 5% 1.5rem;
+
+        &__identity {
+            & h2 {
+                font-size: clamp(2.3rem, 11vw, 3.5rem);
+            }
+        }
+
+        &__main {
+            gap: 3rem;
+        }
+    }
+}

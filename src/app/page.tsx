@@ -1,9 +1,5 @@
 import { MainPage } from "../views/main-page";
 
-const Home = () => {
-  return (
-    <MainPage />
-  );
-}
+const Home = () => <MainPage />
 
 export default Home;
