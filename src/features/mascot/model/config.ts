@@ -1,4 +1,5 @@
 import { TargetAndTransition, Transition } from "framer-motion";
+
 import type { Emotion, EmotionPose, MouthShape } from "./types";
 
 export const FACE = {
@@ -82,3 +83,30 @@ export const HOP_ANIMATION: TargetAndTransition = {
 };
 
 export const TAP_ANIMATION: TargetAndTransition = { scale: 0.94 };
+
+export const SHAPES = {
+    viewBox: "0 0 120 112",
+
+    ears: ["M22 52 L16 12 L52 32 Z", "M98 52 L104 12 L68 32 Z"],
+    innerEars: ["M25 40 L22 22 L41 31 Z", "M95 40 L98 22 L79 31 Z"],
+    head: { cx: 60, cy: 68, rx: 44, ry: 36 },
+
+    cheeks: [
+        { cx: 27, cy: 76, rx: 6, ry: 3.6 },
+        { cx: 93, cy: 76, rx: 6, ry: 3.6 },
+    ],
+
+    brows: {
+        left: "M31 47 Q40 42 49 47",
+        right: "M71 47 Q80 42 89 47",
+    },
+
+    nose: "M55.5 72 L64.5 72 L60 77.5 Z",
+    noseStem: "M60 77.5 L60 81",
+    mouthOpen: { cx: 60, cy: 86, rx: 4.5, ry: 5.5 },
+
+    whiskers: {
+        left: "M17 73 L3 69 M17 78 L2 78 M17 83 L3 87",
+        right: "M103 73 L117 69 M103 78 L118 78 M103 83 L117 87",
+    },
+} as const;

@@ -3,8 +3,6 @@ import type { Metadata } from "next";
 import { Menu } from "../widgets/layout/menu";
 import { Footer } from "../widgets/layout/footer";
 
-import { Mascot } from "../features/mascot";
-
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
 
@@ -19,7 +17,6 @@ const RootLayout = ({ children }: LayoutProps<"/">) => {
       <body>
         <Menu />
         {children}
-        <Mascot />
         <Footer />
       </body>
     </html>

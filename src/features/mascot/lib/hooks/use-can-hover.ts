@@ -1,5 +1,3 @@
-"use client";
-
 import { useSyncExternalStore } from "react";
 
 const QUERY = "(hover: hover) and (pointer: fine) and (min-width: 769px)";
