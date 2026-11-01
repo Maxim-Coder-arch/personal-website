@@ -7,22 +7,34 @@
     display: flex;
     align-items: center;
 
-    padding: clamp(2rem, 5vw, 5rem);
+    width: 100%;
+
+    padding-top: 6rem;
+
+    padding-left: 5vw;
+    padding-right: 5vw;
 
     overflow: hidden;
+
+    box-sizing: border-box;
 
     background-color: $bg-color;
     color: $white;
 
     &__background {
         position: absolute;
-
         z-index: -1;
 
         inset: 0;
 
         display: flex;
         flex-direction: column;
+        justify-content: center;
+
+        overflow: hidden;
+
+        pointer-events: none;
+        user-select: none;
 
         & span {
             @include font(clamp(7rem, 17vw, 18rem), 800, transparent);
@@ -33,9 +45,6 @@
 
             -webkit-text-stroke: 1px rgba($light-grey, 0.2);
         }
-
-        pointer-events: none;
-        user-select: none;
     }
 
     &__main {
@@ -54,7 +63,6 @@
         max-width: 1800px;
 
         margin: 0 auto;
-        padding: 4rem 0 3rem;
     }
 
     &__identity {
@@ -153,7 +161,7 @@
             width: min(100%, 320px);
         }
 
-        &__background {
+        &__background span {
             font-size: 17vw;
         }
     }
@@ -161,7 +169,6 @@
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 100svh;
         padding: 3rem 1.5rem;
 
         &__main {
@@ -169,7 +176,6 @@
             grid-template-rows: auto auto;
 
             gap: 2rem;
-            padding: 2rem 0;
         }
 
         &__identity {
@@ -204,8 +210,7 @@
             }
         }
 
-        &__background {
-            top: 48%;
+        &__background span {
             font-size: 22vw;
             letter-spacing: -0.09em;
         }
@@ -228,7 +233,7 @@
             width: 78%;
         }
 
-        &__background {
+        &__background span {
             font-size: 21vw;
         }
     }
