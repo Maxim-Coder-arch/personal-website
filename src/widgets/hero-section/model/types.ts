@@ -1,9 +1,7 @@
-export interface IHeroLabels {
-    initialState:  false | "hidden";
-    animateState: "visible";
+export interface IHeroBackgroundProps {
     shouldReduceMotion: boolean | null;
 }
 
-export type IHeroTitle = Pick<IHeroLabels, "animateState" | "initialState">;
+export type IHeroIdentityProps = IHeroBackgroundProps;
 
-export type IHeroDecorators = IHeroLabels;
+export type IHeroPortraitProps = IHeroBackgroundProps;

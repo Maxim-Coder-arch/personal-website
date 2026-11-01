@@ -1,38 +1,23 @@
 "use client";
 
-import { HeroSectionLayer } from "./components/hero-section-layer";
-import { HeroLabels } from "./components/hero-labels";
-import { HeroTitle } from "./components/hero-title";
-import { HeroDecorators } from "./components/hero-decorators";
-
 import { useReducedMotion } from "framer-motion";
+
+import { HeroIdentity } from "./components/hero-identity";
+import { HeroPortrait } from "./components/hero-portait";
+import { HeroLayout } from "./components/hero-layout";
 
 export const HeroSection = () => {
     const shouldReduceMotion = useReducedMotion();
-    const initialState = shouldReduceMotion ? false : "hidden";
-    const animateState = "visible";
 
     return (
-        <HeroSectionLayer>
-            
-            <HeroLabels
+        <HeroLayout shouldReduceMotion={shouldReduceMotion}>
+            <HeroIdentity
                 shouldReduceMotion={shouldReduceMotion}
-                initialState={initialState}
-                animateState={animateState}
             />
 
-            <HeroTitle
-                initialState={initialState}
-                animateState={animateState}
-            />
-            
-
-            <HeroDecorators
+            <HeroPortrait
                 shouldReduceMotion={shouldReduceMotion}
-                initialState={initialState}
-                animateState={animateState}
             />
-            
-        </HeroSectionLayer>
+        </HeroLayout>
     );
 };
