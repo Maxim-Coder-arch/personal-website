@@ -1,0 +1,72 @@
+@use "../../../../app/styles/scss/variables" as *;
+
+.mascot {
+    width: 100%;
+
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &__svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+
+        pointer-events: none;
+    }
+
+    &__hit {
+        pointer-events: visiblePainted;
+        cursor: pointer;
+    }
+
+    &__head {
+        fill: $white;
+        stroke: $bg-color;
+        stroke-width: 3.2;
+        stroke-linejoin: round;
+    }
+
+    &__inner-ear {
+        fill: $light-yellow;
+        opacity: 0.7;
+    }
+
+    &__eye-white {
+        fill: $light-title;
+        stroke: $bg-color;
+        stroke-width: 3.2;
+    }
+
+    &__pupil {
+        fill: $bg-color;
+    }
+
+    &__glint {
+        fill: $light-title;
+    }
+
+    &__line {
+        fill: none;
+        stroke: $bg-color;
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    &__nose {
+        fill: $light-yellow;
+        stroke: $bg-color;
+        stroke-width: 2;
+        stroke-linejoin: round;
+    }
+
+    &__cheek {
+        fill: $light-yellow;
+        opacity: 0;
+    }
+
+    &__mouth-open {
+        fill: $bg-color;
+    }
+}

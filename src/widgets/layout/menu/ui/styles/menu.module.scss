@@ -115,6 +115,51 @@
         display: inline-block;
     }
 
+     &__divider {
+        width: 1px;
+        height: 1.25rem;
+
+        margin: 0 0.35rem;
+
+        background-color: rgba($white, 0.14);
+    }
+
+    &__mascot {
+        flex-shrink: 0;
+        width: 40px;
+        margin-right: 0.15rem;
+    }
+
+    &__social {
+        flex-shrink: 0;
+
+        a {
+            display: grid;
+            place-items: center;
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+            color: $light-grey;
+            font-size: 1.1rem;
+
+            transition:
+                background-color 250ms ease,
+                color 250ms ease;
+
+            &:hover {
+                background-color: $white;
+                color: $bg-color;
+            }
+
+            &:focus-visible {
+                outline: 2px solid $white;
+                outline-offset: 2px;
+            }
+        }
+    }
+
     .active {
         color: $bg-color;
     }
@@ -153,5 +198,18 @@
 @media (prefers-reduced-motion: reduce) {
     .hero-nav__item {
         transition: none;
+    }
+}
+
+@media not all and (hover: hover) and (pointer: fine) and (min-width: 769px) {
+    .hero-nav__mascot {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-nav__social a {
+        width: 36px;
+        height: 36px;
     }
 }
