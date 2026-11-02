@@ -1,9 +1,8 @@
 import type { LoaderLayoutProps } from "../../../model/types";
 
-
+import { LoaderCurtains } from "./loader-curtains";
 
 import styles from "../../styles/page-loader.module.scss";
-import { LoaderCurtains } from "./loader-curtains";
 
 export const LoaderLayout = ({
     revealing,

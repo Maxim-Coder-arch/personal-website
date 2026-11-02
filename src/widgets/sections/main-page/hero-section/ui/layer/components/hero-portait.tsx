@@ -5,8 +5,9 @@ import { motion } from "framer-motion";
 import { HERO_IMAGE_VARIANTS } from "../../../model/animations";
 import { IHeroPortraitProps } from "../../../model/types";
 
-import styles from "../../styles/hero-section.module.scss";
 import { useHeroReveal } from "../../../lib/hooks/use-hero-reveal";
+
+import styles from "../../styles/hero-section.module.scss";
 
 export const HeroPortrait = ({
     shouldReduceMotion,

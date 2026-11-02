@@ -1,9 +1,6 @@
-"use client";
-
 import { useCallback, useEffect, useState } from "react";
 import {
     animate,
-    MotionValue,
     useMotionValue,
     useReducedMotion,
     useSpring,
@@ -34,7 +31,7 @@ export const useIntroTimeline = () => {
         useTransform(progress, [0, 1], [-EYE.pupilTravel, EYE.pupilTravel]),
         PUPIL_SPRING,
     );
-    const pupilY = useMotionValue(EYE.pupilDrop);
+    const pupilY = useMotionValue<number>(EYE.pupilDrop);
 
     const advance = useCallback((next: IntroPhase) => {
         setPhase((current) => (isReached(current, next) ? current : next));
