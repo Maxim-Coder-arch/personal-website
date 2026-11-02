@@ -1,0 +1,113 @@
+@use "../../../../../app/styles/scss/variables" as *;
+
+:global(html[data-intro="seen"]) .page-loader {
+    display: none;
+}
+
+.page-loader {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+
+    overflow: hidden;
+
+    &--revealing {
+        pointer-events: none;
+    }
+
+    &--revealing &__stage {
+        visibility: hidden;
+    }
+
+    &__stage {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+
+        background-color: $bg-color;
+        cursor: pointer;
+    }
+
+    &__eyes {
+        display: block;
+
+        width: min(46vw, 560px);
+        height: auto;
+
+        overflow: visible;
+    }
+
+    &__eye {
+        fill: $light-title;
+    }
+
+    &__pupil {
+        fill: $bg-color;
+    }
+
+    &__glint {
+        fill: $light-title;
+    }
+
+    &__lid {
+        fill: none;
+        stroke: $light-title;
+        stroke-width: 5;
+        stroke-linecap: round;
+    }
+
+    &__counter {
+        display: flex;
+        align-items: baseline;
+        gap: 0.35rem;
+
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.14em;
+
+        color: $white;
+    }
+
+    &__counter-dot {
+        color: $light-yellow;
+    }
+
+    &__counter-total {
+        margin-left: 0.6rem;
+
+        font-size: 0.7em;
+        color: $light-grey;
+    }
+
+    &__curtain {
+        position: absolute;
+        left: 0;
+        right: 0;
+
+        height: 50%;
+
+        background-color: $light-title;
+        will-change: transform;
+
+        &--top {
+            top: 0;
+        }
+
+        &--bottom {
+            bottom: 0;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .page-loader__eyes {
+        width: min(72vw, 420px);
+    }
+}

@@ -1,0 +1,1 @@
+export const formatCounter = (progress: number) => String(Math.round(progress * 100)).padStart(3, "0");
