@@ -6,19 +6,18 @@ import { HERO_IMAGE_VARIANTS } from "../../../model/animations";
 import { IHeroPortraitProps } from "../../../model/types";
 
 import styles from "../../styles/hero-section.module.scss";
+import { useHeroReveal } from "../../../lib/hooks/use-hero-reveal";
 
 export const HeroPortrait = ({
     shouldReduceMotion,
 }: IHeroPortraitProps) => {
+    const revealed = useHeroReveal(shouldReduceMotion);
+    
     return (
         <motion.div
             className={styles["hero__portrait"]}
-            initial={
-                shouldReduceMotion
-                    ? false
-                    : "hidden"
-            }
-            animate="visible"
+            initial={shouldReduceMotion ? false : "hidden"}
+            animate={revealed ? "visible" : "hidden"}
             variants={HERO_IMAGE_VARIANTS}
         >
             <Image

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import {
     animate,
+    MotionValue,
     useMotionValue,
     useReducedMotion,
     useSpring,
