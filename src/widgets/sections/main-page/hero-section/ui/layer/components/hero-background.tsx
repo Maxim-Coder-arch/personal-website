@@ -3,11 +3,15 @@ import { motion } from "framer-motion";
 import { HERO_CONTENT_VARIANTS } from "../../../model/animations";
 import { IHeroBackgroundProps } from "../../../model/types";
 
+import { useHeroReveal } from "../../../lib/hooks/use-hero-reveal";
+
 import styles from "../../styles/hero-section.module.scss";
 
 export const HeroBackground = ({
     shouldReduceMotion,
 }: IHeroBackgroundProps) => {
+    const revealed = useHeroReveal(shouldReduceMotion);
+    
     return (
         <motion.div
             className={styles["hero__background"]}
@@ -21,11 +25,11 @@ export const HeroBackground = ({
                             ? false
                             : HERO_CONTENT_VARIANTS.hidden
                     }
-                    animate={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-
+                    animate={
+                        revealed
+                            ? { opacity: 1, y: 0 }
+                            : HERO_CONTENT_VARIANTS.hidden
+                    }
                     transition={{
                         delay: shouldReduceMotion ? 0 : 0.1 * index,
                     }}

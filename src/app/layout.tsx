@@ -5,6 +5,8 @@ import { Footer } from "../widgets/layout/footer";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
+import { INTRO_INIT_SCRIPT } from "../shared/lib/intro/intro-store";
+import { PageLoader } from "../widgets/layout/page-loader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,8 +15,12 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: LayoutProps<"/">) => {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_INIT_SCRIPT }} />
+      </head>
       <body>
+        <PageLoader />
         <Menu />
         {children}
         <Footer />
