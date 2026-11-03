@@ -1,0 +1,6 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+.project-page {
+    display: flex;
+    flex-direction: column;
+}

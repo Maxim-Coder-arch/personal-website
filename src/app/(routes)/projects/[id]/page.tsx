@@ -1,7 +1,5 @@
-const ProjectPage = () => {
-    return (
-        <div></div>
-    )
-}
+import { ProjectPage } from "@/src/(views)/project-page";
 
-export default ProjectPage;
+const ProjectPageRoute = () => <ProjectPage />
+
+export default ProjectPageRoute;
