@@ -18,8 +18,9 @@ import { SlabShade } from "./slab-shade";
 import { SlabSpecs } from "./slab-specs";
 import { SlabTitle } from "./slab-title";
 
-import styles from "../../styles/projects-showcase.module.scss";
 import { useProjectSlab } from "../../../lib/hooks/use-projects-slab";
+
+import styles from "../../styles/projects-showcase.module.scss";
 
 export const ProjectSlab = ({
     project,
