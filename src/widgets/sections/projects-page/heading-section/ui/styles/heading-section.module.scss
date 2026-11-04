@@ -69,7 +69,7 @@
 
         margin: auto 0;
 
-        @include font(clamp(6rem, 25vw, 30rem), 800, $light-title);
+        @include font(clamp(3rem, 15vw, 20rem), 800, $light-title);
 
         line-height: 0.78;
         letter-spacing: -0.085em;
