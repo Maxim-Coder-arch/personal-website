@@ -1,0 +1,21 @@
+.split-reveal {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    &--words {
+        column-gap: 0.22em;
+    }
+
+    &__mask {
+        display: inline-block;
+        overflow: hidden;
+
+        padding: 0.08em 0.1em;
+        margin: -0.08em -0.1em;
+    }
+
+    &__piece {
+        display: inline-block;
+        will-change: transform;
+    }
+}
