@@ -18,8 +18,8 @@ export const useProjectSlab = ({
 
     const isLast = index === total - 1;
     const steps = Math.max(total - 1, 1);
-    const start = index / steps;
-    const end = (index + 1) / steps;
+    const start = isLast ? 0 : index / steps;
+    const end = isLast ? 1 : (index + 1) / steps;
 
     const scale = useTransform(progress, [start, end], [1, isLast ? 1 : STACK.minScale]);
     const shade = useTransform(progress, [start, end], [0, isLast ? 0 : STACK.maxShade]);
