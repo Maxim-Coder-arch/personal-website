@@ -9,8 +9,8 @@ export const menuItems: IMenuItems[] = [
         itemIcon: <HomeIcon />,
     },
     {
-        itemLabel: "Стек",
-        itemLink: "/a",
+        itemLabel: "Проекты",
+        itemLink: "/projects",
     },
     {
         itemLabel: "Технологии",

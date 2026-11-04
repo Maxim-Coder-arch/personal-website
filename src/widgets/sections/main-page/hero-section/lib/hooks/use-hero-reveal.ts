@@ -1,4 +1,4 @@
-import { useIntroDone } from "@/src/shared/lib/intro/use-intro-done";
+import { useIntroDone } from "@/src/shared/lib/hooks/use-intro-done";
 
 export const useHeroReveal = (shouldReduceMotion: boolean | null) => {
     const introDone = useIntroDone();
