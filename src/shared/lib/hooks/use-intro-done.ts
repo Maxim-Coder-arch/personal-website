@@ -4,7 +4,7 @@ import {
     getIntroServerSnapshot,
     getIntroSnapshot,
     subscribeIntro,
-} from "./intro-store";
+} from "../intro/intro-store";
 
 export const useIntroDone = () => {
     return useSyncExternalStore(
