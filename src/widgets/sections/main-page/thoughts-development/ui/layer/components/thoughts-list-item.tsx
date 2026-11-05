@@ -7,12 +7,12 @@ import { motion } from "framer-motion";
 import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
 
 import { itemVariants, THOUGHTS_CONFIG } from "../../../model/animations";
-import { ThoughtsListItemProps } from "../../../model/types";
+import type { ThoughtsListItemProps } from "../../../model/types";
 
 import styles from "../../styles/thoughts-development.module.scss";
 
 export const ThoughtsListItem = ({
-    thought,
+    article,
     index,
     shouldReduceMotion,
 }: ThoughtsListItemProps) => {
@@ -26,7 +26,8 @@ export const ThoughtsListItem = ({
             }
         >
             <Link
-                href={`/thoughts/${thought.id}`}
+                href={`/articles/${article.id}`}
+                scroll={false}
                 className={styles["thoughts-development__link"]}
             >
                 <div className={styles["thoughts-development__content"]}>
@@ -35,10 +36,10 @@ export const ThoughtsListItem = ({
                             {String(index + 1).padStart(2, "0")}
                         </span>
 
-                        <h3>{thought.title}</h3>
+                        <h3>{article.title}</h3>
                     </div>
 
-                    <p>{thought.subtitle}</p>
+                    <p>{article.subtitle}</p>
                 </div>
 
                 <motion.span

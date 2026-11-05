@@ -1,6 +1,6 @@
-import { IThought } from "./types";
+import { IArticle } from "./types";
 
-export const thoughts: IThought[] = [
+export const thoughts: IArticle[] = [
     {
         id: "1",
         title: "Clean Code",

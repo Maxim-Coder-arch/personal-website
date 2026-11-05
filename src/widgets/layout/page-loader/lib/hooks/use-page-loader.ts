@@ -1,5 +1,5 @@
 import { useIntroTimeline } from "./use-intro-timeline";
-import { useScrollLock } from "./use-scroll-lock";
+import { useScrollLock } from "../../../../../shared/lib/hooks/use-scroll-lock";
 
 export const usePageLoader = () => {
     const timeline = useIntroTimeline();

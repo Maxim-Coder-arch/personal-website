@@ -1,13 +1,15 @@
-export interface IThought {
-    id: string;
-    title: string;
-    subtitle: string;
-    text: string;
-    createdAt: string;
+import type { IArticle } from "@/src/entities/article";
+
+export interface ThoughtsDevelopmentProps {
+    articles: IArticle[];
+}
+
+export interface ThoughtsListProps {
+    articles: IArticle[];
 }
 
 export interface ThoughtsListItemProps {
-    thought: IThought;
+    article: IArticle;
     index: number;
     shouldReduceMotion: boolean | null;
 }

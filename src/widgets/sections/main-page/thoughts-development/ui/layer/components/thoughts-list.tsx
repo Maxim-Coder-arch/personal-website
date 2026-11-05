@@ -1,16 +1,15 @@
-
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 
 import { listVariants, THOUGHTS_CONFIG } from "../../../model/animations";
-import { thoughts } from "../../../model/data";
+import type { ThoughtsListProps } from "../../../model/types";
 
 import { ThoughtsListItem } from "./thoughts-list-item";
 
 import styles from "../../styles/thoughts-development.module.scss";
 
-export const ThoughtsList = () => {
+export const ThoughtsList = ({ articles }: ThoughtsListProps) => {
     const shouldReduceMotion = useReducedMotion();
 
     return (
@@ -28,10 +27,10 @@ export const ThoughtsList = () => {
                 amount: THOUGHTS_CONFIG.animation.list.viewportAmount,
             }}
         >
-            {thoughts.map((thought, index) => (
+            {articles.map((article, index) => (
                 <ThoughtsListItem
-                    key={thought.id}
-                    thought={thought}
+                    key={article.id}
+                    article={article}
                     index={index}
                     shouldReduceMotion={shouldReduceMotion}
                 />
