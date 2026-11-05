@@ -13,11 +13,7 @@ export const menuItems: IMenuItems[] = [
         itemLink: "/projects",
     },
     {
-        itemLabel: "Технологии",
-        itemLink: "/b",
-    },
-    {
-        itemLabel: "Проекты",
-        itemLink: "/c",
+        itemLabel: "Статьи",
+        itemLink: "/articles",
     },
 ];
