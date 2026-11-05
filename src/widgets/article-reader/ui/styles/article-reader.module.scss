@@ -10,23 +10,35 @@ $ink: #2b2622;
 @mixin theme-default {
     --reader-bg: #141414;
     --reader-fg: #{$white};
+    --reader-muted: #a3a1a1;
+    --reader-line: rgba(218, 216, 216, 0.2);
 }
 
 @mixin theme-reading {
     --reader-bg: #{$paper};
     --reader-fg: #{$ink};
+    --reader-muted: #4d453c;
+    --reader-line: rgba(43, 38, 34, 0.22);
+}
+
+@mixin text-transition {
+    transition:
+        color 0.5s ease,
+        border-color 0.5s ease;
 }
 
 @mixin pill {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
     padding: 0.6rem 1.1rem;
-    border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+    border: 1px solid var(--reader-line);
     border-radius: 999px;
 
     background: transparent;
-    color: inherit;
+    color: var(--reader-fg);
 
     font-family: $font-body;
     font-size: 0.78rem;
@@ -94,12 +106,13 @@ $ink: #2b2622;
         min-height: 0;
         max-height: min(50rem, 100%);
 
-        border: 1px solid rgba($white, 0.12);
+        border: 1px solid var(--reader-line);
         border-radius: 1.5rem;
 
         background-color: var(--reader-bg);
         color: var(--reader-fg);
 
+        overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-width: thin;
@@ -138,6 +151,8 @@ $ink: #2b2622;
     background-color: var(--reader-bg);
     color: var(--reader-fg);
 
+    overflow-x: hidden;
+
     transition:
         background-color 0.5s ease,
         color 0.5s ease;
@@ -162,6 +177,7 @@ $ink: #2b2622;
     flex: 1;
 
     width: 100%;
+    min-width: 0;
     max-width: 64rem;
     margin-inline: auto;
     padding-inline: $gutter;
@@ -184,7 +200,7 @@ $ink: #2b2622;
     gap: 1rem;
 
     padding-block: 1.25rem;
-    border-bottom: 1px dashed color-mix(in srgb, currentColor 22%, transparent);
+    border-bottom: 1px dashed var(--reader-line);
 
     background-color: var(--reader-bg);
 
@@ -201,6 +217,14 @@ $ink: #2b2622;
                 background-color: $light-yellow;
                 color: $bg-color;
             }
+        }
+
+        &--icon {
+            @include size(2.5rem, 2.5rem);
+
+            padding: 0;
+
+            font-size: 1.25rem;
         }
     }
 }
@@ -234,6 +258,7 @@ $ink: #2b2622;
     flex-direction: column;
     gap: clamp(2rem, 4vw, 3.5rem);
 
+    min-width: 0;
     padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 8vw, 6rem);
 
     &__header {
@@ -241,8 +266,11 @@ $ink: #2b2622;
         flex-direction: column;
         gap: 1.25rem;
 
+        min-width: 0;
         padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
-        border-bottom: 1px dashed color-mix(in srgb, currentColor 22%, transparent);
+        border-bottom: 1px dashed var(--reader-line);
+
+        @include text-transition;
     }
 
     &__date {
@@ -251,17 +279,24 @@ $ink: #2b2622;
         letter-spacing: 0.12em;
         text-transform: uppercase;
 
-        color: color-mix(in srgb, currentColor 55%, transparent);
+        color: var(--reader-muted);
+
+        @include text-transition;
     }
 
     &__title {
-        @include font(clamp(2.75rem, 8vw, 6.5rem), 800, inherit);
+        @include font(clamp(2rem, 5.5vw, 4.25rem), 800, var(--reader-fg));
 
-        line-height: 0.9;
-        letter-spacing: -0.04em;
+        max-width: 100%;
+
+        line-height: 0.95;
+        letter-spacing: -0.03em;
         text-transform: uppercase;
+        overflow-wrap: anywhere;
 
-        transition: font-size 0.6s $ease-in-out;
+        transition:
+            color 0.5s ease,
+            font-size 0.6s $ease-in-out;
     }
 
     &__subtitle {
@@ -270,8 +305,11 @@ $ink: #2b2622;
         font-family: $font-body;
         font-size: clamp(1rem, 1.4vw, 1.2rem);
         line-height: 1.55;
+        overflow-wrap: break-word;
 
-        color: color-mix(in srgb, currentColor 65%, transparent);
+        color: var(--reader-muted);
+
+        @include text-transition;
     }
 
     &__body {
@@ -284,8 +322,13 @@ $ink: #2b2622;
         font-family: $font-body;
         font-size: clamp(1rem, 1.2vw, 1.1rem);
         line-height: 1.75;
+        overflow-wrap: break-word;
 
-        transition: font-size 0.6s $ease-in-out;
+        color: var(--reader-fg);
+
+        transition:
+            color 0.5s ease,
+            font-size 0.6s $ease-in-out;
     }
 }
 
@@ -294,7 +337,7 @@ $ink: #2b2622;
 }
 
 [data-mode="reading"] .content__title {
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-size: clamp(1.9rem, 4vw, 3rem);
 }
 
 [data-mode="reading"] .content__body {
@@ -339,7 +382,10 @@ $ink: #2b2622;
     .modal__panel,
     .page,
     .shell,
+    .content__header,
+    .content__date,
     .content__title,
+    .content__subtitle,
     .content__body {
         transition: none;
     }

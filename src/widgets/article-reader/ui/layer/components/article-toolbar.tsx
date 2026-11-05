@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CloseIcon } from "@/src/shared/icons/globals/close-icon";
+
 import { READER_LABELS } from "../../../model/data";
 import type { ArticleToolbarProps } from "../../../model/types";
 
@@ -15,13 +17,22 @@ export const ArticleToolbar = ({
             className={styles["toolbar"]}
             data-variant={variant}
         >
+            <button
+                type="button"
+                className={styles["toolbar__button"]}
+                onClick={onEnterReading}
+            >
+                {READER_LABELS.enterReading}
+            </button>
+
             {variant === "modal" ? (
                 <button
                     type="button"
-                    className={styles["toolbar__button"]}
+                    className={`${styles["toolbar__button"]} ${styles["toolbar__button--icon"]}`}
                     onClick={onClose}
+                    aria-label={READER_LABELS.close}
                 >
-                    {READER_LABELS.close}
+                    <CloseIcon />
                 </button>
             ) : (
                 <Link
@@ -31,14 +42,6 @@ export const ArticleToolbar = ({
                     {READER_LABELS.back}
                 </Link>
             )}
-
-            <button
-                type="button"
-                className={styles["toolbar__button"]}
-                onClick={onEnterReading}
-            >
-                {READER_LABELS.enterReading}
-            </button>
         </div>
     );
 };
