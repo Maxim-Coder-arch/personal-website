@@ -1,6 +1,6 @@
-import { IThought } from "../../../widgets/sections/main-page/thoughts-development/model/types";
+import { IArticle } from "./types";
 
-export const thoughts: IThought[] = [
+export const thoughts: IArticle[] = [
     {
         id: "1",
         title: "Clean Code",
