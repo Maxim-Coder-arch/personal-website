@@ -1,4 +1,4 @@
-import { IThought } from "./types";
+import { IThought } from "../../../widgets/sections/main-page/thoughts-development/model/types";
 
 export const thoughts: IThought[] = [
     {

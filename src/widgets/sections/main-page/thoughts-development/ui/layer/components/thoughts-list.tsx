@@ -4,7 +4,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 import { listVariants, THOUGHTS_CONFIG } from "../../../model/animations";
-import { thoughts } from "../../../model/data";
+import { thoughts } from "../../../../../../../entities/article/model/articles.mock";
 
 import { ThoughtsListItem } from "./thoughts-list-item";
 
