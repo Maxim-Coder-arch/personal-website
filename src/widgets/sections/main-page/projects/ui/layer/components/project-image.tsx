@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 
-import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
+import { motion } from "framer-motion";
 
 import { ProjectImageProps } from "../../../model/types";
 
@@ -11,37 +11,21 @@ export const ProjectImage = ({
     title,
     imagePath,
     index,
+    animation,
 }: ProjectImageProps) => {
-    const projectNumber = String(index + 1).padStart(2, "0");
-
     return (
-        <div
-            className={styles["projects-section__project-list__project-card__image"]}
+        <motion.div
+            className={styles["projects-section__image"]}
+            variants={animation}
         >
             <Image
                 src={imagePath}
                 alt={`Превью проекта ${title}`}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 50vw"
+                sizes="(max-width: 640px) 100vw, 50vw"
                 loading={index === 0 ? "eager" : "lazy"}
-                className={styles["projects-section__project-image"]}
+                className={styles["projects-section__image-el"]}
             />
-
-            <div
-                className={styles["projects-section__project-image-overlay"]}
-                aria-hidden="true"
-            />
-
-            <span className={styles["projects-section__project-number"]}>
-                {projectNumber}
-            </span>
-
-            <span
-                className={styles["projects-section__project-open"]}
-                aria-hidden="true"
-            >
-                <ArrowRightUp />
-            </span>
-        </div>
+        </motion.div>
     );
 };

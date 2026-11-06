@@ -1,0 +1,1 @@
+export const PROJECTS_PREVIEW_COUNT = 4;

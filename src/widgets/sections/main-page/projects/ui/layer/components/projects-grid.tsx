@@ -29,6 +29,7 @@ export const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
                     key={project.id}
                     project={project}
                     index={index}
+                    total={projects.length}
                     animation={shouldReduceMotion ? undefined : projectCardAnimation}
                 />
             ))}
