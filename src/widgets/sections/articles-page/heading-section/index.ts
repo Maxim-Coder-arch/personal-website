@@ -1,0 +1,1 @@
+export { HeadingSection } from "./ui/layer/heading-section";
