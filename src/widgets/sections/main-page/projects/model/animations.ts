@@ -46,3 +46,17 @@ export const projectCardAnimation: Variants = {
         },
     },
 };
+
+export const projectImageAnimation: Variants = {
+    hidden: {
+        clipPath: "inset(100% 0% 0% 0% round 0.9rem)",
+    },
+    visible: {
+        clipPath: "inset(0% 0% 0% 0% round 0.9rem)",
+        transition: {
+            duration: 1.1,
+            delay: 0.15,
+            ease: [0.76, 0, 0.24, 1],
+        },
+    },
+};

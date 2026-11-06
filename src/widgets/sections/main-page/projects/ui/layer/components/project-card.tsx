@@ -1,13 +1,13 @@
 
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 
+import { useProjectSpotlight } from "../../../lib/hooks/use-project-spotlight";
+import { projectImageAnimation } from "../../../model/animations";
 import type { ProjectCardProps } from "../../../model/types";
 
 import { ProjectImage } from "./project-image";
-
 import { ProjectInfo } from "./project-info";
 
 import styles from "../../styles/projects.module.scss";
@@ -16,32 +16,33 @@ import styles from "../../styles/projects.module.scss";
 export const ProjectCard = ({
     project,
     index,
+    total,
     animation,
 }: ProjectCardProps) => {
-    return (
-        <motion.div
-            className={styles["projects-section__project-wrapper"]}
-            variants={animation}
-        >
-            <Link
-                href={project.id.startsWith("/")
-                    ? project.id
-                    : `/projects/${project.id}`}
-                className={styles["projects-section__project-list__project-card"]}
-                aria-label={`Посмотреть проект ${project.title}`}
-            >
-                <ProjectImage
-                    title={project.title}
-                    imagePath={project.imagePath}
-                    index={index}
-                />
+    const { ref, handlePointerMove } = useProjectSpotlight();
 
-                <ProjectInfo
-                    title={project.title}
-                    subtitle={project.subtitle}
-                    index={index}
-                />
-            </Link>
-        </motion.div>
+    return (
+        <motion.article
+            ref={ref}
+            className={styles["projects-section__card"]}
+            variants={animation}
+            onPointerMove={handlePointerMove}
+        >
+            <ProjectImage
+                title={project.title}
+                imagePath={project.imagePath}
+                index={index}
+                animation={animation ? projectImageAnimation : undefined}
+            />
+
+            <ProjectInfo
+                title={project.title}
+                subtitle={project.subtitle}
+                description={project.description}
+                specs={project.additionalData}
+                index={index}
+                total={total}
+            />
+        </motion.article>
     );
 };
