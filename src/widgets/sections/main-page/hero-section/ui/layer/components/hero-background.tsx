@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 
-import { HERO_CONTENT_VARIANTS } from "../../../model/animations";
+import {
+    HERO_BACKGROUND_ROW_VARIANTS,
+    HERO_BACKGROUND_VARIANTS,
+} from "../../../model/animations";
 import { IHeroBackgroundProps } from "../../../model/types";
 
 import { useHeroReveal } from "../../../lib/hooks/use-hero-reveal";
@@ -11,28 +14,19 @@ export const HeroBackground = ({
     shouldReduceMotion,
 }: IHeroBackgroundProps) => {
     const revealed = useHeroReveal(shouldReduceMotion);
-    
+
     return (
         <motion.div
             className={styles["hero__background"]}
+            initial={shouldReduceMotion ? false : "hidden"}
+            animate={revealed ? "visible" : "hidden"}
+            variants={HERO_BACKGROUND_VARIANTS}
             aria-hidden="true"
         >
             {Array.from({ length: 5 }).map((_, index) => (
                 <motion.span
                     key={index}
-                    initial={
-                        shouldReduceMotion
-                            ? false
-                            : HERO_CONTENT_VARIANTS.hidden
-                    }
-                    animate={
-                        revealed
-                            ? { opacity: 1, y: 0 }
-                            : HERO_CONTENT_VARIANTS.hidden
-                    }
-                    transition={{
-                        delay: shouldReduceMotion ? 0 : 0.1 * index,
-                    }}
+                    variants={HERO_BACKGROUND_ROW_VARIANTS}
                 >
                     PORTFOLIO
                 </motion.span>
