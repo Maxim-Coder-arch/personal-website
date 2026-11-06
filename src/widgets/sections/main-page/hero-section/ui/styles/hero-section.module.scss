@@ -87,6 +87,10 @@
             & > span {
                 white-space: nowrap;
             }
+
+            & .hero__name {
+                flex-wrap: nowrap;
+            }
         }
     }
 
@@ -101,6 +105,8 @@
     }
 
     &__dot {
+        display: inline-block;
+
         color: $light-yellow;
     }
 
@@ -122,6 +128,11 @@
     &__image {
         object-fit: cover;
         object-position: center 35%;
+    }
+
+    &__image-frame {
+        position: absolute;
+        inset: 0;
     }
 
     &__introduction {
