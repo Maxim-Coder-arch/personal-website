@@ -1,0 +1,135 @@
+@use "../../../../../../app/styles/scss/includes" as *;
+
+.closing {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6rem;
+
+    min-height: 100svh;
+    padding: 8rem 5vw 3rem;
+
+    background-color: $bg-color;
+    color: $white;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+
+        top: 15%;
+        right: -16rem;
+
+        width: 40rem;
+        height: 40rem;
+
+        border-radius: 50%;
+        background: rgba($light-yellow, 0.06);
+        filter: blur(120px);
+
+        pointer-events: none;
+    }
+
+    &__statement {
+        margin: auto 0;
+
+        @include font(clamp(3.5rem, 11vw, 13rem), 800, $light-title);
+
+        line-height: 0.86;
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+    }
+
+    &__line {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 0.22em;
+    }
+
+    &__word {
+        display: inline-block;
+    }
+
+    &__dot {
+        margin-left: -0.22em;
+        color: $light-yellow;
+    }
+
+    &__marquee {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        padding-top: 2rem;
+        border-top: 1px dashed rgba($white, 0.2);
+    }
+
+    &__row {
+        overflow: hidden;
+    }
+
+    &__track {
+        display: flex;
+        width: max-content;
+
+        animation: closing-marquee 55s linear infinite;
+
+        &--reverse {
+            animation-duration: 70s;
+            animation-direction: reverse;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        @include font(clamp(2.5rem, 6vw, 6rem), 800, transparent);
+
+        line-height: 1;
+        letter-spacing: -0.04em;
+        white-space: nowrap;
+
+        -webkit-text-stroke: 1px rgba($light-grey, 0.45);
+
+        &::after {
+            content: "";
+
+            flex-shrink: 0;
+
+            @include size(0.35em, 0.35em);
+
+            margin: 0 0.6em;
+            border-radius: 50%;
+            background: $light-yellow;
+        }
+    }
+}
+
+@keyframes closing-marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .closing {
+        gap: 4rem;
+        padding: 6rem 5vw 2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .closing__track {
+        animation: none;
+    }
+}
