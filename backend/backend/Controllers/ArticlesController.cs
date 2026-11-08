@@ -77,7 +77,7 @@ namespace backend.Controllers
             return Ok(article);
         }
 
-        [HttpDelete("{id:Guid}")]
+        [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(Guid id)
         {
