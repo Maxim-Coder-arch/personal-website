@@ -17,6 +17,6 @@ namespace backend.Models
         public string Text { get; set; }
 
         [JsonPropertyName("createdAt")]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }
