@@ -31,9 +31,8 @@ namespace backend.Migrations
                         .HasColumnType("uuid")
                         .HasJsonPropertyName("id");
 
-                    b.Property<string>("CreatedAt")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
                         .HasJsonPropertyName("createdAt");
 
                     b.Property<string>("Subtitle")
