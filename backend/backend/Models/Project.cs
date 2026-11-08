@@ -18,7 +18,9 @@ namespace backend.Models
 
         [JsonPropertyName("additionalData")]
         public Dictionary<string, string>? AdditionalData { get; set; }
+        [JsonIgnore]
         public byte[] ImageData { get; set; } = [];
+        [JsonIgnore]
         public string ImageContentType { get; set; } = "image/webp";
     }
 }
