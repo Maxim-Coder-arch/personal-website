@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using backend.Models;
+using System.Text.Json.Serialization;
 
 namespace backend.Dtos
 {
@@ -15,6 +16,6 @@ namespace backend.Dtos
         public string Description { get; set; }
 
         [JsonPropertyName("additionalData")]
-        public Dictionary<string, string>? AdditionalData { get; set; }
+        public List<ProjectAdditionalData> AdditionalData { get; set; } = [];
     }
 }
