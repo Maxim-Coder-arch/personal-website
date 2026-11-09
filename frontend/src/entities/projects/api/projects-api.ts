@@ -22,4 +22,16 @@ export const projectApi = {
 
         return response.json();
     },
+
+    async getImage(id: string): Promise<Blob> {
+        const response = await fetch(
+            `${API_URL}/api/projects/${id}/image`
+        );
+
+        if (!response.ok) {
+            throw new Error("Не удалось загрузить изображение проекта");
+        }
+
+        return response.blob();
+    },
 };

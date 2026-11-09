@@ -21,3 +21,12 @@ export function useProjects() {
 export function useProject(id: string) {
     return useQuery(projectQueries.detail(id));
 }
+
+export function useProjectImage(id: string) {
+    return useQuery({
+        queryKey: ["projects", "image", id],
+        queryFn: () => projectApi.getImage(id),
+        enabled: Boolean(id),
+        staleTime: 5 * 60 * 1000,
+    });
+}
