@@ -17,7 +17,7 @@ namespace backend.Models
         public string Description { get; set; }
 
         [JsonPropertyName("additionalData")]
-        public Dictionary<string, string>? AdditionalData { get; set; }
+        public List<ProjectAdditionalData> AdditionalData { get; set; } = [];
         [JsonIgnore]
         public byte[] ImageData { get; set; } = [];
         [JsonIgnore]
