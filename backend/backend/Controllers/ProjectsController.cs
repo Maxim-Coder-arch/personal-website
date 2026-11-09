@@ -20,9 +20,15 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            List<Project> projects = await context.Projects.ToListAsync();
+            List<Project> projects = await context.Projects
+                .AsNoTracking()
+                .ToListAsync();
 
-            return Ok(projects);
+            List<ProjectResponseDto> response = projects
+                .Select(MapToResponse)
+                .ToList();
+
+            return Ok(response);
         }
 
         [HttpGet("{id:guid}")]
@@ -36,7 +42,7 @@ namespace backend.Controllers
                 return NotFound();
             }
 
-            return Ok(project);
+            return Ok(MapToResponse(project));
         }
 
         [HttpPost]
@@ -188,6 +194,22 @@ namespace backend.Controllers
             await context.SaveChangesAsync();
 
             return Ok();
+        }
+
+        private static ProjectResponseDto MapToResponse(Project project)
+        {
+            return new ProjectResponseDto
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Subtitle = project.Subtitle,
+                Description = project.Description,
+                AdditionalData = project.AdditionalData,
+
+                ImagePath = project.ImageData is { Length: > 0 }
+                    ? $"data:{project.ImageContentType};base64,{Convert.ToBase64String(project.ImageData)}"
+                    : null
+            };
         }
     }
 }
