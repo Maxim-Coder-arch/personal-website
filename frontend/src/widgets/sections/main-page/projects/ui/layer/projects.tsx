@@ -1,3 +1,6 @@
+"use client";
+
+import { useProjects } from "@/src/entities/projects/api/projects-queries";
 
 import { PROJECTS_PREVIEW_COUNT } from "../../model/config";
 import { projects } from "../../model/dev-mock.data";
@@ -7,12 +10,18 @@ import { ProjectsHeader } from "./components/projects-header";
 import { ProjectsLayout } from "./components/projects-layout";
 
 export const Projects = () => {
-    const preview = projects.slice(0, PROJECTS_PREVIEW_COUNT);
+    const { data, isLoading, isError } = useProjects();
+
+    console.log("===============================", data)
+
+    if (isLoading) {
+        return <p>loading...</p>
+    }
 
     return (
         <ProjectsLayout>
             <ProjectsHeader />
-            <ProjectsGrid projects={preview} />
+            <ProjectsGrid projects={data} />
         </ProjectsLayout>   
     );
 };

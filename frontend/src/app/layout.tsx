@@ -4,11 +4,13 @@ import type { ReactNode } from "react";
 import { Menu } from "../widgets/layout/menu";
 import { Footer } from "../widgets/layout/footer";
 
-import { INTRO_INIT_SCRIPT } from "../shared/lib/intro/intro-store";
 import { PageLoader } from "../widgets/layout/page-loader";
+
+import { QueryProvider } from "./providers/query-provider";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
+import { IntroProvider } from "./providers/intro-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,13 +25,13 @@ interface RootLayoutProps {
 const RootLayout = ({ children, modal }: RootLayoutProps) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: INTRO_INIT_SCRIPT }} />
-      </head>
       <body>
+        {/* <IntroProvider /> */}
         <PageLoader />
         <Menu />
-        {children}
+        <QueryProvider>
+          {children}
+        </QueryProvider>
         <Footer />
         {modal}
       </body>
