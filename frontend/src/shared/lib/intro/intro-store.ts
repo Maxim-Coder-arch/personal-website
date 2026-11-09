@@ -1,7 +1,5 @@
 export const INTRO_STORAGE_KEY = "intro-seen";
 
-export const INTRO_INIT_SCRIPT = `try{if(sessionStorage.getItem("${INTRO_STORAGE_KEY}")==="1"){document.documentElement.dataset.intro="seen"}}catch(e){}`;
-
 let introDone = false;
 
 const listeners = new Set<() => void>();
