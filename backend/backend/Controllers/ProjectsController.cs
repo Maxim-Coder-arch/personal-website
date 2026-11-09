@@ -43,7 +43,7 @@ namespace backend.Controllers
             }
 
             return Ok(MapToResponse(project));
-        }
+        } 
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ProjectDto model)
