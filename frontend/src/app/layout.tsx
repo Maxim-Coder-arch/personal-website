@@ -7,6 +7,8 @@ import { Footer } from "../widgets/layout/footer";
 import { INTRO_INIT_SCRIPT } from "../shared/lib/intro/intro-store";
 import { PageLoader } from "../widgets/layout/page-loader";
 
+import { QueryProvider } from "./providers/query-provider";
+
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
 
@@ -29,7 +31,9 @@ const RootLayout = ({ children, modal }: RootLayoutProps) => {
       <body>
         <PageLoader />
         <Menu />
-        {children}
+        <QueryProvider>
+          {children}
+        </QueryProvider>
         <Footer />
         {modal}
       </body>
