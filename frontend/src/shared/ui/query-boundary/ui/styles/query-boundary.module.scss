@@ -1,0 +1,91 @@
+@use "../../../../../app/styles/scss/includes" as *;
+
+.query-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+
+    min-height: 40svh;
+    padding: 3rem 5vw;
+
+    text-align: center;
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        font-family: $font-body;
+        font-size: 0.78rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+
+        color: $light-grey;
+    }
+
+    &__dot {
+        @include size(0.5rem, 0.5rem);
+
+        border-radius: 50%;
+        background: $light-yellow;
+    }
+
+    &[data-kind="loading"] &__dot {
+        animation: query-state-pulse 1.2s ease-in-out infinite;
+    }
+
+    &__retry {
+        padding: 0.6rem 1.1rem;
+        border: 1px solid rgba($white, 0.3);
+        border-radius: 999px;
+
+        background: transparent;
+        color: $white;
+
+        font-family: $font-body;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        cursor: pointer;
+
+        transition:
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            color 0.3s ease;
+
+        &:focus-visible {
+            outline: 2px solid $light-yellow;
+            outline-offset: 2px;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                border-color: $light-yellow;
+                background-color: $light-yellow;
+                color: $bg-color;
+            }
+        }
+    }
+}
+
+@keyframes query-state-pulse {
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .query-state[data-kind="loading"] .query-state__dot {
+        animation: none;
+    }
+}
