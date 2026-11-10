@@ -1,31 +1,28 @@
 "use client";
 
 import { useThoughts } from "@/src/entities/api/thoughts/thought-queries";
-import type { ThoughtsDevelopmentProps } from "../../model/types";
+import { QueryBoundary } from "@/src/shared/ui/query-boundary";
 
 import { ThoughtsHeader } from "./components/thoughts-header";
 import { ThoughtsLayout } from "./components/thoughts-layout";
 import { ThoughtsList } from "./components/thoughts-list";
 
-export const ThoughtsDevelopment = ({ articles }: ThoughtsDevelopmentProps) => {
-    const {data, isLoading, isError} = useThoughts();
+const LATEST_ARTICLES_COUNT = 3;
 
-    if (!data) {
-        return <p>Empty</p>
-    }
-
-    if (isLoading) {
-        return <p>loading...</p>
-    }
-
-    if (isError) {
-        return <p>error</p>
-    }
+export const ThoughtsDevelopment = () => {
+    const query = useThoughts();
 
     return (
         <ThoughtsLayout>
             <ThoughtsHeader />
-            <ThoughtsList articles={data} />
+
+            <QueryBoundary query={query}>
+                {(articles) => (
+                    <ThoughtsList
+                        articles={articles.slice(0, LATEST_ARTICLES_COUNT)}
+                    />
+                )}
+            </QueryBoundary>
         </ThoughtsLayout>
     );
 };
