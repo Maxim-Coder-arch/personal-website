@@ -15,7 +15,15 @@ export const thoughtQueries = {
 };
 
 export function useThoughts() {
-    return useQuery(thoughtQueries.all());
+    return useQuery({
+        ...thoughtQueries.all(),
+        select: (articles) =>
+            [...articles].sort(
+                (a, b) =>
+                    new Date(b.createdAt).getTime() -
+                    new Date(a.createdAt).getTime()
+            ),
+    });
 }
 
 export function useThought(id: string) {
