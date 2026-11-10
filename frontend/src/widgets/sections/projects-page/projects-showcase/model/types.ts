@@ -5,10 +5,6 @@ import type { IProject } from "@/src/shared/types/global-types";
 
 export type ProjectSpecs = NonNullable<IProject["additionalData"]>;
 
-export interface ProjectsShowcaseProps {
-    projects: IProject[];
-}
-
 export interface ShowcaseLayoutProps {
     ref: Ref<HTMLElement>;
     children: ReactNode;

@@ -1,28 +1,34 @@
 "use client";
 
-import type { ProjectsShowcaseProps } from "../../model/types";
+import { useProjects } from "@/src/entities/api/projects/projects-queries";
+import { QueryBoundary } from "@/src/shared/ui/query-boundary";
 
 import { useShowcaseScroll } from "../../lib/hooks/use-showcase-scroll";
 
 import { ProjectSlab } from "./components/project-slab";
 import { ShowcaseLayout } from "./components/showcase-layout";
 
-export const ProjectsShowcase = ({ projects }: ProjectsShowcaseProps) => {
+export const ProjectsShowcase = () => {
     const { ref, progress, stacked, shouldReduceMotion } = useShowcaseScroll();
+    const query = useProjects();
 
     return (
         <ShowcaseLayout ref={ref}>
-            {projects.map((project, index) => (
-                <ProjectSlab
-                    key={project.id}
-                    project={project}
-                    index={index}
-                    total={projects.length}
-                    progress={progress}
-                    stacked={stacked}
-                    shouldReduceMotion={shouldReduceMotion}
-                />
-            ))}
+            <QueryBoundary query={query}>
+                {(projects) =>
+                    projects.map((project, index) => (
+                        <ProjectSlab
+                            key={project.id}
+                            project={project}
+                            index={index}
+                            total={projects.length}
+                            progress={progress}
+                            stacked={stacked}
+                            shouldReduceMotion={shouldReduceMotion}
+                        />
+                    ))
+                }
+            </QueryBoundary>
         </ShowcaseLayout>
     );
 };

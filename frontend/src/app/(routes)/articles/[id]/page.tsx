@@ -2,20 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticlePage } from "@/src/(views)/article-page";
-import { getArticleById, getArticles } from "@/src/entities/article";
+import { thoughtApi } from "@/src/entities/api/thoughts/thougths-api";
 
 interface ArticleRouteProps {
     params: Promise<{ id: string }>;
 }
 
-export const generateStaticParams = () =>
-    getArticles().map(({ id }) => ({ id }));
-
 export const generateMetadata = async ({
     params,
 }: ArticleRouteProps): Promise<Metadata> => {
     const { id } = await params;
-    const article = getArticleById(id);
+    const article = await thoughtApi.getById(id);
 
     if (!article) return {};
 
@@ -27,7 +24,7 @@ export const generateMetadata = async ({
 
 const ArticleRoute = async ({ params }: ArticleRouteProps) => {
     const { id } = await params;
-    const article = getArticleById(id);
+    const article = await thoughtApi.getById(id);
 
     if (!article) notFound();
 

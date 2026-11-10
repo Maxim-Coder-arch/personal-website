@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getArticleById } from "@/src/entities/article";
+import { thoughtApi } from "@/src/entities/api/thoughts/thougths-api";
 import { ArticleModal } from "@/src/widgets/article-reader";
 
 interface ArticleModalRouteProps {
@@ -9,7 +9,7 @@ interface ArticleModalRouteProps {
 
 const ArticleModalRoute = async ({ params }: ArticleModalRouteProps) => {
     const { id } = await params;
-    const article = getArticleById(id);
+    const article = await thoughtApi.getById(id);
 
     if (!article) notFound();
 

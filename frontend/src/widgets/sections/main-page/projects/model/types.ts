@@ -2,9 +2,6 @@ import { IProject } from "@/src/shared/types/global-types";
 
 import { Variants } from "framer-motion";
 
-
-export type ProjectStructureBuilder = Partial<Omit<IProject, "id">>[];
-
 export type ProjectSpec = NonNullable<IProject["additionalData"]>[number];
 
 export interface ProjectCardProps {
