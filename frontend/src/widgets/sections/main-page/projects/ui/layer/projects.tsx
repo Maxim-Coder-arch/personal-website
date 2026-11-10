@@ -1,6 +1,6 @@
 "use client";
 
-import { useProjects } from "@/src/entities/projects/api/projects-queries";
+import { useProjects } from "@/src/entities/api/projects/projects-queries";
 
 import { PROJECTS_PREVIEW_COUNT } from "../../model/config";
 import { projects } from "../../model/dev-mock.data";
