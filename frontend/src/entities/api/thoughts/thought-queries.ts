@@ -4,12 +4,12 @@ import { thoughtApi } from "./thougths-api";
 
 export const thoughtQueries = {
     all: () => ({
-        queryKey: ["projects"],
+        queryKey: ["thoughts"],
         queryFn: thoughtApi.getAll,
     }),
 
     detail: (id: string) => ({
-        queryKey: ["projects", id],
+        queryKey: ["thought", id],
         queryFn: () => thoughtApi.getById(id),
     }),
 };
