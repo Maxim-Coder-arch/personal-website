@@ -1,6 +1,14 @@
-import { IProjectResponse } from "@/src/shared/types/global-types";
+import { IProject, IProjectResponse } from "@/src/shared/types/global-types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const getProjectImageUrl = (id: string) =>
+    `${API_URL}/api/projects/${id}/image`;
+
+export const toProject = (project: IProjectResponse): IProject => ({
+    ...project,
+    imagePath: getProjectImageUrl(project.id),
+});
 
 export const projectApi = {
     async getAll(): Promise<IProjectResponse[]> {
@@ -21,17 +29,5 @@ export const projectApi = {
         }
 
         return response.json();
-    },
-
-    async getImage(id: string): Promise<Blob> {
-        const response = await fetch(
-            `${API_URL}/api/projects/${id}/image`
-        );
-
-        if (!response.ok) {
-            throw new Error("Не удалось загрузить изображение проекта");
-        }
-
-        return response.blob();
     },
 };

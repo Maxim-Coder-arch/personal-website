@@ -1,7 +1,7 @@
 import type { ReactNode, Ref } from "react";
 import type { MotionValue } from "framer-motion";
 
-import type { IProject, IProjectResponse } from "@/src/shared/types/global-types";
+import type { IProject } from "@/src/shared/types/global-types";
 
 export type ProjectSpecs = NonNullable<IProject["additionalData"]>;
 
@@ -15,7 +15,7 @@ export interface ShowcaseLayoutProps {
 }
 
 export interface ProjectSlabProps {
-    project: IProjectResponse;
+    project: IProject;
     index: number;
     total: number;
     progress: MotionValue<number>;

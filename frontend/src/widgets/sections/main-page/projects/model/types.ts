@@ -1,4 +1,4 @@
-import { IProject, IProjectResponse } from "@/src/shared/types/global-types";
+import { IProject } from "@/src/shared/types/global-types";
 
 import { Variants } from "framer-motion";
 
@@ -35,7 +35,7 @@ export interface ProjectSpecsProps {
 }
 
 export interface ProjectsGridProps {
-    projects: IProjectResponse[];
+    projects: IProject[];
 }
 
 export interface ViewAllProjectsProps {

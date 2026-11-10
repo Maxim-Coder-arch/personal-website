@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { projectApi } from "./projects-api";
+import { projectApi, toProject } from "./projects-api";
 
 export const projectQueries = {
     all: () => ({
@@ -15,18 +15,15 @@ export const projectQueries = {
 };
 
 export function useProjects() {
-    return useQuery(projectQueries.all());
+    return useQuery({
+        ...projectQueries.all(),
+        select: (projects) => projects.map(toProject),
+    });
 }
 
 export function useProject(id: string) {
-    return useQuery(projectQueries.detail(id));
-}
-
-export function useProjectImage(id: string) {
     return useQuery({
-        queryKey: ["projects", "image", id],
-        queryFn: () => projectApi.getImage(id),
-        enabled: Boolean(id),
-        staleTime: 5 * 60 * 1000,
+        ...projectQueries.detail(id),
+        select: toProject,
     });
 }
