@@ -1,150 +1,492 @@
 @use "../../../../../app/styles/scss/includes" as *;
 
+$paper: #e9e7e2;
+$ink: #171717;
+$muted: #89877f;
+$muted-dark: #77756e;
+$ease: cubic-bezier(0.22, 1, 0.36, 1);
+
 .footer {
-    background-color: #e9e7e2;
-    color: #171717;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
-    padding: 5rem 6% 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
 
-    &__main {
+    padding: 6rem 6% 2rem;
+
+    background-color: $paper;
+    color: $ink;
+
+    &__hero {
         display: flex;
+        align-items: flex-end;
         justify-content: space-between;
-        align-items: flex-start;
-
         gap: 3rem;
-
-        padding-bottom: 5rem;
-    }
-
-    &__identity {
-        & h2 {
-            @include font(clamp(2.5rem, 6vw, 5.5rem), 800, #171717);
-
-            line-height: 0.95;
-            letter-spacing: -0.075em;
-
-            margin-top: 1.5rem;
-
-            & span {
-                color: #92917d;
-            }
-        }
-
-        & p {
-            @include font(1rem, 400, #77756e);
-
-            margin-top: 1rem;
-            letter-spacing: 0.02em;
-        }
     }
 
     &__eyebrow,
     &__label {
-        @include font(0.7rem, 600, #89877f);
+        @include font(0.7rem, 600, $muted);
 
         letter-spacing: 0.14em;
     }
 
-    &__socials {
-        min-width: 190px;
+    &__title {
+        margin: 1.75rem 0 0;
 
-        & ul {
-            display: flex;
-            flex-direction: column;
+        @include font(clamp(3rem, 8.4vw, 9rem), 400, $ink);
 
-            margin-top: 1.5rem;
+        line-height: 0.92;
+        text-transform: uppercase;
+    }
+
+    &__line {
+        display: block;
+        overflow: hidden;
+
+        padding-block: 0.04em;
+    }
+
+    &__line-inner {
+        display: block;
+    }
+
+    &__mark {
+        position: relative;
+        isolation: isolate;
+
+        display: inline-block;
+    }
+
+    &__mark-bar {
+        position: absolute;
+        inset: 14% -1.5% 2%;
+        z-index: -1;
+
+        background: $light-yellow;
+        transform-origin: left center;
+    }
+
+    &__magnet-zone {
+        display: grid;
+        place-items: center;
+
+        margin: -2.5rem;
+        padding: 2.5rem;
+    }
+
+    &__magnet {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 0.6rem;
+
+        width: 11rem;
+        height: 11rem;
+
+        border-radius: 50%;
+        background: $ink;
+        color: $paper;
+        text-decoration: none;
+
+        transition: color 0.6s $ease;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            border-radius: 50%;
+            background: $light-yellow;
+            transform: translateY(101%);
+
+            transition: transform 0.7s $ease;
         }
 
-        & li {
-            border-bottom: 1px solid rgba(#171717, 0.15);
+        svg {
+            width: 22px;
+            height: 22px;
+
+            transition: transform 0.5s $ease;
         }
 
-        & a {
-            @include font(1rem, 500, #171717);
+        &:hover,
+        &:focus-visible {
+            color: $ink;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            gap: 2rem;
-            padding: 0.9rem 0;
-
-            transition:
-                color 0.25s ease,
-                padding 0.25s ease;
-
-            & svg {
-                width: 17px;
-                height: 17px;
-
-                transition: transform 0.25s ease;
+            &::before {
+                transform: none;
             }
 
-            &:hover {
-                color: #89877f;
-                padding-left: 6px;
-
-                & svg {
-                    transform: translate(3px, -3px);
-                }
-            }
-
-            &:focus-visible {
-                outline: 2px solid #171717;
-                outline-offset: 5px;
+            svg {
+                transform: translate(4px, -4px);
             }
         }
     }
 
+    &__magnet-label {
+        @include font(1.6rem, 400, inherit);
+
+        letter-spacing: 0.1em;
+    }
+
+    &__columns {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2.5rem;
+
+        padding-top: 2.5rem;
+        border-top: 1px solid rgba($ink, 0.18);
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        min-width: 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+
+        li {
+            border-bottom: 1px solid rgba($ink, 0.15);
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+
+        padding: 0.9rem 0;
+
+        font-family: $font-body;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: $ink;
+
+        transition:
+            color 0.25s ease,
+            padding 0.25s ease;
+
+        svg {
+            width: 17px;
+            height: 17px;
+
+            transition: transform 0.25s ease;
+        }
+
+        &:hover {
+            padding-left: 6px;
+            color: $muted;
+
+            svg {
+                transform: translate(3px, -3px);
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid $ink;
+            outline-offset: 5px;
+        }
+    }
+
+    &__index {
+        @include font(0.9rem, 400, $muted);
+
+        letter-spacing: 0.1em;
+    }
+
+    &__time {
+        display: flex;
+
+        @include font(clamp(3.5rem, 6vw, 6rem), 400, $ink);
+
+        line-height: 0.9;
+    }
+
+    &__colon {
+        padding-inline: 0.04em;
+
+        animation: footer-blink 1.2s steps(1) infinite;
+    }
+
+    &__place {
+        font-family: $font-body;
+        font-size: 0.85rem;
+        color: $muted-dark;
+    }
+
+    &__lost {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        min-height: 12rem;
+        padding: 1.5rem;
+
+        border-radius: 1.25rem;
+        background: $ink;
+        color: $paper;
+        text-decoration: none;
+
+        transition: color 0.6s $ease;
+
+        svg {
+            flex-shrink: 0;
+
+            width: 17px;
+            height: 17px;
+
+            transition: transform 0.5s $ease;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: $ink;
+
+            .footer__lost-orb {
+                transform: scale(9);
+            }
+
+            .footer__lost-label {
+                color: rgba($ink, 0.7);
+            }
+
+            svg {
+                transform: translate(3px, -3px);
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid $ink;
+            outline-offset: 4px;
+        }
+    }
+
+    &__lost-orb {
+        position: absolute;
+        right: -2.5rem;
+        bottom: -2.5rem;
+        z-index: -1;
+
+        width: 7rem;
+        height: 7rem;
+
+        border-radius: 50%;
+        background: radial-gradient(
+            circle at 32% 28%,
+            $light-yellow 0%,
+            rgb(201, 199, 102) 55%,
+            rgb(120, 119, 56) 100%
+        );
+
+        transition: transform 0.9s $ease;
+    }
+
+    &__lost-label {
+        @include font(0.7rem, 600, rgba($paper, 0.55));
+
+        letter-spacing: 0.14em;
+
+        transition: color 0.6s $ease;
+    }
+
+    &__lost-code {
+        @include font(5rem, 400, inherit);
+
+        line-height: 0.85;
+    }
+
+    &__lost-text {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        font-family: $font-body;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    &__wordmark {
+        position: relative;
+        isolation: isolate;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        padding-top: 0.12em;
+
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 16vw;
+        font-weight: 400;
+        line-height: 0.8;
+        color: $ink;
+
+        user-select: none;
+    }
+
+    &__letter {
+        position: relative;
+        z-index: 1;
+
+        display: block;
+    }
+
+    &__letter-glyph {
+        display: block;
+    }
+
+    &__space {
+        display: block;
+
+        width: 0.22em;
+    }
+
+    &__blob {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+
+        width: 30rem;
+        height: 30rem;
+        margin: -15rem 0 0 -15rem;
+
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba($light-yellow, 1) 0%,
+            rgba($light-yellow, 0) 70%
+        );
+        mix-blend-mode: multiply;
+
+        opacity: 0;
+        pointer-events: none;
+    }
+
     &__bottom {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-
+        justify-content: space-between;
         gap: 1.5rem;
 
         padding-top: 1.5rem;
-        border-top: 1px solid rgba(#171717, 0.18);
+        border-top: 1px solid rgba($ink, 0.18);
 
-        & span {
-            @include font(0.75rem, 400, #89877f);
+        span {
+            @include font(0.75rem, 400, $muted);
 
             letter-spacing: 0.015em;
         }
     }
 
-    @media (max-width: 768px) {
-        padding: 4rem 6% 1.5rem;
+    &__top-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
 
-        &__main {
-            flex-direction: column;
-            gap: 3.5rem;
+        padding: 0;
 
-            padding-bottom: 3.5rem;
+        border: 0;
+        background: none;
+        cursor: pointer;
+
+        span {
+            @include font(0.75rem, 600, $ink);
+
+            letter-spacing: 0.14em;
         }
 
-        &__socials {
-            width: 100%;
+        span:last-child {
+            display: inline-block;
+
+            transition: transform 0.4s $ease;
+        }
+
+        &:hover span:last-child {
+            transform: translateY(-4px);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $ink;
+            outline-offset: 5px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        &__columns {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        gap: 4rem;
+
+        padding: 4rem 6% 1.5rem;
+
+        &__hero {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__magnet-zone {
+            margin: 0;
+            padding: 0;
+        }
+
+        &__magnet {
+            width: 9rem;
+            height: 9rem;
         }
 
         &__bottom {
-            align-items: flex-start;
             flex-direction: column;
+            align-items: flex-start;
             gap: 0.8rem;
         }
     }
 
-    @media (max-width: 480px) {
-        padding: 3.5rem 5% 1.5rem;
-
-        &__identity {
-            & h2 {
-                font-size: clamp(2.3rem, 11vw, 3.5rem);
-            }
+    @media (max-width: 520px) {
+        &__columns {
+            grid-template-columns: minmax(0, 1fr);
         }
+    }
 
-        &__main {
-            gap: 3rem;
+    @media (prefers-reduced-motion: reduce) {
+        &__colon {
+            animation: none;
         }
+    }
+}
+
+@keyframes footer-blink {
+    50% {
+        opacity: 0;
     }
 }
