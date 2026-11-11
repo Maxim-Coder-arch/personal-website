@@ -3,10 +3,12 @@ using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class ArticlesController : ControllerBase
     {
@@ -18,15 +20,20 @@ namespace backend.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
-            List<Article> articles = await context.Articles.ToListAsync();
+            List<Article> articles = await context.Articles
+                                                    .AsNoTracking()
+                                                    .OrderByDescending(a => a.CreatedAt)
+                                                    .ToListAsync();
 
             return Ok(articles);
         }
 
         [HttpGet("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(Guid id)
         {
             Article? article = await context.Articles.FindAsync(id);

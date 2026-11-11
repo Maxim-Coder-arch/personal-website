@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using backend.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class ProjectsController : ControllerBase
     {
@@ -18,21 +20,27 @@ namespace backend.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
-            List<Project> projects = await context.Projects
+            List<ProjectResponseDto> response = await context.Projects
                 .AsNoTracking()
+                .Select(p => new ProjectResponseDto
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Subtitle = p.Subtitle,
+                    Description = p.Description,
+                    AdditionalData = p.AdditionalData
+                })
                 .ToListAsync();
-
-            List<ProjectResponseDto> response = projects
-                .Select(MapToResponse)
-                .ToList();
 
             return Ok(response);
         }
 
         [HttpGet("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(Guid id)
         {
             Project? project = await context.Projects.FindAsync(id);
@@ -144,6 +152,7 @@ namespace backend.Controllers
 
         [HttpGet("{id:guid}/image")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [AllowAnonymous]
         public async Task<IActionResult> GetImage(Guid id)
         {
             Project? project = await context.Projects.FindAsync(id);
@@ -205,10 +214,6 @@ namespace backend.Controllers
                 Subtitle = project.Subtitle,
                 Description = project.Description,
                 AdditionalData = project.AdditionalData,
-
-                ImagePath = project.ImageData is { Length: > 0 }
-                    ? $"data:{project.ImageContentType};base64,{Convert.ToBase64String(project.ImageData)}"
-                    : null
             };
         }
     }
