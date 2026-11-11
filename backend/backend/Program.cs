@@ -46,6 +46,8 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     }
 });
 
+builder.Services.AddScoped<DevDataSeeder>();
+
 string? keysPath = builder.Configuration["DataProtection:KeysPath"];
 
 if (!string.IsNullOrWhiteSpace(keysPath))

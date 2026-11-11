@@ -22,5 +22,8 @@ namespace backend.Models
         public byte[] ImageData { get; set; } = [];
         [JsonIgnore]
         public string ImageContentType { get; set; } = "image/webp";
+
+        [JsonPropertyName("sortOrder")]
+        public int SortOrder { get; set; }
     }
 }

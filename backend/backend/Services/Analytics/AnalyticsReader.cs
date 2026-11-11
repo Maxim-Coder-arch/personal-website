@@ -3,6 +3,7 @@ using backend.Data;
 using backend.Dtos.Analytics;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace backend.Services.Analytics;
 
@@ -20,6 +21,36 @@ public class AnalyticsReader
         "country", "region", "device", "browser", "os", "screen",
         "language", "referrer", "entry", "hour", "weekday"
     ];
+
+    private static readonly Expression<Func<VisitSession, SessionListItem>> ToListItem = s =>
+    new SessionListItem(
+        s.Id,
+        s.VisitorId,
+        s.StartedAt,
+        s.SessionNumber,
+        s.SessionNumber > 1,
+        s.PageViewsCount,
+        s.TotalDurationSeconds,
+        s.EntryPath,
+        s.Country,
+        s.CountryCode,
+        s.Region,
+        s.DeviceType,
+        s.DeviceBrand,
+        s.DeviceModel,
+        s.Browser,
+        s.BrowserVersion,
+        s.Os,
+        s.OsVersion,
+        s.ScreenWidth,
+        s.ScreenHeight,
+        s.ViewportWidth,
+        s.ViewportHeight,
+        s.PixelRatio,
+        s.Language,
+        s.TimeZone,
+        s.ReferrerHost,
+        s.UtmSource);
 
     private readonly ApplicationDBContext context;
     private readonly IConfiguration configuration;
@@ -166,7 +197,8 @@ public class AnalyticsReader
                 g.Key,
                 g.Count(),
                 g.Select(r => r.VisitorId).Distinct().Count(),
-                total == 0 ? 0 : Math.Round((double)g.Count() / total, 4)));
+                total == 0 ? 0 : Math.Round((double)g.Count() / total, 4),
+                by == "country" ? g.Select(r => r.CountryCode).FirstOrDefault(c => c != null) : null));
 
         items = by switch
         {
@@ -202,14 +234,36 @@ public class AnalyticsReader
     }
 
     public async Task<SessionListResponse> GetSessionsAsync(
-        RangeInfo range,
-        int page,
-        int pageSize,
-        CancellationToken ct)
+    RangeInfo range,
+    SessionFilter filter,
+    int page,
+    int pageSize,
+    CancellationToken ct)
     {
         IQueryable<VisitSession> query = context.Sessions
             .AsNoTracking()
             .Where(s => s.StartedAt >= range.FromUtc && s.StartedAt < range.ToUtc);
+
+        if (!string.IsNullOrWhiteSpace(filter.Device))
+        {
+            string device = filter.Device;
+            query = query.Where(s => s.DeviceType == device);
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.Country))
+        {
+            string country = filter.Country.ToUpperInvariant();
+            query = query.Where(s => s.CountryCode == country);
+        }
+
+        if (filter.Returning is true)
+        {
+            query = query.Where(s => s.SessionNumber > 1);
+        }
+        else if (filter.Returning is false)
+        {
+            query = query.Where(s => s.SessionNumber == 1);
+        }
 
         int total = await query.CountAsync(ct);
 
@@ -217,37 +271,33 @@ public class AnalyticsReader
             .OrderByDescending(s => s.StartedAt)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Select(s => new SessionListItem(
-                s.Id,
-                s.VisitorId,
-                s.StartedAt,
-                s.SessionNumber,
-                s.SessionNumber > 1,
-                s.PageViewsCount,
-                s.TotalDurationSeconds,
-                s.EntryPath,
-                s.Country,
-                s.CountryCode,
-                s.Region,
-                s.DeviceType,
-                s.DeviceBrand,
-                s.DeviceModel,
-                s.Browser,
-                s.BrowserVersion,
-                s.Os,
-                s.OsVersion,
-                s.ScreenWidth,
-                s.ScreenHeight,
-                s.ViewportWidth,
-                s.ViewportHeight,
-                s.PixelRatio,
-                s.Language,
-                s.TimeZone,
-                s.ReferrerHost,
-                s.UtmSource))
+            .Select(ToListItem)
             .ToListAsync(ct);
 
         return new SessionListResponse(total, page, pageSize, items);
+    }
+
+    public async Task<SessionDetailResponse?> GetSessionAsync(Guid id, CancellationToken ct)
+    {
+        SessionListItem? session = await context.Sessions
+            .AsNoTracking()
+            .Where(s => s.Id == id)
+            .Select(ToListItem)
+            .FirstOrDefaultAsync(ct);
+
+        if (session is null)
+        {
+            return null;
+        }
+
+        List<SessionPageView> views = await context.PageViews
+            .AsNoTracking()
+            .Where(p => p.SessionId == id)
+            .OrderBy(p => p.ViewedAt)
+            .Select(p => new SessionPageView(p.Path, p.ViewedAt, p.DurationSeconds))
+            .ToListAsync(ct);
+
+        return new SessionDetailResponse(session, views);
     }
 
     public async Task<RealtimeResponse> GetRealtimeAsync(CancellationToken ct)
@@ -282,6 +332,7 @@ public class AnalyticsReader
                 PageViewsCount = s.PageViewsCount,
                 TotalDurationSeconds = s.TotalDurationSeconds,
                 Country = s.Country,
+                CountryCode = s.CountryCode,
                 Region = s.Region,
                 DeviceType = s.DeviceType,
                 Browser = s.Browser,
@@ -419,5 +470,6 @@ public class AnalyticsReader
         public string? Language { get; set; }
         public string? ReferrerHost { get; set; }
         public string EntryPath { get; set; } = string.Empty;
+        public string? CountryCode { get; set; }
     }
 }
