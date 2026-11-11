@@ -343,7 +343,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
         padding-top: 0.12em;
 
         font-family: "Bebas Neue", sans-serif;
-        font-size: 16vw;
+        font-size: 10vw;
         font-weight: 400;
         line-height: 0.8;
         color: $ink;
@@ -460,10 +460,6 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
             padding: 0;
         }
 
-        &__magnet {
-            width: 9rem;
-            height: 9rem;
-        }
 
         &__bottom {
             flex-direction: column;
