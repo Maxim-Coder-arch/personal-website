@@ -19,8 +19,5 @@ namespace backend.Dtos
 
         [JsonPropertyName("additionalData")]
         public List<ProjectAdditionalData> AdditionalData { get; set; } = [];
-
-        [JsonPropertyName("imagePath")]
-        public string? ImagePath { get; set; }
     }
 }
