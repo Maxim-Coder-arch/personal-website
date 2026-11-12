@@ -1,17 +1,14 @@
 import type { ReactNode } from "react";
-
 import { redirect } from "next/navigation";
-
 import { getAdmin } from "@/src/entities/api/admin-auth/get-admin";
+import { AdminShell } from "@/src/widgets/admin-shell";
 
-const AdminProtectedLayout = async ({ children }: { children: ReactNode }) => {
-    const admin = await getAdmin();
+export default async function ProtectedLayout({ children }: { children: ReactNode }) {
+  const admin = await getAdmin();
 
-    if (!admin) {
-        redirect("/admin/login");
-    }
+  if (!admin) {
+    redirect("/admin/login");
+  }
 
-    return <>{children}</>;
-};
-
-export default AdminProtectedLayout;
+  return <AdminShell email={admin.email}>{children}</AdminShell>;
+}

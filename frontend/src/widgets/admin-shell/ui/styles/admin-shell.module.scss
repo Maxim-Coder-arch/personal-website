@@ -1,0 +1,246 @@
+.root {
+  --a-bg: #0f0f0f;
+  --a-surface: #161616;
+  --a-surface-2: #1d1d1d;
+  --a-border: rgba(255, 255, 255, 0.07);
+  --a-text: #dad8d8;
+  --a-muted: #8f8e8e;
+  --a-accent: rgb(237, 237, 150);
+  --a-up: #7fd99a;
+  --a-down: #f08a8a;
+  --a-radius: 20px;
+
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background: var(--a-bg);
+  color: var(--a-text);
+  font-family: inherit;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 248px minmax(0, 1fr);
+  }
+}
+
+.sidebar {
+  display: none;
+
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    height: 100dvh;
+    padding: 28px 16px 20px;
+    border-right: 1px solid var(--a-border);
+  }
+}
+
+.brand {
+  padding: 0 12px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f7f3f3;
+
+  span {
+    color: var(--a-accent);
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--a-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--a-text);
+  }
+
+  &--active,
+  &--active:hover {
+    color: #f7f3f3;
+  }
+
+  &--disabled,
+  &--disabled:hover {
+    opacity: 0.45;
+    cursor: default;
+    color: var(--a-muted);
+  }
+}
+
+.nav-item__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: var(--a-surface-2);
+  border: 1px solid var(--a-border);
+}
+
+.nav-item__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.nav-item__badge {
+  margin-left: auto;
+  padding: 3px 7px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--a-border);
+  font-size: 12px;
+  color: var(--a-muted);
+  word-break: break-all;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(15, 15, 15, 0.72);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--a-border);
+
+  @media (min-width: 1024px) {
+    padding: 18px 32px;
+  }
+}
+
+.topbar__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f7f3f3;
+}
+
+.topbar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.refresh {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid var(--a-border);
+  background: var(--a-surface-2);
+  color: var(--a-text);
+  cursor: pointer;
+}
+
+.refresh__icon--spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.content {
+  padding: 20px 16px calc(112px + env(safe-area-inset-bottom));
+
+  @media (min-width: 1024px) {
+    padding: 28px 32px 48px;
+  }
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex;
+  padding: 6px;
+  border-radius: 22px;
+  background: rgba(22, 22, 22, 0.86);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--a-border);
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.bottom-nav__item {
+  position: relative;
+  flex: 1;
+  display: block;
+  border-radius: 16px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--a-muted);
+  text-decoration: none;
+
+  &--active {
+    color: #f7f3f3;
+  }
+
+  &--disabled {
+    opacity: 0.4;
+  }
+}
+
+.bottom-nav__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: var(--a-surface-2);
+}
+
+.bottom-nav__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+}
