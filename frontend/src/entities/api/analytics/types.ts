@@ -40,3 +40,25 @@ export type TimeseriesResponse = {
   timeZone: string;
   points: TimeseriesPoint[];
 };
+
+export type BreakdownKey = "country" | "device" | "browser" | "referrer" | "hour";
+
+export type BreakdownItem = {
+  key: string;
+  sessions: number;
+  visitors: number;
+  share: number;
+  code?: string | null;
+};
+
+export type PageStat = {
+  path: string;
+  views: number;
+  sessions: number;
+  avgSeconds: number;
+};
+
+export type RealtimeResponse = {
+  activeVisitors: number;
+  pages: { path: string; visitors: number }[];
+};

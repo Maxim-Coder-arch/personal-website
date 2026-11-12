@@ -1,6 +1,6 @@
 import { BACKEND_PROXY } from "@/src/shared/config/api";
 
-import type { DateRange, Interval, SummaryResponse, TimeseriesResponse } from "./types";
+import type { BreakdownItem, BreakdownKey, DateRange, Interval, PageStat, RealtimeResponse, SummaryResponse, TimeseriesResponse } from "./types";
 
 const BASE = `${BACKEND_PROXY}/api/admin/analytics`;
 
@@ -33,3 +33,16 @@ export const getTimeseries = (range: DateRange, interval?: Interval) =>
     tz: getTimeZone(),
     interval,
   });
+
+export const getBreakdown = (range: DateRange, key: BreakdownKey) =>
+  request<BreakdownItem[]>("breakdown", {
+    by: key,
+    from: range.from,
+    to: range.to,
+    tz: getTimeZone(),
+  });
+
+export const getPages = (range: DateRange) =>
+  request<PageStat[]>("pages", { from: range.from, to: range.to, tz: getTimeZone() });
+
+export const getRealtime = () => request<RealtimeResponse>("realtime", {});
