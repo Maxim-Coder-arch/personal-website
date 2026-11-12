@@ -1,0 +1,302 @@
+@use "../../../../app/styles/scss/includes" as *;
+
+$ease: cubic-bezier(0.22, 1, 0.36, 1);
+$error: rgb(255, 138, 122);
+
+.shake {
+    width: min(26rem, calc(100vw - 2rem));
+}
+
+.login {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 2.5rem;
+
+    border: 1px solid rgba($white, 0.08);
+    border-radius: 1.5rem;
+    background: rgba(20, 20, 20, 0.72);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.5);
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+
+        margin-bottom: 0.75rem;
+    }
+
+    &__mark {
+        @include font(0.95rem, 400, $light-title);
+
+        letter-spacing: 0.18em;
+
+        &::after {
+            content: ".";
+
+            color: $light-yellow;
+        }
+    }
+
+    &__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        @include font(0.72rem, 500, $light-grey);
+
+        letter-spacing: 0.15em;
+
+        &::before {
+            content: "";
+
+            @include size(2rem, 1px);
+
+            background: rgba($light-grey, 0.6);
+        }
+    }
+
+    &__title {
+        margin: 0;
+
+        @include font(clamp(2.6rem, 9vw, 3.4rem), 400, $light-title);
+
+        line-height: 0.95;
+        letter-spacing: 0.01em;
+
+        &::after {
+            content: ".";
+
+            color: $light-yellow;
+        }
+    }
+
+    &__text {
+        margin: 0;
+
+        font-family: $font-body;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: $light-grey;
+    }
+
+    &__error {
+        overflow: hidden;
+
+        margin: 0;
+        padding-left: 0.75rem;
+
+        border-left: 2px solid $error;
+
+        font-family: $font-body;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: $error;
+    }
+
+    &__submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+
+        width: 100%;
+        height: 3.4rem;
+
+        border: 0;
+        border-radius: 999px;
+        background: $light-yellow;
+        cursor: pointer;
+
+        font-family: $font-body;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $bg-color;
+
+        transition:
+            transform 0.4s $ease,
+            box-shadow 0.4s $ease,
+            opacity 0.3s ease;
+
+        &:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 0.75rem 2rem rgba($light-yellow, 0.25);
+        }
+
+        &:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        &:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $light-title;
+            outline-offset: 3px;
+        }
+    }
+
+    &__spinner {
+        width: 1.05rem;
+        height: 1.05rem;
+
+        border: 2px solid rgba($bg-color, 0.25);
+        border-top-color: $bg-color;
+        border-radius: 50%;
+
+        animation: admin-auth-spin 0.7s linear infinite;
+    }
+
+    &__hint {
+        margin: 0;
+
+        font-family: $font-body;
+        font-size: 0.75rem;
+        text-align: center;
+        color: rgba($light-grey, 0.8);
+    }
+}
+
+.field {
+    position: relative;
+
+    &__input {
+        width: 100%;
+        padding: 1.5rem 3rem 0.6rem 1rem;
+
+        border: 1px solid rgba($white, 0.1);
+        border-radius: 0.875rem;
+        background: rgba($white, 0.03);
+
+        font-family: $font-body;
+        font-size: 1rem;
+        color: $light-title;
+
+        transition:
+            border-color 0.3s ease,
+            background 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $light-yellow;
+            background: rgba($white, 0.05);
+            box-shadow: 0 0 0 4px rgba($light-yellow, 0.12);
+        }
+
+        &:-webkit-autofill {
+            -webkit-text-fill-color: $light-title;
+            box-shadow: 0 0 0 100px #1a1a1a inset;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+
+        font-family: $font-body;
+        font-size: 0.95rem;
+        color: $light-grey;
+
+        transform: translateY(-50%);
+        transform-origin: left center;
+        pointer-events: none;
+
+        transition:
+            top 0.25s $ease,
+            transform 0.25s $ease,
+            color 0.25s ease;
+    }
+
+    &__input:focus + &__label,
+    &__input:not(:placeholder-shown) + &__label,
+    &__input:-webkit-autofill + &__label {
+        top: 0.85rem;
+
+        transform: translateY(0) scale(0.78);
+    }
+
+    &__input:focus + &__label {
+        color: $light-yellow;
+    }
+
+    &__toggle {
+        position: absolute;
+        top: 50%;
+        right: 0.6rem;
+
+        display: grid;
+        place-items: center;
+
+        width: 2.2rem;
+        height: 2.2rem;
+
+        border: 0;
+        border-radius: 50%;
+        background: none;
+        cursor: pointer;
+
+        font-size: 1.15rem;
+        color: $light-grey;
+
+        transform: translateY(-50%);
+
+        transition:
+            color 0.25s ease,
+            background 0.25s ease;
+
+        &:hover {
+            background: rgba($white, 0.06);
+            color: $light-title;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $light-yellow;
+        }
+    }
+}
+
+.logout {
+    padding: 0.7rem 1.3rem;
+
+    border: 1px solid rgba($white, 0.2);
+    border-radius: 999px;
+    background: none;
+    cursor: pointer;
+
+    font-family: $font-body;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $white;
+
+    transition:
+        border-color 0.3s ease,
+        color 0.3s ease;
+
+    &:hover:not(:disabled) {
+        border-color: $light-yellow;
+        color: $light-yellow;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: progress;
+    }
+}
+
+@keyframes admin-auth-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

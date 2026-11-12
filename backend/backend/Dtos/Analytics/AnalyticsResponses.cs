@@ -29,7 +29,7 @@ public record TimeseriesPoint(
 
 public record TimeseriesResponse(string Interval, string TimeZone, List<TimeseriesPoint> Points);
 
-public record BreakdownItem(string Key, int Sessions, int Visitors, double Share);
+public record BreakdownItem(string Key, int Sessions, int Visitors, double Share, string? Code = null);
 
 public record PageStat(string Path, int Views, int Sessions, double AvgSeconds);
 
@@ -67,3 +67,7 @@ public record SessionListResponse(int Total, int Page, int PageSize, List<Sessio
 public record RealtimePage(string Path, int Visitors);
 
 public record RealtimeResponse(int ActiveVisitors, List<RealtimePage> Pages);
+
+public record SessionPageView(string Path, DateTime ViewedAt, int DurationSeconds);
+
+public record SessionDetailResponse(SessionListItem Session, List<SessionPageView> PageViews);

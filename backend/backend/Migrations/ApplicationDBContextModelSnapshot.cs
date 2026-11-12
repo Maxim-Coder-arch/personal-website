@@ -136,6 +136,10 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer")
+                        .HasJsonPropertyName("sortOrder");
+
                     b.Property<string>("Subtitle")
                         .IsRequired()
                         .HasColumnType("text")

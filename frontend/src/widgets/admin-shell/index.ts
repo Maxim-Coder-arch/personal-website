@@ -1,0 +1,1 @@
+export { AdminShell } from "./ui/layer/admin-shell";

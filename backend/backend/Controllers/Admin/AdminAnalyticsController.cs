@@ -1,6 +1,7 @@
 ﻿using backend.Services.Analytics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using backend.Dtos.Analytics;
 
 namespace backend.Controllers.Admin;
 
@@ -10,10 +11,17 @@ namespace backend.Controllers.Admin;
 public class AdminAnalyticsController : ControllerBase
 {
     private readonly AnalyticsReader reader;
+    private readonly DevDataSeeder seeder;
+    private readonly IWebHostEnvironment environment;
 
-    public AdminAnalyticsController(AnalyticsReader reader)
+    public AdminAnalyticsController(
+       AnalyticsReader reader,
+       DevDataSeeder seeder,
+       IWebHostEnvironment environment)
     {
         this.reader = reader;
+        this.seeder = seeder;
+        this.environment = environment;
     }
 
     [HttpGet("summary")]
@@ -87,12 +95,15 @@ public class AdminAnalyticsController : ControllerBase
 
     [HttpGet("sessions")]
     public async Task<IActionResult> GetSessions(
-        [FromQuery] DateOnly? from,
-        [FromQuery] DateOnly? to,
-        [FromQuery] string? tz,
-        [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 50,
-        CancellationToken ct = default)
+    [FromQuery] DateOnly? from,
+    [FromQuery] DateOnly? to,
+    [FromQuery] string? tz,
+    [FromQuery] string? device,
+    [FromQuery] string? country,
+    [FromQuery] bool? returning,
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 50,
+    CancellationToken ct = default)
     {
         if (!reader.TryResolveRange(from, to, tz, out RangeInfo range, out string error))
         {
@@ -101,9 +112,44 @@ public class AdminAnalyticsController : ControllerBase
 
         return Ok(await reader.GetSessionsAsync(
             range,
+            new SessionFilter(device, country, returning),
             Math.Max(page, 1),
             Math.Clamp(pageSize, 1, 200),
             ct));
+    }
+
+    [HttpGet("sessions/{id:guid}")]
+    public async Task<IActionResult> GetSession(Guid id, CancellationToken ct)
+    {
+        SessionDetailResponse? detail = await reader.GetSessionAsync(id, ct);
+
+        return detail is null ? NotFound() : Ok(detail);
+    }
+
+    [HttpPost("dev-seed")]
+    public async Task<IActionResult> SeedDevData([FromQuery] int days = 90, CancellationToken ct = default)
+    {
+        if (!environment.IsDevelopment())
+        {
+            return NotFound();
+        }
+
+        int sessions = await seeder.SeedAsync(Math.Clamp(days, 1, 365), ct);
+
+        return Ok(new { sessions });
+    }
+
+    [HttpDelete("dev-seed")]
+    public async Task<IActionResult> ClearDevData(CancellationToken ct)
+    {
+        if (!environment.IsDevelopment())
+        {
+            return NotFound();
+        }
+
+        await seeder.ClearAsync(ct);
+
+        return NoContent();
     }
 
     [HttpGet("realtime")]

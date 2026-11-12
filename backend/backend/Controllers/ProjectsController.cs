@@ -25,6 +25,8 @@ namespace backend.Controllers
         {
             List<ProjectResponseDto> response = await context.Projects
                 .AsNoTracking()
+                .OrderBy(p => p.SortOrder)
+                .ThenBy(p => p.Title)
                 .Select(p => new ProjectResponseDto
                 {
                     Id = p.Id,
@@ -56,12 +58,15 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ProjectDto model)
         {
+            int nextOrder = (await context.Projects.MaxAsync(p => (int?)p.SortOrder) ?? -1) + 1;
+
             Project project = new()
             {
                 Title = model.Title,
                 Subtitle = model.Subtitle,
                 Description = model.Description,
-                AdditionalData = model.AdditionalData
+                AdditionalData = model.AdditionalData,
+                SortOrder = nextOrder
             };
 
             context.Projects.Add(project);
@@ -90,6 +95,40 @@ namespace backend.Controllers
             await context.SaveChangesAsync();
 
             return Ok(project);
+        }
+
+        [HttpPut("order")]
+        public async Task<IActionResult> Reorder([FromBody] ReorderRequest request)
+        {
+            List<Guid> ids = request.Ids;
+
+            if (ids.Count != ids.Distinct().Count())
+            {
+                return BadRequest("Duplicate ids");
+            }
+
+            int existing = await context.Projects.CountAsync(p => ids.Contains(p.Id));
+
+            if (existing != ids.Count)
+            {
+                return BadRequest("Unknown project id");
+            }
+
+            await using var transaction = await context.Database.BeginTransactionAsync();
+
+            for (int index = 0; index < ids.Count; index++)
+            {
+                Guid id = ids[index];
+                int order = index;
+
+                await context.Projects
+                    .Where(p => p.Id == id)
+                    .ExecuteUpdateAsync(setters => setters.SetProperty(p => p.SortOrder, order));
+            }
+
+            await transaction.CommitAsync();
+
+            return NoContent();
         }
 
         [HttpDelete("{id:guid}")]

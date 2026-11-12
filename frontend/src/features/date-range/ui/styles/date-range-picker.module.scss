@@ -1,0 +1,31 @@
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.dates {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date {
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--a-border);
+  background: var(--a-surface-2);
+  color: var(--a-text);
+  font: inherit;
+  font-size: 13px;
+  color-scheme: dark;
+
+  &:focus-visible {
+    outline: 1px solid var(--a-accent);
+  }
+}
+
+.dash {
+  color: var(--a-muted);
+}

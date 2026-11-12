@@ -1,0 +1,1 @@
+export { AdminLoginPage } from "./ui/layer/admin-login-page";
