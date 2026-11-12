@@ -5,3 +5,4 @@ export { Sparkline } from "./sparkline";
 export { Segmented } from "./segmented";
 export { RankedList, RankedText } from "./ranked-list";
 export type { RankedItem } from "./ranked-list";
+export { CountryFlag } from "./country-flag";
