@@ -23,6 +23,10 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 
 string[] corsOrigins = builder.Configuration.GetSection("Cors:Origins").Get<string[]>() ?? [];
 
+Console.WriteLine($"[CORS] Origins count: {corsOrigins.Length}");
+Console.WriteLine($"[CORS] Origins: {string.Join(", ", corsOrigins)}");
+Console.WriteLine($"[CORS] Config value: {builder.Configuration["Cors:Origins:0"] ?? "<null>"}");
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
