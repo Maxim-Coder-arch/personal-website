@@ -157,3 +157,10 @@
   background: var(--a-accent);
   transform-origin: left;
 }
+
+.flag {
+  width: 18px;
+  height: 12px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}

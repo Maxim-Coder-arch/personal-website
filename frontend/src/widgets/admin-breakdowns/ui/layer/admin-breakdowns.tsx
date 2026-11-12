@@ -2,10 +2,9 @@
 
 import { REFERRER_LABELS, translateKey } from "../../model/data";
 import { BreakdownListCard } from "./components/breakdown-list-card";
-import { CountryFlag } from "./components/country-flag";
 import { DevicesCard } from "./components/devices-card";
 import { HoursCard } from "./components/hours-card";
-import { RankedText } from "@/src/shared/ui/admin-ui";
+import { CountryFlag, RankedText } from "@/src/shared/ui/admin-ui";
 import styles from "../styles/admin-breakdowns.module.scss";
 
 export function AdminBreakdowns() {

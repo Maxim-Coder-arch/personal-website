@@ -41,8 +41,6 @@ export type TimeseriesResponse = {
   points: TimeseriesPoint[];
 };
 
-export type BreakdownKey = "country" | "device" | "browser" | "referrer" | "hour";
-
 export type BreakdownItem = {
   key: string;
   sessions: number;
@@ -62,3 +60,16 @@ export type RealtimeResponse = {
   activeVisitors: number;
   pages: { path: string; visitors: number }[];
 };
+
+export type BreakdownKey =
+  | "country"
+  | "region"
+  | "device"
+  | "browser"
+  | "os"
+  | "screen"
+  | "language"
+  | "referrer"
+  | "entry"
+  | "hour"
+  | "weekday";
