@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.107.1",
+    "country-flag-icons": "^1.6.20",
     "date-fns": "^4.4.0",
     "framer-motion": "^14.6.0",
     "lucide-react": "^1.72.0",
