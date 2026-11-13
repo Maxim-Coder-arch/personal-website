@@ -1,4 +1,4 @@
-import { ArticlePageReader } from "@/src/widgets/article-reader";
+import { ArticlePageReader } from "@/src/widgets/sections/article-page/article-reader";
 
 import type { ArticlePageProps } from "../../model/types";
 

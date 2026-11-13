@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { isAdminPath } from "@/src/shared/lib/helpers/is-admin-path";
 
-import { stopTracking, trackPage } from "../../lib/tracker";
+import { stopTracking, trackPage } from "../../lib/helpers/tracker";
 
 const DISABLED = process.env.NEXT_PUBLIC_TRACKING === "off";
 

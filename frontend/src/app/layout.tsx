@@ -9,7 +9,7 @@ import { PageLoader } from "../widgets/layout/page-loader";
 
 import { QueryProvider } from "./providers/query-provider";
 import { IntroProvider } from "./providers/intro-provider";
-import { SiteChrome } from "./providers/site-chrome";
+import { SiteChrome } from "../widgets/layout/site-chrome/site-chrome";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";

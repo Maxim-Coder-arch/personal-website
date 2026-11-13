@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import styles from "./admin-ui.module.scss";
+import styles from "../../styles/admin-ui.module.scss";
 
 type AdminCardProps = {
   title?: string;

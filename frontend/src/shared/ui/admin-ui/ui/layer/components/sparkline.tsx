@@ -2,8 +2,8 @@
 
 import { useId } from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
-import { ADMIN_COLORS } from "../../config/admin-colors";
-import styles from "./admin-ui.module.scss";
+import { ADMIN_COLORS } from "../../../../../config/admin-colors";
+import styles from "../../styles/admin-ui.module.scss";
 
 type SparklineProps = {
   values: number[];

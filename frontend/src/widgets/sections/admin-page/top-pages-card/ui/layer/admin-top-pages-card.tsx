@@ -5,8 +5,8 @@ import { useDateRange } from "@/src/features/date-range";
 import { formatDuration, formatNumber } from "@/src/shared/lib/helpers/format-metrics";
 import { AdminCard, RankedList, RankedText, Skeleton } from "@/src/shared/ui/admin-ui";
 import { QueryBoundary } from "@/src/shared/ui/query-boundary";
-import { resolvePageLabel } from "../../lib/resolve-page-label";
-import { useArticleTitles } from "../../lib/use-article-titles";
+import { resolvePageLabel } from "../../lib/helpers/resolve-page-label";
+import { useArticleTitles } from "../../lib/hooks/use-article-titles";
 
 export function AdminTopPagesCard() {
   const { range } = useDateRange();

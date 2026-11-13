@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { AdminLogoutButton } from "@/src/features/admin-auth";
-import { ADMIN_NAV } from "../../model/data";
-import { isNavActive } from "../../lib/is-nav-active";
-import styles from "../styles/admin-shell.module.scss";
+import { ADMIN_NAV } from "../../../model/data";
+import { isNavActive } from "../../../lib/helpers/is-nav-active";
+import styles from "../../styles/admin-shell.module.scss";
 
 type AdminSidebarProps = {
   email: string;

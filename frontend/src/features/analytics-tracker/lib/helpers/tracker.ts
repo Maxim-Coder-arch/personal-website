@@ -3,7 +3,7 @@ import {
     HEARTBEAT_MS,
     SESSION_KEY,
     VISITOR_KEY,
-} from "../model/config";
+} from "../../model/config";
 
 import { readStorage, writeStorage } from "./storage";
 

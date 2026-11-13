@@ -3,9 +3,9 @@
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { AdminSidebar } from "./admin-sidebar";
-import { AdminTopbar } from "./admin-topbar";
-import { AdminBottomNav } from "./admin-bottom-nav";
+import { AdminSidebar } from "./components/admin-sidebar";
+import { AdminTopbar } from "./components/admin-topbar";
+import { AdminBottomNav } from "./components/admin-bottom-nav";
 import styles from "../styles/admin-shell.module.scss";
 
 type AdminShellProps = {

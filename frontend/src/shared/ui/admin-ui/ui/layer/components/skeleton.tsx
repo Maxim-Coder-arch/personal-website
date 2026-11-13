@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import styles from "./admin-ui.module.scss";
+import styles from "../../styles/admin-ui.module.scss";
 
 type SkeletonProps = {
   width?: CSSProperties["width"];

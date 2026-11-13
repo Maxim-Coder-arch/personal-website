@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { RefreshCw } from "lucide-react";
 import { analyticsKeys } from "@/src/entities/api/analytics/analytics-queries";
 import { DateRangePicker } from "@/src/features/date-range";
-import { ADMIN_NAV } from "../../model/data";
-import { isNavActive } from "../../lib/is-nav-active";
-import styles from "../styles/admin-shell.module.scss";
+import { ADMIN_NAV } from "../../../model/data";
+import { isNavActive } from "../../../lib/helpers/is-nav-active";
+import styles from "../../styles/admin-shell.module.scss";
 
 export function AdminTopbar() {
   const pathname = usePathname();

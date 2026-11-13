@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { thoughtApi } from "@/src/entities/api/thoughts/thougths-api";
-import { ArticleModal } from "@/src/widgets/article-reader";
+import { ArticleModal } from "@/src/widgets/sections/article-page/article-reader";
 
 interface ArticleModalRouteProps {
     params: Promise<{ id: string }>;

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import styles from "./admin-ui.module.scss";
+import styles from "../../styles/admin-ui.module.scss";
 
 type SegmentedOption<T extends string> = {
   id: T;
