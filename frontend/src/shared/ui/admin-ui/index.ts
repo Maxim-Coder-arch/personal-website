@@ -6,4 +6,5 @@ export { Segmented } from "./ui/layer/components/segmented";
 export { RankedList, RankedText } from "./ui/layer/components/ranked-list";
 export { CountryFlag } from "./ui/layer/components/country-flag";
 export { PILL_TRANSITION } from "./model/animations";
+export { AdminDrawer } from "./ui/layer/components/admin-drawer";
 export type { RankedItem } from "./model/types";
