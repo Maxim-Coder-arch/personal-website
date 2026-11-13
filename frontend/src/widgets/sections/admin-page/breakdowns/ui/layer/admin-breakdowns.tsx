@@ -3,7 +3,7 @@
 import { CountryFlag, RankedText } from "@/src/shared/ui/admin-ui";
 
 import { BREAKDOWNS_CONFIG } from "../../model/config";
-import { REFERRER_LABELS, translateKey } from "../../model/data";
+import { REFERRER_LABELS, translateKey } from "@/src/shared/lib/helpers/analytics-labels";
 
 import { BreakdownListCard } from "./components/breakdown-list-card";
 import { BreakdownsLayout } from "./components/breakdowns-layout";

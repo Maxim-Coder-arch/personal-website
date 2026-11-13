@@ -10,7 +10,9 @@ import { AdminCard, Skeleton } from "@/src/shared/ui/admin-ui";
 import { QueryBoundary } from "@/src/shared/ui/query-boundary";
 
 import { BREAKDOWNS_CONFIG } from "../../../model/config";
-import { DEVICE_COLORS, DEVICE_LABELS, translateKey } from "../../../model/data";
+import { DEVICE_LABELS, translateKey } from "@/src/shared/lib/helpers/analytics-labels";
+
+import { DEVICE_COLORS } from "../../../model/data";
 
 import styles from "../../styles/admin-breakdowns.module.scss";
 

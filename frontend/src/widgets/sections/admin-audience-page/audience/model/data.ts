@@ -15,6 +15,4 @@ export const WEEKDAYS = [
   { key: "Sun", label: "Вс" },
 ] as const;
 
-export const translateKey = (key: string) => (key === "Unknown" ? "Неизвестно" : key);
-
 export const entryLabel = (path: string) => (path === "/" ? "Главная" : path);

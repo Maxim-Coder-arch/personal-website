@@ -1,0 +1,148 @@
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.overview__place {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f7f3f3;
+}
+
+.overview__time {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--a-muted);
+}
+
+.overview__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 500;
+
+    &--new {
+        background: rgba(237, 237, 150, 0.14);
+        color: var(--a-accent);
+    }
+
+    &--returning {
+        background: rgba(127, 184, 224, 0.14);
+        color: #7fb8e0;
+    }
+}
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid var(--a-border);
+    border-radius: 14px;
+    background: var(--a-surface-2);
+}
+
+.kpi__label {
+    font-size: 11px;
+    color: var(--a-muted);
+}
+
+.kpi__value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f7f3f3;
+    font-variant-numeric: tabular-nums;
+}
+
+.section__title {
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--a-muted);
+}
+
+.facts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    font-size: 13px;
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    dt {
+        flex-shrink: 0;
+        color: var(--a-muted);
+    }
+
+    dd {
+        margin: 0;
+        text-align: right;
+        color: var(--a-text);
+        word-break: break-word;
+    }
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0 0 0 18px;
+    list-style: none;
+    border-left: 1px solid var(--a-border);
+}
+
+.timeline__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: -23px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--a-accent);
+    }
+}
+
+.timeline__path {
+    font-size: 14px;
+    color: #f7f3f3;
+    word-break: break-word;
+}
+
+.timeline__meta {
+    font-size: 12px;
+    color: var(--a-muted);
+    font-variant-numeric: tabular-nums;
+}
