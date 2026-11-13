@@ -1,59 +1,61 @@
 "use client";
 
-import { useMemo } from "react";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import { useBreakdown } from "@/src/entities/api/analytics/analytics-queries";
-import { useDateRange } from "@/src/features/date-range";
+
+import {
+    CHART_ANIMATION_DURATION,
+    CHART_BAR_RADIUS,
+    CHART_CURSOR_BAR,
+    CHART_TICK,
+    CHART_TOOLTIP_STYLE,
+} from "@/src/shared/config/admin-chart";
 import { ADMIN_COLORS } from "@/src/shared/config/admin-colors";
 import { AdminCard, Skeleton } from "@/src/shared/ui/admin-ui";
 import { QueryBoundary } from "@/src/shared/ui/query-boundary";
-import { WEEKDAYS } from "../../../model/data";
+
+import { useWeekdaysChart } from "../../../lib/hooks/use-weekdays-chart";
+import { AUDIENCE_CONFIG } from "../../../model/config";
+
 import styles from "../../styles/admin-audience.module.scss";
 
-export function WeekdaysCard() {
-  const { range } = useDateRange();
-  const query = useBreakdown(range, "weekday");
+const { weekdays } = AUDIENCE_CONFIG;
 
-  const rows = useMemo(() => {
-    const byDay = new Map((query.data ?? []).map((item) => [item.key, item.sessions]));
-    return WEEKDAYS.map((day) => ({ label: day.label, sessions: byDay.get(day.key) ?? 0 }));
-  }, [query.data]);
+export const WeekdaysCard = () => {
+    const { query, rows } = useWeekdaysChart();
 
-  return (
-    <AdminCard title="Дни недели" delay={0.4}>
-      <QueryBoundary query={query} loadingFallback={<Skeleton height={200} />}>
-        {() => (
-          <div className={styles["weekdays"]}>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={rows} margin={{ top: 4, right: 0, bottom: 0, left: 0 }}>
-                <CartesianGrid vertical={false} stroke={ADMIN_COLORS.grid} />
-                <XAxis
-                  dataKey="label"
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fill: ADMIN_COLORS.muted, fontSize: 12 }}
-                />
-                <Tooltip
-                  cursor={{ fill: "rgba(255,255,255,0.04)" }}
-                  contentStyle={{
-                    background: "#1d1d1d",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                    borderRadius: 12,
-                    fontSize: 12,
-                  }}
-                  formatter={(value) => [value, "Сессии"]}
-                />
-                <Bar
-                  dataKey="sessions"
-                  fill={ADMIN_COLORS.accent}
-                  radius={[4, 4, 0, 0]}
-                  animationDuration={700}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        )}
-      </QueryBoundary>
-    </AdminCard>
-  );
-}
+    return (
+        <AdminCard title="Дни недели" delay={AUDIENCE_CONFIG.delays.weekdays}>
+            <QueryBoundary
+                query={query}
+                loadingFallback={<Skeleton height={weekdays.skeletonHeight} />}
+            >
+                {() => (
+                    <div className={styles["weekdays"]}>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={rows} margin={weekdays.margin}>
+                                <CartesianGrid vertical={false} stroke={ADMIN_COLORS.grid} />
+                                <XAxis
+                                    dataKey="label"
+                                    tickLine={false}
+                                    axisLine={false}
+                                    tick={CHART_TICK}
+                                />
+                                <Tooltip
+                                    cursor={CHART_CURSOR_BAR}
+                                    contentStyle={CHART_TOOLTIP_STYLE}
+                                    formatter={(value) => [value, "Сессии"]}
+                                />
+                                <Bar
+                                    dataKey="sessions"
+                                    fill={ADMIN_COLORS.accent}
+                                    radius={CHART_BAR_RADIUS}
+                                    animationDuration={CHART_ANIMATION_DURATION}
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                )}
+            </QueryBoundary>
+        </AdminCard>
+    );
+};
