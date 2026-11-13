@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using backend.Dtos;
 using Microsoft.AspNetCore.Authorization;
 
-namespace backend.Controllers
+namespace backend.Controllers.Articles
 {
     [ApiController]
     [Authorize]

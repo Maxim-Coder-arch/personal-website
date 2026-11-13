@@ -14,10 +14,7 @@ public class AdminAnalyticsController : ControllerBase
     private readonly DevDataSeeder seeder;
     private readonly IWebHostEnvironment environment;
 
-    public AdminAnalyticsController(
-       AnalyticsReader reader,
-       DevDataSeeder seeder,
-       IWebHostEnvironment environment)
+    public AdminAnalyticsController(AnalyticsReader reader, DevDataSeeder seeder, IWebHostEnvironment environment)
     {
         this.reader = reader;
         this.seeder = seeder;
@@ -25,11 +22,7 @@ public class AdminAnalyticsController : ControllerBase
     }
 
     [HttpGet("summary")]
-    public async Task<IActionResult> GetSummary(
-        [FromQuery] DateOnly? from,
-        [FromQuery] DateOnly? to,
-        [FromQuery] string? tz,
-        CancellationToken ct)
+    public async Task<IActionResult> GetSummary([FromQuery] DateOnly? from, [FromQuery] DateOnly? to, [FromQuery] string? tz, CancellationToken ct)
     {
         if (!reader.TryResolveRange(from, to, tz, out RangeInfo range, out string error))
         {

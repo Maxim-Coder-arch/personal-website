@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
-namespace backend.Controllers;
+namespace backend.Controllers.Analytics;
 
 [ApiController]
 [AllowAnonymous]
