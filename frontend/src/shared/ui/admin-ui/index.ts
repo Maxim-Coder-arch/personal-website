@@ -4,5 +4,6 @@ export { AnimatedNumber } from "./ui/layer/components/animated-number";
 export { Sparkline } from "./ui/layer/components/sparkline";
 export { Segmented } from "./ui/layer/components/segmented";
 export { RankedList, RankedText } from "./ui/layer/components/ranked-list";
-export type { RankedItem } from "./ui/layer/components/ranked-list";
 export { CountryFlag } from "./ui/layer/components/country-flag";
+export { PILL_TRANSITION } from "./model/animations";
+export type { RankedItem } from "./model/types";
