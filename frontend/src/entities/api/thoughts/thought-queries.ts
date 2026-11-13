@@ -29,3 +29,11 @@ export function useThoughts() {
 export function useThought(id: string) {
     return useQuery(thoughtQueries.detail(id));
 }
+
+export function useThoughtTitles() {
+    return useQuery({
+        ...thoughtQueries.all(),
+        select: (articles) =>
+            new Map(articles.map((article) => [article.id.toLowerCase(), article.title])),
+    });
+}

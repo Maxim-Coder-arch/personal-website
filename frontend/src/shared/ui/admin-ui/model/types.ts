@@ -50,3 +50,10 @@ export interface SparklineProps {
 export interface CountryFlagProps {
     code?: string | null;
 }
+
+export interface AdminDrawerProps {
+    open: boolean;
+    title: string;
+    onClose: () => void;
+    children: ReactNode;
+}

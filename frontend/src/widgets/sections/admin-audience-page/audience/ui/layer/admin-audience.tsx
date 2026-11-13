@@ -3,7 +3,9 @@
 import { CountryFlag, RankedText } from "@/src/shared/ui/admin-ui";
 
 import { AUDIENCE_CONFIG } from "../../model/config";
-import { entryLabel, translateKey } from "../../model/data";
+import { entryLabel } from "../../model/data";
+
+import { translateKey } from "@/src/shared/lib/helpers/analytics-labels";
 
 import { AudienceGrid } from "./components/audience-grid";
 import { AudienceLayout } from "./components/audience-layout";

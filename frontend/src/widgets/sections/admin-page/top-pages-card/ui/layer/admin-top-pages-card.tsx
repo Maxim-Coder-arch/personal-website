@@ -6,8 +6,8 @@ import { formatDuration, formatNumber } from "@/src/shared/lib/helpers/format-me
 import { RankedList, RankedText, Skeleton } from "@/src/shared/ui/admin-ui";
 import { QueryBoundary } from "@/src/shared/ui/query-boundary";
 
-import { resolvePageLabel } from "../../lib/helpers/resolve-page-label";
-import { useArticleTitles } from "../../lib/hooks/use-article-titles";
+import { useThoughtTitles } from "@/src/entities/api/thoughts/thought-queries";
+import { resolvePageLabel } from "@/src/shared/lib/helpers/resolve-page-label";
 import { TOP_PAGES_CONFIG } from "../../model/config";
 
 import { TopPagesLayout } from "./components/top-pages-layout";
@@ -15,7 +15,7 @@ import { TopPagesLayout } from "./components/top-pages-layout";
 export const AdminTopPagesCard = () => {
     const { range } = useDateRange();
     const pages = usePages(range);
-    const titles = useArticleTitles();
+    const titles = useThoughtTitles();
 
     return (
         <TopPagesLayout>

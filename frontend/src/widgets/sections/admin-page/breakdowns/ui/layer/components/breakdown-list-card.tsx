@@ -7,7 +7,7 @@ import { AdminCard, RankedList, RankedText, Skeleton } from "@/src/shared/ui/adm
 import { QueryBoundary } from "@/src/shared/ui/query-boundary";
 
 import { BREAKDOWNS_CONFIG } from "../../../model/config";
-import { translateKey } from "../../../model/data";
+import { translateKey } from "@/src/shared/lib/helpers/analytics-labels";
 import type { BreakdownListCardProps } from "../../../model/types";
 
 export const BreakdownListCard = ({

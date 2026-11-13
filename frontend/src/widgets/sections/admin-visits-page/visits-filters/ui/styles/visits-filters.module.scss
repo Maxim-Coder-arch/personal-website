@@ -1,0 +1,40 @@
+.layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.select {
+    padding: 8px 12px;
+    border: 1px solid var(--a-border);
+    border-radius: 12px;
+    background: var(--a-surface-2);
+    color: var(--a-text);
+    font: inherit;
+    font-size: 13px;
+    color-scheme: dark;
+
+    &:focus-visible {
+        outline: 1px solid var(--a-accent);
+    }
+}
+
+.reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid var(--a-border);
+    border-radius: 12px;
+    background: none;
+    color: var(--a-muted);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+        color: var(--a-text);
+    }
+}

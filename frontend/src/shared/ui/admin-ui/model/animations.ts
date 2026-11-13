@@ -55,3 +55,30 @@ export const getRankedBarMotion = (ratio: number, index: number) => ({
         ease: ADMIN_UI_CONFIG.easing,
     },
 });
+
+
+export const DRAWER_CONFIG = {
+    duration: 0.35,
+    backdropDuration: 0.25,
+    easing: [0.22, 1, 0.36, 1] as const,
+    desktopQuery: "(min-width: 768px)",
+} as const;
+
+export const backdropMotion = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: DRAWER_CONFIG.backdropDuration },
+} as const;
+
+export const getDrawerPanelMotion = (isDesktop: boolean) => {
+    const hidden = isDesktop ? { x: "100%" } : { y: "100%" };
+    const shown = isDesktop ? { x: 0 } : { y: 0 };
+
+    return {
+        initial: hidden,
+        animate: shown,
+        exit: hidden,
+        transition: { duration: DRAWER_CONFIG.duration, ease: DRAWER_CONFIG.easing },
+    };
+};
