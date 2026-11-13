@@ -9,3 +9,10 @@ export type DateRangeState = {
   setPreset: (id: RangePresetId) => void;
   setCustom: (from: string, to: string) => void;
 };
+
+export type PickerValue = RangePresetId | "custom";
+
+export interface DateRangeOption {
+    id: PickerValue;
+    label: string;
+}
