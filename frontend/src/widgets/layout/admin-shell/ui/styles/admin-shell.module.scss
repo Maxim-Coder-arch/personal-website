@@ -110,11 +110,42 @@
   text-transform: uppercase;
 }
 
+.site-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px dashed var(--a-border);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--a-muted);
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+
+  svg {
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    color: var(--a-accent);
+    border-color: var(--a-accent);
+    background: rgba(237, 237, 150, 0.06);
+
+    svg {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
 .account {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: auto;
   padding: 14px 12px;
   border-radius: 14px;
   border: 1px solid var(--a-border);

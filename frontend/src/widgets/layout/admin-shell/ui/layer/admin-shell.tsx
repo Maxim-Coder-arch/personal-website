@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+import { Toaster } from "sonner";
+
 import { useAdminNav } from "../../lib/hooks/use-admin-nav";
 import { contentMotion } from "../../model/animations";
 import type { AdminShellProps } from "../../model/types";
@@ -16,22 +18,26 @@ export const AdminShell = ({ email, children }: AdminShellProps) => {
     const { pathname } = useAdminNav();
 
     return (
-        <div className={styles["root"]}>
-            <AdminSidebar email={email} />
+        <>
+            <Toaster theme="dark" position="top-right" />
 
-            <div className={styles["main"]}>
-                <AdminTopbar />
+            <div className={styles["root"]}>
+                <AdminSidebar email={email} />
 
-                <motion.main
-                    key={pathname}
-                    className={styles["content"]}
-                    {...contentMotion}
-                >
-                    {children}
-                </motion.main>
+                <div className={styles["main"]}>
+                    <AdminTopbar />
+
+                    <motion.main
+                        key={pathname}
+                        className={styles["content"]}
+                        {...contentMotion}
+                    >
+                        {children}
+                    </motion.main>
+                </div>
+
+                <AdminBottomNav />
             </div>
-
-            <AdminBottomNav />
-        </div>
+        </>
     );
 };

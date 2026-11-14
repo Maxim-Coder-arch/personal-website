@@ -1,0 +1,1 @@
+export { ContentTabs } from "./ui/layer/content-tabs";

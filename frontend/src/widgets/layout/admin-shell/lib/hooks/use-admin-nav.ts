@@ -1,3 +1,5 @@
+"use client";
+
 import { usePathname } from "next/navigation";
 
 import { ADMIN_NAV } from "../../model/data";
@@ -13,7 +15,12 @@ export const useAdminNav = () => {
         active: item.ready && isNavActive(pathname, item.href),
     }));
 
-    const title = ADMIN_NAV.find((item) => isNavActive(pathname, item.href))?.label ?? DEFAULT_TITLE;
+    const current = ADMIN_NAV.find((item) => isNavActive(pathname, item.href));
 
-    return { items, title, pathname };
+    return {
+        items,
+        pathname,
+        title: current?.label ?? DEFAULT_TITLE,
+        hasRange: current?.hasRange ?? false,
+    };
 };

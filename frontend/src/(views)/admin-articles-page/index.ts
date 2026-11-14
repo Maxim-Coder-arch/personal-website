@@ -1,0 +1,1 @@
+export { AdminArticlesPage } from "./ui/layer/admin-articles-page";

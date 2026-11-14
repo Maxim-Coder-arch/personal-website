@@ -1,0 +1,139 @@
+.total {
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: var(--a-surface-2);
+    color: var(--a-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.search {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 420px;
+}
+
+.search__icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--a-muted);
+    pointer-events: none;
+}
+
+.search__input {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
+    border: 1px solid var(--a-border);
+    border-radius: 12px;
+    background: var(--a-surface-2);
+    color: var(--a-text);
+    font: inherit;
+    font-size: 13px;
+
+    &:focus-visible {
+        outline: 1px solid var(--a-accent);
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--a-border);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.row__main {
+    display: flex;
+    flex: 1;
+    min-width: 240px;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.row__title {
+    color: #f7f3f3;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+        color: var(--a-accent);
+    }
+}
+
+.row__subtitle {
+    display: -webkit-box;
+    overflow: hidden;
+    color: var(--a-muted);
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.row__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    color: var(--a-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+.row__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 40px 0;
+    color: var(--a-muted);
+    font-size: 14px;
+    text-align: center;
+}
+
+.nothing {
+    padding: 24px 0;
+    color: var(--a-muted);
+    font-size: 14px;
+    text-align: center;
+}
+
+.skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

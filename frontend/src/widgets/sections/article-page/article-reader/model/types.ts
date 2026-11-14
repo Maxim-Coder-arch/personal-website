@@ -31,7 +31,7 @@ export interface ArticleHeaderProps {
 }
 
 export interface ArticleBodyProps {
-    paragraphs: string[];
+    text: string;
 }
 
 export interface ReadingExitButtonProps {

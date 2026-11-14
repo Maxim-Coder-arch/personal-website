@@ -60,3 +60,8 @@ export interface FooterLetterProps {
 export interface FooterTopButtonProps {
     label: string;
 }
+
+export interface FooterAdminLinkProps {
+    label: string;
+    href: string;
+}

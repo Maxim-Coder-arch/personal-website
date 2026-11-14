@@ -12,6 +12,8 @@ $ink: #2b2622;
     --reader-fg: #{$white};
     --reader-muted: #a3a1a1;
     --reader-line: rgba(218, 216, 216, 0.2);
+    --reader-link: #{$light-yellow};
+    --reader-code-bg: rgba(255, 255, 255, 0.08);
 }
 
 @mixin theme-reading {
@@ -19,6 +21,8 @@ $ink: #2b2622;
     --reader-fg: #{$ink};
     --reader-muted: #4d453c;
     --reader-line: rgba(43, 38, 34, 0.22);
+    --reader-link: #7a5a12;
+    --reader-code-bg: rgba(43, 38, 34, 0.09);
 }
 
 @mixin text-transition {
@@ -313,22 +317,23 @@ $ink: #2b2622;
     }
 
     &__body {
-        display: flex;
-        flex-direction: column;
-        gap: 1.4em;
+        --md-text: var(--reader-fg);
+        --md-heading: var(--reader-fg);
+        --md-accent: var(--reader-link);
+        --md-muted: var(--reader-muted);
+        --md-border: var(--reader-line);
+        --md-code-bg: var(--reader-code-bg);
+        --md-font-size: clamp(1rem, 1.2vw, 1.1rem);
+        --md-line-height: 1.75;
 
         max-width: 42rem;
 
         font-family: $font-body;
-        font-size: clamp(1rem, 1.2vw, 1.1rem);
-        line-height: 1.75;
         overflow-wrap: break-word;
 
         color: var(--reader-fg);
 
-        transition:
-            color 0.5s ease,
-            font-size 0.6s $ease-in-out;
+        transition: color 0.5s ease;
     }
 }
 
@@ -341,10 +346,10 @@ $ink: #2b2622;
 }
 
 [data-mode="reading"] .content__body {
-    max-width: none;
+    --md-font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    --md-line-height: 1.85;
 
-    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-    line-height: 1.85;
+    max-width: none;
 }
 
 @keyframes modal-backdrop-in {
