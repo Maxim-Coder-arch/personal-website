@@ -57,3 +57,27 @@ export interface AdminDrawerProps {
     onClose: () => void;
     children: ReactNode;
 }
+
+export interface AdminButtonProps {
+    variant?: "primary" | "ghost" | "danger";
+    size?: "md" | "sm";
+    href?: string;
+    external?: boolean;
+    icon?: ReactNode;
+    loading?: boolean;
+    disabled?: boolean;
+    type?: "button" | "submit";
+    onClick?: () => void;
+    children: ReactNode;
+}
+
+export interface AdminConfirmProps {
+    open: boolean;
+    title: string;
+    description: string;
+    confirmLabel?: string;
+    cancelLabel?: string;
+    pending?: boolean;
+    onConfirm: () => void;
+    onCancel: () => void;
+}

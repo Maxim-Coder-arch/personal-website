@@ -235,3 +235,113 @@
     overflow-y: auto;
     overscroll-behavior: contain;
 }
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid var(--a-border);
+    border-radius: 12px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        opacity 0.2s;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    &--ghost {
+        background: var(--a-surface-2);
+        color: var(--a-text);
+
+        &:hover:not(:disabled) {
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+    }
+
+    &--primary {
+        border-color: var(--a-accent);
+        background: var(--a-accent);
+        color: #0f0f0f;
+
+        &:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+    }
+
+    &--danger {
+        border-color: rgba(240, 138, 138, 0.35);
+        background: transparent;
+        color: var(--a-down);
+
+        &:hover:not(:disabled) {
+            background: rgba(240, 138, 138, 0.1);
+        }
+    }
+
+    &--sm {
+        padding: 6px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+}
+
+.button__spinner {
+    animation: button-spin 0.9s linear infinite;
+}
+
+@keyframes button-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.confirm {
+    width: min(420px, calc(100% - 32px));
+    padding: 0;
+    border: 1px solid var(--a-border);
+    border-radius: 20px;
+    background: var(--a-surface);
+    color: var(--a-text);
+
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+    }
+}
+
+.confirm__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+}
+
+.confirm__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f7f3f3;
+}
+
+.confirm__description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--a-muted);
+}
+
+.confirm__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
