@@ -1,7 +1,7 @@
 .markdown {
     color: var(--md-text, inherit);
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: var(--md-font-size, 1rem);
+    line-height: var(--md-line-height, 1.75);
     overflow-wrap: anywhere;
 
     > :first-child {

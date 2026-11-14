@@ -1,7 +1,5 @@
 "use client";
 
-import { splitParagraphs } from "@/src/entities/article";
-
 import type { ArticleReaderProps } from "../../../model/types";
 
 import { ArticleBody } from "./article-body";
@@ -19,8 +17,6 @@ export const ArticleReader = ({
     onExitReading,
     onClose,
 }: ArticleReaderProps) => {
-    const paragraphs = splitParagraphs(article.text);
-
     return (
         <>
             {reading && <ReadingExitButton onClick={onExitReading} />}
@@ -36,7 +32,7 @@ export const ArticleReader = ({
 
                 <article className={styles["content"]}>
                     <ArticleHeader article={article} reading={reading} />
-                    <ArticleBody paragraphs={paragraphs} />
+                    <ArticleBody text={article.text} />
                 </article>
             </div>
         </>
