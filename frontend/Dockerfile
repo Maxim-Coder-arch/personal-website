@@ -4,7 +4,14 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm ci \
+    --no-audit \
+    --no-fund \
+    --maxsockets=2 \
+    --fetch-retries=10 \
+    --fetch-retry-mintimeout=30000 \
+    --fetch-retry-maxtimeout=180000 \
+    --fetch-timeout=600000
 
 
 FROM node:22-alpine AS builder
@@ -33,7 +40,9 @@ ENV PORT=3000
 
 COPY package.json package-lock.json ./
 
-RUN npm ci --omit=dev
+COPY --from=deps /app/node_modules ./node_modules
+
+RUN npm prune --omit=dev --no-audit --no-fund
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
