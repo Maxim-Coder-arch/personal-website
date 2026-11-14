@@ -1,10 +1,11 @@
 ﻿using backend.Models;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
 namespace backend.Data
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : DbContext, IDataProtectionKeyContext
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         { }
@@ -15,6 +16,8 @@ namespace backend.Data
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<VisitSession> Sessions { get; set; }
         public DbSet<PageView> PageViews { get; set; }
+
+        public DbSet<DataProtectionKey> DataProtectionKeys { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

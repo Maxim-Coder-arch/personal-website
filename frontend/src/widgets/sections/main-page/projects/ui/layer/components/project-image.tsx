@@ -22,6 +22,7 @@ export const ProjectImage = ({
                 src={imagePath}
                 alt={`Превью проекта ${title}`}
                 fill
+                unoptimized
                 sizes="(max-width: 640px) 100vw, 50vw"
                 loading={index === 0 ? "eager" : "lazy"}
                 className={styles["projects-section__image-el"]}

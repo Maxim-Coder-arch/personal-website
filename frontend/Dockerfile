@@ -4,21 +4,29 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm ci \
+    --no-audit \
+    --no-fund \
+    --maxsockets=2 \
+    --fetch-retries=10 \
+    --fetch-retry-mintimeout=30000 \
+    --fetch-retry-maxtimeout=180000 \
+    --fetch-timeout=600000
 
 
 FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+ENV NEXT_TELEMETRY_DISABLED=1
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG BACKEND_URL=http://localhost:5062
-ARG NEXT_PUBLIC_API_URL=http://localhost:5062
-
+ARG BACKEND_URL
 ENV BACKEND_URL=${BACKEND_URL}
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+
+RUN test -n "$BACKEND_URL" || (echo "BACKEND_URL build arg is required" && exit 1)
 
 RUN npm run build
 
@@ -27,17 +35,25 @@ FROM node:22-alpine AS runner
 
 WORKDIR /app
 
+ARG BACKEND_URL
+
 ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
+ENV BACKEND_URL=${BACKEND_URL}
 
 COPY package.json package-lock.json ./
 
-RUN npm ci --omit=dev
+COPY --from=deps /app/node_modules ./node_modules
 
-COPY --from=builder /app/.next ./.next
+RUN npm prune --omit=dev --no-audit --no-fund
+
+COPY --from=builder --chown=node:node /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.ts ./next.config.ts
+
+USER node
 
 EXPOSE 3000
 

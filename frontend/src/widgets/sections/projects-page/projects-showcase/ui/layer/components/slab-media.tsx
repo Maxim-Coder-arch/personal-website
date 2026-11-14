@@ -24,6 +24,7 @@ export const SlabMedia = ({ title, imagePath }: SlabMediaProps) => {
                     src={imagePath}
                     alt={`Скриншот проекта ${title}`}
                     fill
+                    unoptimized
                     sizes="(max-width: 1024px) 100vw, 55vw"
                     className={styles["slab__image"]}
                 />
