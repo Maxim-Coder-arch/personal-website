@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: site
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: site
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U site -d site"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend/backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=site;Username=site;Password=${DB_PASSWORD}
+      Admin__Email: ${ADMIN_EMAIL}
+      Admin__Password: ${ADMIN_PASSWORD}
+      Proxy__KnownNetworks: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+      DataProtection__Storage: FileSystem
+      DataProtection__KeysPath: /keys
+    volumes:
+      - dpkeys:/keys
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        BACKEND_URL: http://backend:8080
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:
+  dpkeys:
