@@ -406,6 +406,59 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
     }
 
+        &__bottom-actions {
+        display: flex;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    &__admin {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        padding: 0.4rem 0.85rem;
+
+        border: 1px solid rgba($ink, 0.25);
+        border-radius: 999px;
+
+        @include font(0.7rem, 600, $ink);
+
+        letter-spacing: 0.14em;
+        text-decoration: none;
+
+        transition:
+            background-color 0.3s $ease,
+            color 0.3s $ease,
+            border-color 0.3s $ease;
+
+        span {
+            display: inline-block;
+
+            font: inherit;
+            color: inherit;
+            letter-spacing: 0;
+
+            transition: transform 0.4s $ease;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: $ink;
+            background-color: $ink;
+            color: $paper;
+
+            span {
+                transform: translateX(3px);
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid $ink;
+            outline-offset: 4px;
+        }
+    }
+
     &__top-button {
         display: inline-flex;
         align-items: center;

@@ -6,3 +6,5 @@ export const ADMIN_NAV = [
     { id: "visits", label: "Визиты", href: "/admin/visits", icon: Activity, ready: true, hasRange: true },
     { id: "content", label: "Контент", href: "/admin/content", icon: FolderKanban, ready: true, hasRange: false },
 ] as const;
+
+export const ADMIN_SITE_LINK = { label: "На сайт", href: "/" } as const;

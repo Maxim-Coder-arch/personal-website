@@ -55,6 +55,11 @@ export const FOOTER_CONFIG = {
 
     top: "BACK TO TOP",
 
+    admin: {
+        label: "ADMIN",
+        href: "/admin",
+    },
+
     copyright: {
         name: "Maxim Novikov",
         rights: "All rights reserved.",

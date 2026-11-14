@@ -308,6 +308,7 @@
 
 .confirm {
     width: min(420px, calc(100% - 32px));
+    margin: auto;
     padding: 0;
     border: 1px solid var(--a-border);
     border-radius: 20px;

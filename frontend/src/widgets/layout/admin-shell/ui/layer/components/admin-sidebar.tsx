@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 import { AdminLogoutButton } from "@/src/features/admin-auth";
 import { PILL_TRANSITION } from "@/src/shared/ui/admin-ui";
@@ -9,6 +10,8 @@ import { PILL_TRANSITION } from "@/src/shared/ui/admin-ui";
 import { useAdminNav } from "../../../lib/hooks/use-admin-nav";
 import { SIDEBAR_PILL_ID } from "../../../model/animations";
 import type { AdminSidebarProps } from "../../../model/types";
+
+import { ADMIN_SITE_LINK } from "../../../model/data";
 
 import styles from "../../styles/admin-shell.module.scss";
 
@@ -73,6 +76,11 @@ export const AdminSidebar = ({ email }: AdminSidebarProps) => {
                     );
                 })}
             </nav>
+
+            <Link href={ADMIN_SITE_LINK.href} className={styles["site-link"]}>
+                <span>{ADMIN_SITE_LINK.label}</span>
+                <ArrowUpRight size={16} />
+            </Link>
 
             <div className={styles["account"]}>
                 <span>{email}</span>

@@ -3,6 +3,7 @@ import { ReactChildren } from "@/src/shared/types/global-types";
 import { FOOTER_CONFIG } from "../../../model/data";
 
 import { FooterTopButton } from "./footer-top-button";
+import { FooterAdminLink } from "./footer-admin-link";
 
 import styles from "../../styles/footer.module.scss";
 
@@ -21,7 +22,15 @@ export const FooterLayout = ({ children }: ReactChildren) => {
 
                 <span>{FOOTER_CONFIG.copyright.description}</span>
 
-                <FooterTopButton label={FOOTER_CONFIG.top} />
+                <div className={styles["footer__bottom-actions"]}>
+                    <FooterAdminLink
+                        label={FOOTER_CONFIG.admin.label}
+                        href={FOOTER_CONFIG.admin.href}
+                    />
+
+                    <FooterTopButton label={FOOTER_CONFIG.top} />
+                </div>
+                
             </div>
         </footer>
     );
