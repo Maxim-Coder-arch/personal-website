@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+import { Toaster } from "sonner";
+
 import { useAdminNav } from "../../lib/hooks/use-admin-nav";
 import { contentMotion } from "../../model/animations";
 import type { AdminShellProps } from "../../model/types";
@@ -17,6 +19,8 @@ export const AdminShell = ({ email, children }: AdminShellProps) => {
 
     return (
         <div className={styles["root"]}>
+            <Toaster theme="dark" position="top-right" />
+            
             <AdminSidebar email={email} />
 
             <div className={styles["main"]}>

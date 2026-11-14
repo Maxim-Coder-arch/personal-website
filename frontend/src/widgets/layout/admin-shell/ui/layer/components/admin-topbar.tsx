@@ -11,14 +11,14 @@ import { REFRESH_TAP } from "../../../model/animations";
 import styles from "../../styles/admin-shell.module.scss";
 
 export const AdminTopbar = () => {
-    const { title, fetching, refresh } = useAdminTopbar();
+    const { title, hasRange, fetching, refresh } = useAdminTopbar();
 
     return (
         <header className={styles["topbar"]}>
             <h1 className={styles["topbar__title"]}>{title}</h1>
 
             <div className={styles["topbar__actions"]}>
-                <DateRangePicker />
+                {hasRange && <DateRangePicker />}
 
                 <motion.button
                     type="button"
