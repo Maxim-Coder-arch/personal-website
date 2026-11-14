@@ -1,10 +1,10 @@
-import { IArticle } from "../../article";
+import { PUBLIC_API_URL } from "@/src/shared/config/api";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { IArticle } from "../../article";
 
 export const thoughtApi = {
     async getAll(): Promise<IArticle[]> {
-        const response = await fetch(`${API_URL}/api/articles`);
+        const response = await fetch(`${PUBLIC_API_URL}/api/articles`);
 
         if (!response.ok) {
             throw new Error("Не удалось получить статьи");
@@ -14,7 +14,7 @@ export const thoughtApi = {
     },
 
     async getById(id: string): Promise<IArticle | null> {
-        const response = await fetch(`${API_URL}/api/articles/${id}`, {
+        const response = await fetch(`${PUBLIC_API_URL}/api/articles/${id}`, {
             next: { revalidate: 60 },
         });
 
