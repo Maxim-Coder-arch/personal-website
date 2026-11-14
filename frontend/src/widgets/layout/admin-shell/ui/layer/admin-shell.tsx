@@ -18,24 +18,26 @@ export const AdminShell = ({ email, children }: AdminShellProps) => {
     const { pathname } = useAdminNav();
 
     return (
-        <div className={styles["root"]}>
+        <>
             <Toaster theme="dark" position="top-right" />
-            
-            <AdminSidebar email={email} />
 
-            <div className={styles["main"]}>
-                <AdminTopbar />
+            <div className={styles["root"]}>
+                <AdminSidebar email={email} />
 
-                <motion.main
-                    key={pathname}
-                    className={styles["content"]}
-                    {...contentMotion}
-                >
-                    {children}
-                </motion.main>
+                <div className={styles["main"]}>
+                    <AdminTopbar />
+
+                    <motion.main
+                        key={pathname}
+                        className={styles["content"]}
+                        {...contentMotion}
+                    >
+                        {children}
+                    </motion.main>
+                </div>
+
+                <AdminBottomNav />
             </div>
-
-            <AdminBottomNav />
-        </div>
+        </>
     );
 };
