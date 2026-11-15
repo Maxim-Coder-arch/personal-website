@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 export interface ITechnologyIcon {
     id: string;
@@ -43,3 +43,11 @@ export interface TechStackIconsProps {
     icons: ITechnologyIcon[];
     reduceMotion: boolean;
 }
+
+export interface IIcon {
+    id: string;
+    svgImage: ReactElement;
+    pointerLabel: string;
+}
+
+export type CreateRepeatedIconsProps = Pick<IIcon, "svgImage" | "pointerLabel">;

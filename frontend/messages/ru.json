@@ -45,9 +45,9 @@
         "nav": {
             "label": "NAVIGATION",
             "links": {
-                "home": "Home",
-                "projects": "Projects",
-                "articles": "Articles"
+                "home": "Главная",
+                "projects": "Проекты",
+                "articles": "Статьи"
             }
         },
         "socials": {
@@ -58,7 +58,7 @@
             "place": "Moscow, Russia · UTC+3"
         },
         "lost": {
-            "label": "EASTER EGG",
+            "label": "take a look at the beauty",
             "text": "The page that does not exist"
         },
         "wordmark": "MAXIM NOVIKOV",
@@ -72,7 +72,7 @@
     },
 
     "hero": {
-        "eyebrow": "MAXIM NOVIKOV — FRONTEND DEVELOPER",
+        "eyebrow": "FRONTEND-FOCUSED. SOFTWARE ENGINEER",
         "firstName": "MAXIM",
         "lastName": "NOVIKOV",
         "portraitAlt": "Maxim Novikov",
@@ -82,64 +82,64 @@
     },
 
     "projectsSection": {
-        "eyebrow": "SELECTED WORKS",
+        "eyebrow": "ENGINEERING REAL VALUE",
         "title": "Projects",
         "more": "Подробнее",
         "imageAlt": "Превью проекта {title}"
     },
 
     "techStack": {
-        "heading": "Tech stack",
-        "subheading": "Те самые технологии",
+        "heading": "Engineering toolset",
+        "subheading": "За каждым решением",
         "items": {
             "frontend": {
                 "title": "Frontend",
-                "description": "Моё основное направление. Эти технологии я знаю лучше всего."
+                "description": "Моё основное направление разработки. Уверенно работаю с современным frontend-стеком, создаю масштабируемые интерфейсы и выстраиваю архитектуру приложений. Постоянно расширяю инструментарий и углубляю знания."
             },
             "backend": {
                 "title": "Backend",
-                "description": "Серверная разработка, API и работа с данными."
+                "description": "Мой следующий этап развития — backend. Изучаю C# и ASP.NET Core, постепенно осваиваю Go и углубляю знания серверной архитектуры и работы с данными"
             },
             "tools": {
                 "title": "Tools & Workflow",
-                "description": "Инструменты и технологии, которые использую в разработке."
+                "description": "Использую современные инструменты разработки, контроля версий и автоматизации. Активно интегрирую AI-инструменты в рабочий процесс, применяю Docker для контейнеризации и Git для управления проектами."
             },
             "databases": {
                 "title": "Databases",
-                "description": "Хранение, организация и обработка данных."
+                "description": "Получаю практический опыт работы с различными системами управления базами данных. Работал с PostgreSQL и MongoDB, знакомлюсь с облачными решениями и сейчас углублённо изучаю SQL и MySQL."
             },
             "other": {
                 "title": "Other technologies",
-                "description": "Дополнительные технологии и инструменты, с которыми знаком."
+                "description": "Использую облачные платформы и инфраструктурные сервисы для публикации и размещения проектов. Имею опыт работы с деплоем приложений, настройкой доменов и подключением облачных баз данных."
             }
         }
     },
 
     "experience": {
-        "eyebrow": "Путь в разработке",
+        "eyebrow": "Профессиональный путь",
         "heading": "Experience",
-        "subtitleTop": "От первых проектов",
-        "subtitleBottom": "к реальным задачам.",
-        "sectionDescription": "Опыт и развитие",
+        "subtitleTop": "От разработки первых решений",
+        "subtitleBottom": "к инженерной практике.",
+        "sectionDescription": "Практический опыт и профессиональный рост",
         "sectionIndex": "01 — 04",
         "current": "CURRENT",
         "cardLabel": "EXPERIENCE",
         "items": {
             "commercial": {
-                "title": "Коммерческий опыт",
-                "description": "Работаю fullstack-разработчиком в консалтинговой компании, участвую в развитии и поддержке веб-приложений."
+                "title": "Командный опыт",
+                "description": "Участвую в развитии корпоративного веб-приложения на React в консалтинговой компании. Работаю с существующей кодовой базой, реализую новую функциональность, исправляю ошибки и участвую в развитии проекта."
             },
             "freelance": {
-                "title": "Фриланс",
-                "description": "Разрабатывал корпоративный сайт и CMS-систему для заказчика."
+                "title": "Фриланс и клиентские проекты",
+                "description": "Разрабатывал веб-решения для заказчиков: от корпоративных сайтов до административных интерфейсов. Реализовывал функциональность с учётом требований и задач клиентов."
             },
             "own": {
                 "title": "Собственные проекты",
-                "description": "Создавал веб-проекты разных направлений: корпоративные сайты, CMS- и CRM-системы, интернет-магазины."
+                "description": "Самостоятельно проектирую и разрабатываю веб-приложения разных направлений: портфолио, CMS- и CRM-системы. Работаю над архитектурой, frontend и backend, базами данных и развёртыванием проектов."
             },
             "practice": {
                 "title": "Практика",
-                "description": "Проходил профессиональную практику в компании Preax."
+                "description": "Получаю практический опыт коммерческой разработки, работая с реальными задачами и современным стеком веб-технологий."
             }
         }
     },
@@ -151,8 +151,8 @@
 
     "scenic": {
         "label": "Contact information",
-        "top": "Websites&",
-        "bottom": "Branding"
+        "top": "Web&",
+        "bottom": "Solutions"
     },
 
     "articlesPage": {
@@ -176,7 +176,7 @@
 
     "projectsPage": {
         "heading": {
-            "eyebrow": "SELECTED WORKS",
+            "eyebrow": "MY PROJECTS",
             "title": "PROJECTS",
             "description": "A selection of products I designed, built and shipped.",
             "hint": "SCROLL"
