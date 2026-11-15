@@ -8,13 +8,15 @@ import { useRouter } from "next/navigation";
 
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { CURTAIN_VARIANTS, FADE_VARIANTS } from "../../../model/animations";
 import { LEAVE_DELAY_MS } from "../../../model/config";
-import { NOT_FOUND_COPY } from "../../../model/data";
 
 import styles from "../../styles/not-found-scene.module.scss";
 
 export const SceneActions = () => {
+    const t = useTranslations("notFound");
     const router = useRouter();
     const [leaving, setLeaving] = useState(false);
 
@@ -48,7 +50,7 @@ export const SceneActions = () => {
                     className={styles["scene__link"]}
                     onClick={handleClick}
                 >
-                    <span>{NOT_FOUND_COPY.action}</span>
+                    <span>{t("action")}</span>
                     <span
                         className={styles["scene__link-arrow"]}
                         aria-hidden="true"

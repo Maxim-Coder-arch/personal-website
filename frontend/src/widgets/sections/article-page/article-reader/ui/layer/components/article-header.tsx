@@ -1,3 +1,5 @@
+import { useLocale } from "next-intl";
+
 import { formatArticleDate } from "@/src/entities/article";
 
 import type { ArticleHeaderProps } from "../../../model/types";
@@ -5,6 +7,8 @@ import type { ArticleHeaderProps } from "../../../model/types";
 import styles from "../../styles/article-reader.module.scss";
 
 export const ArticleHeader = ({ article, reading }: ArticleHeaderProps) => {
+    const locale = useLocale();
+
     return (
         <header className={styles["content__header"]}>
             {!reading && (
@@ -12,7 +16,7 @@ export const ArticleHeader = ({ article, reading }: ArticleHeaderProps) => {
                     className={styles["content__date"]}
                     dateTime={article.createdAt}
                 >
-                    {formatArticleDate(article.createdAt)}
+                    {formatArticleDate(article.createdAt, locale)}
                 </time>
             )}
 

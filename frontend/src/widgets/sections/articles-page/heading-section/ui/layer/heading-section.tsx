@@ -1,6 +1,7 @@
 "use client";
 
-import { HEADING_CONTENT } from "../../model/data";
+import { useTranslations } from "next-intl";
+
 import type { HeadingSectionProps } from "../../model/types";
 
 import { useHeadingSection } from "../../lib/hooks/use-heading-section";
@@ -11,6 +12,7 @@ import { HeadingMeta } from "./components/heading-meta";
 import { HeadingTitle } from "./components/heading-title";
 
 export const HeadingSection = ({ total }: HeadingSectionProps) => {
+    const t = useTranslations("articlesPage.heading");
     const { revealed, shouldReduceMotion } = useHeadingSection();
 
     return (
@@ -19,15 +21,15 @@ export const HeadingSection = ({ total }: HeadingSectionProps) => {
             shouldReduceMotion={shouldReduceMotion}
         >
             <HeadingMeta
-                eyebrow={HEADING_CONTENT.eyebrow}
+                eyebrow={t("eyebrow")}
                 total={total}
             />
 
-            <HeadingTitle title={HEADING_CONTENT.title} />
+            <HeadingTitle title={t("title")} />
 
             <HeadingFooter
-                description={HEADING_CONTENT.description}
-                hint={HEADING_CONTENT.hint}
+                description={t("description")}
+                hint={t("hint")}
             />
         </HeadingLayout>
     );

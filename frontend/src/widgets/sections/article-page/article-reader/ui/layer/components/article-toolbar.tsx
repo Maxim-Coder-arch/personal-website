@@ -1,8 +1,9 @@
 import Link from "next/link";
 
+import { useTranslations } from "next-intl";
+
 import { CloseIcon } from "@/src/shared/icons/globals/close-icon";
 
-import { READER_LABELS } from "../../../model/data";
 import type { ArticleToolbarProps } from "../../../model/types";
 
 import styles from "../../styles/article-reader.module.scss";
@@ -12,6 +13,8 @@ export const ArticleToolbar = ({
     onEnterReading,
     onClose,
 }: ArticleToolbarProps) => {
+    const t = useTranslations("reader");
+
     return (
         <div
             className={styles["toolbar"]}
@@ -22,7 +25,7 @@ export const ArticleToolbar = ({
                 className={styles["toolbar__button"]}
                 onClick={onEnterReading}
             >
-                {READER_LABELS.enterReading}
+                {t("enterReading")}
             </button>
 
             {variant === "modal" ? (
@@ -30,7 +33,7 @@ export const ArticleToolbar = ({
                     type="button"
                     className={`${styles["toolbar__button"]} ${styles["toolbar__button--icon"]}`}
                     onClick={onClose}
-                    aria-label={READER_LABELS.close}
+                    aria-label={t("close")}
                 >
                     <CloseIcon />
                 </button>
@@ -39,7 +42,7 @@ export const ArticleToolbar = ({
                     href="/articles"
                     className={styles["toolbar__button"]}
                 >
-                    {READER_LABELS.back}
+                    {t("back")}
                 </Link>
             )}
         </div>

@@ -1,7 +1,7 @@
+export type ExperienceId = "commercial" | "freelance" | "own" | "practice";
+
 export interface IExperience {
-    id: string;
-    title: string;
-    description: string;
+    id: ExperienceId;
 }
 
 export interface ExperienceCardContentProps {

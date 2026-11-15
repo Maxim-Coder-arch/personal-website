@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { LIST_VARIANTS, LIST_VIEWPORT } from "../../../model/animations";
 import type { ArticlesListLayoutProps } from "../../../model/types";
 
@@ -11,11 +13,13 @@ export const ArticlesListLayout = ({
     shouldReduceMotion,
     children,
 }: ArticlesListLayoutProps) => {
+    const t = useTranslations("articlesPage.list");
+
     return (
         <section
             id="articles-list"
             className={styles["articles-list"]}
-            aria-label="Articles"
+            aria-label={t("label")}
         >
             <motion.ul
                 className={styles["articles-list__list"]}

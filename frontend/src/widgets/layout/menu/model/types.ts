@@ -8,6 +8,8 @@ export interface IMenuItems {
 
 export type IMenuLayout = IMenuItems;
 
+export type MenuItemId = "home" | "projects" | "articles";
+
 export interface MenuLayoutProps {
     children: ReactNode;
     shouldReduceMotion: boolean | null;

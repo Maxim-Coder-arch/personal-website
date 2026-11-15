@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 import { AnalyticsTracker } from "../features/analytics-tracker";
 
@@ -14,9 +16,10 @@ import { SiteChrome } from "../widgets/layout/site-chrome/site-chrome";
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
 
-export const metadata: Metadata = {
-  title: "Maxim Novikov — Frontend Developer",
-  description: "Portfolio of Maxim Novikov: projects, articles and contacts.",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("meta.home");
+
+  return { title: t("title"), description: t("description") };
 };
 
 interface RootLayoutProps {
@@ -24,26 +27,31 @@ interface RootLayoutProps {
   modal: ReactNode;
 }
 
-const RootLayout = ({ children, modal }: RootLayoutProps) => {
+const RootLayout = async ({ children, modal }: RootLayoutProps) => {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <IntroProvider />
-        <AnalyticsTracker />
-        <SiteChrome
-          top={
-            <>
-              <PageLoader />
-              <Menu />
-            </>
-          }
-          bottom={<Footer />}
-        >
-          <QueryProvider>
-            {children}
-          </QueryProvider>
-        </SiteChrome>
-        {modal}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <IntroProvider />
+          <AnalyticsTracker />
+          <SiteChrome
+            top={
+              <>
+                <PageLoader />
+                <Menu />
+              </>
+            }
+            bottom={<Footer />}
+          >
+            <QueryProvider>
+              {children}
+            </QueryProvider>
+          </SiteChrome>
+          {modal}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

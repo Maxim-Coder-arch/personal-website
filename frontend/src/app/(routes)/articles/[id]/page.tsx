@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { ArticlePage } from "@/src/(views)/article-page";
 import { thoughtApi } from "@/src/entities/api/thoughts/thougths-api";
@@ -16,8 +17,10 @@ export const generateMetadata = async ({
 
     if (!article) return {};
 
+    const t = await getTranslations("meta.article");
+
     return {
-        title: `${article.title} — Maxim Novikov`,
+        title: t("title", { title: article.title }),
         description: article.subtitle,
     };
 };

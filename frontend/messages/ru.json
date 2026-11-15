@@ -1,0 +1,229 @@
+{
+    "meta": {
+        "home": {
+            "title": "Maxim Novikov — Frontend Developer",
+            "description": "Portfolio of Maxim Novikov: projects, articles and contacts."
+        },
+        "articles": {
+            "title": "Articles — Maxim Novikov",
+            "description": "Notes on code, architecture and the craft of building software."
+        },
+        "projects": {
+            "title": "Projects — Maxim Novikov",
+            "description": "Selected projects designed, built and shipped by Maxim Novikov."
+        },
+        "lost": {
+            "title": "404 — Maxim Novikov",
+            "description": "A page that does not exist, on purpose."
+        },
+        "notFound": {
+            "title": "404 — Maxim Novikov",
+            "description": "Страница не найдена."
+        },
+        "article": {
+            "title": "{title} — Maxim Novikov"
+        }
+    },
+
+    "menu": {
+        "items": {
+            "home": "Главная",
+            "projects": "Проекты",
+            "articles": "Статьи"
+        },
+        "telegram": "Telegram"
+    },
+
+    "footer": {
+        "hero": {
+            "eyebrow": "THANKS FOR VISITING",
+            "titleTop": "Let's make something",
+            "titleBottom": "worth",
+            "highlight": "remembering.",
+            "cta": "SAY HELLO"
+        },
+        "nav": {
+            "label": "NAVIGATION",
+            "links": {
+                "home": "Главная",
+                "projects": "Проекты",
+                "articles": "Статьи"
+            }
+        },
+        "socials": {
+            "label": "FIND ME HERE"
+        },
+        "clock": {
+            "label": "LOCAL TIME",
+            "place": "Moscow, Russia · UTC+3"
+        },
+        "lost": {
+            "label": "take a look at the beauty",
+            "text": "The page that does not exist"
+        },
+        "wordmark": "MAXIM NOVIKOV",
+        "top": "BACK TO TOP",
+        "admin": "ADMIN",
+        "copyright": {
+            "name": "Maxim Novikov",
+            "rights": "All rights reserved.",
+            "description": "Designed & developed with care."
+        }
+    },
+
+    "hero": {
+        "eyebrow": "FRONTEND-FOCUSED. SOFTWARE ENGINEER",
+        "firstName": "MAXIM",
+        "lastName": "NOVIKOV",
+        "portraitAlt": "Maxim Novikov",
+        "taglineTop": "Design & Code for",
+        "taglineBottom": "Meaningful Experiences",
+        "badge": "BASED ON CREATIVITY & TECHNOLOGY"
+    },
+
+    "projectsSection": {
+        "eyebrow": "ENGINEERING REAL VALUE",
+        "title": "Projects",
+        "more": "Подробнее",
+        "imageAlt": "Превью проекта {title}"
+    },
+
+    "techStack": {
+        "heading": "Engineering toolset",
+        "subheading": "За каждым решением",
+        "items": {
+            "frontend": {
+                "title": "Frontend",
+                "description": "Моё основное направление разработки. Уверенно работаю с современным frontend-стеком, создаю масштабируемые интерфейсы и выстраиваю архитектуру приложений. Постоянно расширяю инструментарий и углубляю знания."
+            },
+            "backend": {
+                "title": "Backend",
+                "description": "Мой следующий этап развития — backend. Изучаю C# и ASP.NET Core, постепенно осваиваю Go и углубляю знания серверной архитектуры и работы с данными"
+            },
+            "tools": {
+                "title": "Tools & Workflow",
+                "description": "Использую современные инструменты разработки, контроля версий и автоматизации. Активно интегрирую AI-инструменты в рабочий процесс, применяю Docker для контейнеризации и Git для управления проектами."
+            },
+            "databases": {
+                "title": "Databases",
+                "description": "Получаю практический опыт работы с различными системами управления базами данных. Работал с PostgreSQL и MongoDB, знакомлюсь с облачными решениями и сейчас углублённо изучаю SQL и MySQL."
+            },
+            "other": {
+                "title": "Other technologies",
+                "description": "Использую облачные платформы и инфраструктурные сервисы для публикации и размещения проектов. Имею опыт работы с деплоем приложений, настройкой доменов и подключением облачных баз данных."
+            }
+        }
+    },
+
+    "experience": {
+        "eyebrow": "Профессиональный путь",
+        "heading": "Experience",
+        "subtitleTop": "От разработки первых решений",
+        "subtitleBottom": "к инженерной практике.",
+        "sectionDescription": "Практический опыт и профессиональный рост",
+        "sectionIndex": "01 — 04",
+        "current": "CURRENT",
+        "cardLabel": "EXPERIENCE",
+        "items": {
+            "commercial": {
+                "title": "Командный опыт",
+                "description": "Участвую в развитии корпоративного веб-приложения на React в консалтинговой компании. Работаю с существующей кодовой базой, реализую новую функциональность, исправляю ошибки и участвую в развитии проекта."
+            },
+            "freelance": {
+                "title": "Фриланс и клиентские проекты",
+                "description": "Разрабатывал веб-решения для заказчиков: от корпоративных сайтов до административных интерфейсов. Реализовывал функциональность с учётом требований и задач клиентов."
+            },
+            "own": {
+                "title": "Собственные проекты",
+                "description": "Самостоятельно проектирую и разрабатываю веб-приложения разных направлений: портфолио, CMS- и CRM-системы. Работаю над архитектурой, frontend и backend, базами данных и развёртыванием проектов."
+            },
+            "practice": {
+                "title": "Практика",
+                "description": "Получаю практический опыт коммерческой разработки, работая с реальными задачами и современным стеком веб-технологий."
+            }
+        }
+    },
+
+    "thoughts": {
+        "titleTop": "Thoughts",
+        "titleBottom": "on development"
+    },
+
+    "scenic": {
+        "label": "Contact information",
+        "top": "Web&",
+        "bottom": "Solutions"
+    },
+
+    "articlesPage": {
+        "heading": {
+            "eyebrow": "THOUGHTS ON DEVELOPMENT",
+            "title": "ARTICLES",
+            "description": "Notes on code, architecture and the craft of building software.",
+            "hint": "SCROLL"
+        },
+        "list": {
+            "label": "Articles"
+        },
+        "closing": {
+            "label": "Closing statement",
+            "lines": {
+                "first": "Written to think",
+                "second": "Shared to grow"
+            }
+        }
+    },
+
+    "projectsPage": {
+        "heading": {
+            "eyebrow": "MY PROJECTS",
+            "title": "PROJECTS",
+            "description": "A selection of products I designed, built and shipped.",
+            "hint": "SCROLL"
+        },
+        "showcase": {
+            "label": "All projects",
+            "projectOf": "PROJECT / {number}",
+            "total": "OF {total}",
+            "imageAlt": "Скриншот проекта {title}"
+        },
+        "closing": {
+            "label": "Closing statement",
+            "lines": {
+                "first": "Crafted with care",
+                "second": "Built to last",
+                "third": "Designed to be felt"
+            },
+            "marquee": {
+                "works": "SELECTED WORKS",
+                "frontend": "FRONTEND",
+                "interfaces": "INTERFACES",
+                "motion": "MOTION",
+                "year": "2026"
+            }
+        }
+    },
+
+    "reader": {
+        "enterReading": "Режим чтения",
+        "exitReading": "Выйти из режима чтения",
+        "close": "Закрыть",
+        "back": "Все статьи"
+    },
+
+    "notFound": {
+        "eyebrow": "ERROR",
+        "title": "Страница не найдена",
+        "text": "Возможно, адрес набран с ошибкой или страница была перемещена. Вернитесь на главную, там всё на месте.",
+        "action": "На главную",
+        "marquee": "NOT FOUND",
+        "lensLabel": "VOID"
+    },
+
+    "queryState": {
+        "loading": "Загрузка",
+        "error": "Не удалось загрузить данные",
+        "empty": "Пока здесь пусто",
+        "retry": "Повторить"
+    }
+}

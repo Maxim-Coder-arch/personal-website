@@ -1,7 +1,9 @@
 
 import { motion } from "framer-motion";
 
-import { animation, cardVariantsExperienceCard, labels } from "../../../model/animations";
+import { useTranslations } from "next-intl";
+
+import { animation, cardVariantsExperienceCard } from "../../../model/animations";
 import { ExperienceCardProps } from "../../../model/type";
 
 import { ExperienceCardContent } from "./experience-card-content";
@@ -14,12 +16,13 @@ export const ExperienceCard = ({
     index,
     shouldReduceMotion,
 }: ExperienceCardProps) => {
+    const t = useTranslations("experience");
     const cardNumber = String(index + 1).padStart(2, "0");
 
     const footerLabel =
         index === 0
-            ? `${cardNumber} / ${labels.current}`
-            : `${cardNumber} / ${labels.experience}`;
+            ? `${cardNumber} / ${t("current")}`
+            : `${cardNumber} / ${t("cardLabel")}`;
 
     return (
         <motion.article

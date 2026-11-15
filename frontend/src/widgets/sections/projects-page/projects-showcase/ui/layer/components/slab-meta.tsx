@@ -1,18 +1,22 @@
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { FADE_UP_VARIANTS } from "../../../model/animations";
 import type { SlabMetaProps } from "../../../model/types";
 
 import styles from "../../styles/projects-showcase.module.scss";
 
 export const SlabMeta = ({ number, total }: SlabMetaProps) => {
+    const t = useTranslations("projectsPage.showcase");
+
     return (
         <motion.div
             className={styles["slab__meta"]}
             variants={FADE_UP_VARIANTS}
         >
-            <span>PROJECT / {number}</span>
-            <span>OF {total}</span>
+            <span>{t("projectOf", { number })}</span>
+            <span>{t("total", { total })}</span>
         </motion.div>
     );
 };

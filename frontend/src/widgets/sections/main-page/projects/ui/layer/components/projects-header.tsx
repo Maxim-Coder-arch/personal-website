@@ -3,6 +3,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { projectsHeadingAnimation } from "../../../model/animations";
 
 import { ViewAllProjects } from "./view-all-projects";
@@ -10,6 +12,7 @@ import { ViewAllProjects } from "./view-all-projects";
 import styles from "../../styles/projects.module.scss";
 
 export const ProjectsHeader = () => {
+    const t = useTranslations("projectsSection");
     const shouldReduceMotion = useReducedMotion();
 
     return (
@@ -22,11 +25,11 @@ export const ProjectsHeader = () => {
         >
             <div className={styles["projects-section__heading-content"]}>
                 <span className={styles["projects-section__eyebrow"]}>
-                    SELECTED WORKS
+                    {t("eyebrow")}
                 </span>
 
                 <h2>
-                    Projects<span>.</span>
+                    {t("title")}<span>.</span>
                 </h2>
             </div>
 

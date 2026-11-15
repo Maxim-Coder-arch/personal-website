@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 export interface ITechnologyIcon {
     id: string;
@@ -6,10 +6,10 @@ export interface ITechnologyIcon {
     pointerLabel: string;
 }
 
+export type TechnologyId = "frontend" | "backend" | "tools" | "databases" | "other";
+
 export interface ITechnology {
-    id: string;
-    title: string;
-    description: string;
+    id: TechnologyId;
     icons: ITechnologyIcon[];
 }
 
@@ -21,7 +21,7 @@ export type TechStackCardLayout =
 
 
 export interface TechStackCardContentProps {
-    technology: Pick<ITechnology, "title" | "description">;
+    technology: Pick<ITechnology, "id">;
 }
 
 export interface TechStackCardProps {
@@ -43,3 +43,11 @@ export interface TechStackIconsProps {
     icons: ITechnologyIcon[];
     reduceMotion: boolean;
 }
+
+export interface IIcon {
+    id: string;
+    svgImage: ReactElement;
+    pointerLabel: string;
+}
+
+export type CreateRepeatedIconsProps = Pick<IIcon, "svgImage" | "pointerLabel">;

@@ -22,16 +22,6 @@ export const EXPERIENCE_CONFIG = {
         once: true,
     },
 
-    labels: {
-        eyebrow: "Путь в разработке",
-        heading: "Experience",
-        subtitle: ["От первых проектов", "к реальным задачам."],
-        sectionDescription: "Опыт и развитие",
-        sectionIndex: "01 — 04",
-        current: "CURRENT",
-        experience: "EXPERIENCE",
-    },
-
     layout: {
         maxWidth: 1600,
         desktopColumns: 2,
@@ -39,7 +29,7 @@ export const EXPERIENCE_CONFIG = {
     },
 } as const;
 
-export const { animation, labels } = EXPERIENCE_CONFIG;
+export const { animation } = EXPERIENCE_CONFIG;
 
 export const containerVariants = {
     hidden: {},

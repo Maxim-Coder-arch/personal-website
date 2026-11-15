@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { Mascot } from "@/src/features/mascot";
 import { TELEGRAM_URL } from "@/src/shared/config/links";
 import { TelegramIcon } from "@/src/shared/icons/social-networks/telegram";
@@ -9,6 +11,8 @@ import { menuAnimationConfig } from "../../../model/animations";
 import styles from "../../styles/menu.module.scss";
 
 export const MenuExtras = () => {
+    const t = useTranslations("menu");
+
     return (
         <>
             <li className={styles["hero-nav__divider"]} aria-hidden="true" />
@@ -28,7 +32,7 @@ export const MenuExtras = () => {
                     href={TELEGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Telegram"
+                    aria-label={t("telegram")}
                 >
                     <TelegramIcon />
                 </a>

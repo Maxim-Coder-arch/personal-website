@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import { ProjectsPage } from "@/src/(views)/projects-page";
 
-export const metadata: Metadata = {
-    title: "Projects — Maxim Novikov",
-    description: "Selected projects designed, built and shipped by Maxim Novikov.",
+export const generateMetadata = async (): Promise<Metadata> => {
+    const t = await getTranslations("meta.projects");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
 };
 
 const ProjectsPageRoute = () => <ProjectsPage />
