@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import {
     HERO_IMAGE_SCALE_VARIANTS,
     HERO_IMAGE_VARIANTS,
@@ -15,6 +17,7 @@ import styles from "../../styles/hero-section.module.scss";
 export const HeroPortrait = ({
     shouldReduceMotion,
 }: IHeroPortraitProps) => {
+    const t = useTranslations("hero");
     const revealed = useHeroReveal(shouldReduceMotion);
 
     return (
@@ -30,7 +33,7 @@ export const HeroPortrait = ({
             >
                 <Image
                     src="/images/hero-screen.png"
-                    alt="Maxim Novikov"
+                    alt={t("portraitAlt")}
                     fill
                     priority
                     sizes="(max-width: 768px) 75vw, 35vw"
@@ -40,12 +43,12 @@ export const HeroPortrait = ({
 
             <div className={styles["hero__introduction"]}>
                 <p>
-                    Design & Code for
+                    {t("taglineTop")}
                     <br />
-                    Meaningful Experiences
+                    {t("taglineBottom")}
                 </p>
 
-                <span>BASED ON CREATIVITY & TECHNOLOGY</span>
+                <span>{t("badge")}</span>
             </div>
         </motion.div>
     );

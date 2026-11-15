@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 
+import { useLocale } from "next-intl";
+
 import { formatArticleDate } from "@/src/entities/article";
 import { ArrowRightUp } from "@/src/shared/icons/arrowes/arrow-right-up";
 
@@ -17,6 +19,8 @@ export const ArticlesListItem = ({
     index,
     shouldReduceMotion,
 }: ArticlesListItemProps) => {
+    const locale = useLocale();
+
     return (
         <motion.li
             className={styles["articles-list__item"]}
@@ -45,7 +49,7 @@ export const ArticlesListItem = ({
                     className={styles["articles-list__date"]}
                     dateTime={article.createdAt}
                 >
-                    {formatArticleDate(article.createdAt)}
+                    {formatArticleDate(article.createdAt, locale)}
                 </time>
 
                 <span

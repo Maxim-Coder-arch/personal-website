@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/shared/i18n/request.ts");
+
 const BACKEND_URL = (process.env.BACKEND_URL ?? "http://localhost:5062").replace(
     /\/+$/,
     "",
 );
 
 const nextConfig: NextConfig = {
-    poweredByHeader: false,
     async rewrites() {
         return [
             {
@@ -17,4 +20,4 @@ const nextConfig: NextConfig = {
     },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

@@ -1,19 +1,19 @@
 import { HomeIcon } from "@/src/shared/icons/globals/home";
 
-import { IMenuItems } from "./types";
+import { IMenuItems, MenuItemId } from "./types";
 
-export const menuItems: IMenuItems[] = [
+export const menuItems: (Omit<IMenuItems, "itemLabel"> & { id: MenuItemId })[] = [
     {
-        itemLabel: "Главная",
+        id: "home",
         itemLink: "/",
         itemIcon: <HomeIcon />,
     },
     {
-        itemLabel: "Проекты",
+        id: "projects",
         itemLink: "/projects",
     },
     {
-        itemLabel: "Статьи",
+        id: "articles",
         itemLink: "/articles",
     },
 ];

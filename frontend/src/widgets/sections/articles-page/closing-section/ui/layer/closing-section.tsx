@@ -1,6 +1,8 @@
 "use client";
 
-import { STATEMENT_LINES } from "../../model/data";
+import { useTranslations } from "next-intl";
+
+import { STATEMENT_KEYS } from "../../model/data";
 import type { ClosingSectionProps } from "../../model/types";
 
 import { buildStatement } from "../../lib/helpers/build-statement";
@@ -11,9 +13,10 @@ import { ClosingMarquee } from "./components/closing-marquee";
 import { ClosingStatement } from "./components/closing-statement";
 
 export const ClosingSection = ({ titles }: ClosingSectionProps) => {
+    const t = useTranslations("articlesPage.closing");
     const { ref, progress } = useClosingSection();
 
-    const lines = buildStatement(STATEMENT_LINES);
+    const lines = buildStatement(STATEMENT_KEYS.map((key) => t(`lines.${key}`).split(" ")));
     const total = lines.flat().length;
 
     return (

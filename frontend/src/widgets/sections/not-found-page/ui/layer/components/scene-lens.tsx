@@ -4,8 +4,9 @@ import { useState } from "react";
 
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { LENS_VARIANTS, PULSE_TRANSITION } from "../../../model/animations";
-import { NOT_FOUND_COPY } from "../../../model/data";
 import type { SceneLensProps } from "../../../model/types";
 
 import { SceneDigit } from "./scene-digit";
@@ -13,6 +14,7 @@ import { SceneDigit } from "./scene-digit";
 import styles from "../../styles/not-found-scene.module.scss";
 
 export const SceneLens = ({ x, y }: SceneLensProps) => {
+    const t = useTranslations("notFound");
     const [pulse, setPulse] = useState(0);
 
     return (
@@ -39,7 +41,7 @@ export const SceneLens = ({ x, y }: SceneLensProps) => {
                         />
 
                         <span className={styles["scene__lens-label"]}>
-                            {NOT_FOUND_COPY.lensLabel}
+                            {t("lensLabel")}
                         </span>
                     </div>
 

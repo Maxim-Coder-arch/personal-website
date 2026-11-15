@@ -6,10 +6,10 @@ export interface ITechnologyIcon {
     pointerLabel: string;
 }
 
+export type TechnologyId = "frontend" | "backend" | "tools" | "databases" | "other";
+
 export interface ITechnology {
-    id: string;
-    title: string;
-    description: string;
+    id: TechnologyId;
     icons: ITechnologyIcon[];
 }
 
@@ -21,7 +21,7 @@ export type TechStackCardLayout =
 
 
 export interface TechStackCardContentProps {
-    technology: Pick<ITechnology, "title" | "description">;
+    technology: Pick<ITechnology, "id">;
 }
 
 export interface TechStackCardProps {

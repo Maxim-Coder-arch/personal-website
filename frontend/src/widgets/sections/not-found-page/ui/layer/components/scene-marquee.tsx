@@ -1,17 +1,19 @@
+import { useTranslations } from "next-intl";
+
 import { MARQUEE_REPEAT } from "../../../model/config";
-import { NOT_FOUND_COPY } from "../../../model/data";
 
 import styles from "../../styles/not-found-scene.module.scss";
 
-const ITEMS = Array.from({ length: MARQUEE_REPEAT }, () => NOT_FOUND_COPY.marquee);
-
 export const SceneMarquee = () => {
+    const t = useTranslations("notFound");
+    const items = Array.from({ length: MARQUEE_REPEAT }, () => t("marquee"));
+
     return (
         <div className={styles["scene__marquee"]}>
             <div className={styles["scene__marquee-track"]}>
                 {[0, 1].map((copy) => (
                     <div key={copy} className={styles["scene__marquee-group"]}>
-                        {ITEMS.map((item, index) => (
+                        {items.map((item, index) => (
                             <span
                                 key={index}
                                 className={styles["scene__marquee-item"]}

@@ -12,21 +12,26 @@ import { usePathname } from "next/navigation";
 
 import { useReducedMotion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 export const Menu = () => {
     const pathname = usePathname();
     const shouldReduceMotion = useReducedMotion();
+    const t = useTranslations("menu.items");
 
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
     const currentPath = pathname ?? "/";
     const highlightedPath = hoveredItem ?? currentPath;
 
+    const items = menuItems.map((item) => ({ ...item, itemLabel: t(item.id) }));
+
     return (
         <MenuLayout
             shouldReduceMotion={shouldReduceMotion}
             onMouseLeave={() => setHoveredItem(null)}
         >
-            {menuItems.map((item) => (
+            {items.map((item) => (
                 <AnimatedListItem
                     key={item.itemLink}
                     item={item}

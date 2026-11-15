@@ -4,38 +4,23 @@ import { ITechnology } from "./types";
 
 export const technologies: ITechnology[] = [
     {
-        id: "1",
-        title: "Frontend",
-        description:
-            "Моё основное направление. Эти технологии я знаю лучше всего.",
+        id: "frontend",
         icons: createRepeatedIcons(7),
     },
     {
-        id: "2",
-        title: "Backend",
-        description:
-            "Серверная разработка, API и работа с данными.",
+        id: "backend",
         icons: createRepeatedIcons(7),
     },
     {
-        id: "3",
-        title: "Tools & Workflow",
-        description:
-            "Инструменты и технологии, которые использую в разработке.",
+        id: "tools",
         icons: createRepeatedIcons(7),
     },
     {
-        id: "4",
-        title: "Databases",
-        description:
-            "Хранение, организация и обработка данных.",
+        id: "databases",
         icons: createRepeatedIcons(7),
     },
     {
-        id: "5",
-        title: "Other technologies",
-        description:
-            "Дополнительные технологии и инструменты, с которыми знаком.",
+        id: "other",
         icons: createRepeatedIcons(7),
     },
 ];

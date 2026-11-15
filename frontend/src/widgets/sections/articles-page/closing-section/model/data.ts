@@ -1,4 +1,1 @@
-export const STATEMENT_LINES = [
-    ["Written", "to", "think"],
-    ["Shared", "to", "grow"],
-] as const;
+export const STATEMENT_KEYS = ["first", "second"] as const;

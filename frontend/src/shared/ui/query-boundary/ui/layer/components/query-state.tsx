@@ -1,9 +1,12 @@
-import { QUERY_STATE_LABELS } from "../../../model/data";
+import { useTranslations } from "next-intl";
+
 import type { QueryStateProps } from "../../../model/types";
 
 import styles from "../../styles/query-boundary.module.scss";
 
 export const QueryState = ({ kind, onRetry }: QueryStateProps) => {
+    const t = useTranslations("queryState");
+
     return (
         <div
             className={styles["query-state"]}
@@ -15,7 +18,7 @@ export const QueryState = ({ kind, onRetry }: QueryStateProps) => {
                     className={styles["query-state__dot"]}
                     aria-hidden="true"
                 />
-                {QUERY_STATE_LABELS[kind]}
+                {t(kind)}
             </p>
 
             {kind === "error" && onRetry && (
@@ -24,7 +27,7 @@ export const QueryState = ({ kind, onRetry }: QueryStateProps) => {
                     className={styles["query-state__retry"]}
                     onClick={onRetry}
                 >
-                    {QUERY_STATE_LABELS.retry}
+                    {t("retry")}
                 </button>
             )}
         </div>

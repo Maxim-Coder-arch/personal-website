@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import {
     MEDIA_IMAGE_VARIANTS,
     MEDIA_VARIANTS,
@@ -11,6 +13,8 @@ import type { SlabMediaProps } from "../../../model/types";
 import styles from "../../styles/projects-showcase.module.scss";
 
 export const SlabMedia = ({ title, imagePath }: SlabMediaProps) => {
+    const t = useTranslations("projectsPage.showcase");
+
     return (
         <motion.div
             className={styles["slab__media"]}
@@ -22,7 +26,7 @@ export const SlabMedia = ({ title, imagePath }: SlabMediaProps) => {
             >
                 <Image
                     src={imagePath}
-                    alt={`Скриншот проекта ${title}`}
+                    alt={t("imageAlt", { title })}
                     fill
                     unoptimized
                     sizes="(max-width: 1024px) 100vw, 55vw"

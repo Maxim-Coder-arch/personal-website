@@ -2,11 +2,14 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
+import { useTranslations } from "next-intl";
+
 import { THOUGHTS_CONFIG } from "../../../model/animations";
 
 import styles from "../../styles/thoughts-development.module.scss";
 
 export const ThoughtsHeader = () => {
+    const t = useTranslations("thoughts");
     const shouldReduceMotion = useReducedMotion();
 
     return (
@@ -36,8 +39,8 @@ export const ThoughtsHeader = () => {
             }}
         >
             <h2 id="thoughts-title">
-                Thoughts <br />
-                on development
+                {t("titleTop")} <br />
+                {t("titleBottom")}
             </h2>
         </motion.header>
     );

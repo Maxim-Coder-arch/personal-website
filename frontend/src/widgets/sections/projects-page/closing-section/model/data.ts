@@ -1,13 +1,3 @@
-export const STATEMENT_LINES = [
-    ["Crafted", "with", "care"],
-    ["Built", "to", "last"],
-    ["Designed", "to", "be", "felt"],
-] as const;
+export const STATEMENT_KEYS = ["first", "second", "third"] as const;
 
-export const MARQUEE_ITEMS = [
-    "SELECTED WORKS",
-    "FRONTEND",
-    "INTERFACES",
-    "MOTION",
-    "2026",
-] as const;
+export const MARQUEE_KEYS = ["works", "frontend", "interfaces", "motion", "year"] as const;
