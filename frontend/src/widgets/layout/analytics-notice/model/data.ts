@@ -1,0 +1,1 @@
+export const NOTICE_DETAIL_KEYS = ["storage", "pages", "device", "source", "country"] as const;

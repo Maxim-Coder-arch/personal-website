@@ -15,6 +15,7 @@ import { SiteChrome } from "../widgets/layout/site-chrome/site-chrome";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
+import { AnalyticsNotice } from "../widgets/layout/analytics-notice";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations("meta.home");
@@ -42,6 +43,7 @@ const RootLayout = async ({ children, modal }: RootLayoutProps) => {
               <>
                 <PageLoader />
                 <Menu />
+                <AnalyticsNotice />
               </>
             }
             bottom={<Footer />}
