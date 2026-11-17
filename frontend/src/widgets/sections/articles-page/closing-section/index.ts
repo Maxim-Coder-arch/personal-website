@@ -1,1 +1,0 @@
-export { ClosingSection } from "./ui/layer/closing-section";

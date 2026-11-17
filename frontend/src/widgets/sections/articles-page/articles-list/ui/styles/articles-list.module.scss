@@ -106,7 +106,7 @@ $ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
     }
 
     &__title {
-        @include font(clamp(2.25rem, 6vw, 5.5rem), 800, $light-title);
+        @include font(clamp(1.35rem, 2.6vw, 2.25rem), 800, $light-title);
 
         line-height: 0.95;
         letter-spacing: -0.03em;
