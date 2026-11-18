@@ -1,27 +1,38 @@
 {
     "meta": {
+        "siteName": "Максим Новиков",
+        "author": "Maxim Novikov",
+        "keywords": "Максим Новиков, Software Engineer, Frontend Developer, React, Next.js, TypeScript, веб-разработка, разработка интерфейсов, архитектура приложений, fullstack",
+
         "home": {
-            "title": "Maxim Novikov — Frontend Developer",
-            "description": "Portfolio of Maxim Novikov: projects, articles and contacts."
+            "title": "Максим Новиков — Software Engineer",
+            "description": "Личное портфолио Максима Новикова. Frontend-разработка, React, Next.js, TypeScript, собственные и коммерческие проекты, инженерные решения и технические статьи."
         },
-        "articles": {
-            "title": "Articles — Maxim Novikov",
-            "description": "Notes on code, architecture and the craft of building software."
-        },
+
         "projects": {
-            "title": "Projects — Maxim Novikov",
-            "description": "Selected projects designed, built and shipped by Maxim Novikov."
+            "title": "Проекты — Максим Новиков",
+            "description": "Клиентские и собственные веб-проекты: интерфейсы, архитектура приложений, frontend и backend-разработка. Реальные задачи, технические решения и результаты."
         },
-        "lost": {
-            "title": "404 — Maxim Novikov",
-            "description": "A page that does not exist, on purpose."
+
+        "articles": {
+            "title": "Статьи о разработке — Максим Новиков",
+            "description": "Личные заметки и статьи о разработке, архитектуре приложений, JavaScript, React, Next.js и инженерном подходе к созданию программного обеспечения."
         },
-        "notFound": {
-            "title": "404 — Maxim Novikov",
-            "description": "Страница не найдена."
-        },
+
         "article": {
-            "title": "{title} — Maxim Novikov"
+            "title": "{title} — Максим Новиков",
+            "descriptionFallback": "{title}. Статья о разработке, технологиях и инженерных решениях от Максима Новикова.",
+            "ogType": "article"
+        },
+
+        "lost": {
+            "title": "Страница не найдена — Максим Новиков",
+            "description": "Запрашиваемая страница не найдена. Вы можете вернуться к проектам, статьям или на главную страницу портфолио."
+        },
+
+        "notFound": {
+            "title": "Страница не найдена — Максим Новиков",
+            "description": "Запрашиваемая страница не существует или была перемещена. Перейдите на главную страницу портфолио."
         }
     },
 
@@ -84,7 +95,7 @@
     "projectsSection": {
         "eyebrow": "ENGINEERING REAL VALUE",
         "title": "Projects",
-        "more": "Подробнее",
+        "more": "Смотреть все проекты",
         "imageAlt": "Превью проекта {title}"
     },
 

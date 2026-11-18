@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { ProjectsPage } from "@/src/(views)/projects-page";
+import { buildPageMetadata } from "@/src/shared/lib/helpers/build-page-metadata";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-    const t = await getTranslations("meta.projects");
+    const [t, locale] = await Promise.all([getTranslations("meta"), getLocale()]);
 
-    return {
-        title: t("title"),
-        description: t("description"),
-    };
+    return buildPageMetadata({
+        title: t("projects.title"),
+        description: t("projects.description"),
+        siteName: t("siteName"),
+        locale,
+        path: "/projects"
+    });
 };
 
 const ProjectsPageRoute = () => <ProjectsPage />
