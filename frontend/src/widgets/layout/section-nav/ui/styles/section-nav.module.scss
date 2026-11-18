@@ -1,7 +1,7 @@
 @use "../../../../../app/styles/scss/includes" as *;
 
 $trigger-size: 56px;
-$node-size: 24px;
+$node-size: 26px;
 $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
 .nav {
@@ -64,8 +64,8 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
     color: $white;
 
-    background-color: rgba($bg-color, 0.78);
-    border: 1px solid rgba($white, 0.1);
+    background-color: rgba($bg-color, 0.92);
+    border: 1px solid rgba($white, 0.28);
     border-radius: 50%;
 
     box-shadow:
@@ -100,7 +100,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
     &:hover,
     &--open {
-        border-color: rgba($light-yellow, 0.35);
+        border-color: rgba($light-yellow, 0.6);
     }
 
     &--open::after {
@@ -128,8 +128,10 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
     &__progress {
         fill: none;
         stroke: $light-yellow;
-        stroke-width: 2;
+        stroke-width: 2.5;
         stroke-linecap: round;
+
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8));
     }
 
     &__burger {
@@ -211,18 +213,22 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
     &__track {
         fill: none;
-        stroke: rgba($white, 0.22);
-        stroke-width: 1;
+        stroke: rgba($white, 0.85);
+        stroke-width: 1.5;
         stroke-dasharray: 3 7;
+        stroke-linecap: round;
+
+        filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.9));
     }
 
     &__fill {
         fill: none;
         stroke: $light-yellow;
-        stroke-width: 1.5;
+        stroke-width: 2.5;
         stroke-linecap: round;
 
-        filter: drop-shadow(0 0 4px rgba($light-yellow, 0.5));
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.85))
+            drop-shadow(0 0 6px rgba($light-yellow, 0.5));
     }
 
     &__hand {
@@ -231,19 +237,21 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
         right: 50%;
         z-index: 1;
 
-        height: 1px;
-        margin-top: -0.5px;
+        height: 2px;
+        margin-top: -1px;
 
         background: linear-gradient(
             to left,
             transparent 0 34px,
-            rgba($light-yellow, 0.55) 34px calc(100% - 14px),
+            rgba($light-yellow, 0.95) 34px calc(100% - 14px),
             transparent 100%
         );
 
         opacity: 0;
         transform-origin: 100% 50%;
         pointer-events: none;
+
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8));
 
         transition: opacity 0.35s ease;
     }
@@ -277,7 +285,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
         height: 100%;
         padding: 0;
 
-        color: $light-grey;
+        color: $white;
 
         background: none;
         border: none;
@@ -290,8 +298,13 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
             position: absolute;
             inset: 0;
 
-            border: 1px solid rgba($white, 0.18);
+            background-color: rgba($bg-color, 0.94);
+            border: 1.5px solid rgba($white, 0.6);
             border-radius: 50%;
+
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.35),
+                0 4px 14px rgba(0, 0, 0, 0.45);
 
             transition: border-color 0.3s ease;
         }
@@ -305,9 +318,9 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
     &__dot {
         position: absolute;
-        inset: 7px;
+        inset: 8px;
 
-        background-color: rgba($white, 0.35);
+        background-color: rgba($white, 0.85);
         border-radius: 50%;
 
         transition:
@@ -327,13 +340,15 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
         padding: 0.3rem 0.7rem;
 
-        @include font(0.85rem, 400, $light-grey);
+        @include font(0.85rem, 400, $white);
 
         letter-spacing: 0.14em;
         white-space: nowrap;
 
-        background-color: rgba($bg-color, 0.82);
-        border: 1px solid rgba($white, 0.08);
+        background-color: rgba($bg-color, 0.94);
+        border: 1px solid rgba($white, 0.22);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+
         border-radius: 999px;
 
         transform: translateY(-50%);
@@ -351,7 +366,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
         font-size: 0.62rem;
         letter-spacing: 0.08em;
 
-        opacity: 0.7;
+        opacity: 0.6;
     }
 
     &__button:hover &__dot {
@@ -364,19 +379,19 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     &__button--active::before {
-        border-color: rgba($light-yellow, 0.7);
+        border-color: $light-yellow;
     }
 
     &__button--active &__dot {
         background-color: $light-yellow;
         box-shadow:
-            0 0 0 4px rgba($light-yellow, 0.18),
-            0 0 14px rgba($light-yellow, 0.6);
+            0 0 0 3px rgba($light-yellow, 0.25),
+            0 0 14px rgba($light-yellow, 0.8);
     }
 
     &__button--active &__label {
         color: $light-title;
-        border-color: rgba($light-yellow, 0.45);
+        border-color: rgba($light-yellow, 0.75);
     }
 }
 

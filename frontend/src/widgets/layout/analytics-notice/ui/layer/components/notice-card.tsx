@@ -1,10 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { useNoticeDisclosure } from "../../../lib/hooks/use-notice-disclosure";
+import { useNoticeOffset } from "../../../lib/hooks/use-notice-offset";
+
 import { getCardMotion } from "../../../model/animations";
 import { ANALYTICS_NOTICE_CONFIG } from "../../../model/config";
 import type { NoticeCardProps } from "../../../model/types";
@@ -17,9 +20,13 @@ export const NoticeCard = ({ onAccept }: NoticeCardProps) => {
     const t = useTranslations("analyticsNotice");
     const shouldReduceMotion = useReducedMotion();
     const { expanded, toggle } = useNoticeDisclosure();
+    const asideRef = useRef<HTMLElement>(null);
+
+    useNoticeOffset(asideRef);
 
     return (
         <motion.aside
+            ref={asideRef}
             className={styles["notice"]}
             role="region"
             aria-label={t("label")}
