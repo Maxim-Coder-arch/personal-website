@@ -31,6 +31,7 @@ export const generateMetadata = async ({
         type: "article",
         publishedTime: article.createdAt,
         authors: [t("author")],
+        path: `/articles/${id}`
     });
 };
 

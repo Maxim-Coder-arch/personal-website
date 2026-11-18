@@ -16,6 +16,7 @@ import { QueryProvider } from "./providers/query-provider";
 import { IntroProvider } from "./providers/intro-provider";
 
 import { buildPageMetadata } from "../shared/lib/helpers/build-page-metadata";
+import { SITE_URL } from "../shared/config/site";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
@@ -29,7 +30,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
       description: t("home.description"),
       siteName: t("siteName"),
       locale,
+      path: "/",
     }),
+    ...(SITE_URL && { metadataBase: new URL(SITE_URL) }),
     applicationName: t("siteName"),
     authors: [{ name: t("author") }],
     creator: t("author"),

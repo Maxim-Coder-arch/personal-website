@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 
+import { SITE_URL } from "@/src/shared/config/site";
+
 interface BuildPageMetadataArgs {
     title: string;
     description: string;
     siteName: string;
     locale: string;
+    path?: string;
     type?: "website" | "article";
     publishedTime?: string;
     authors?: string[];
@@ -21,6 +24,7 @@ export const buildPageMetadata = ({
     description,
     siteName,
     locale,
+    path,
     type = "website",
     publishedTime,
     authors,
@@ -28,6 +32,7 @@ export const buildPageMetadata = ({
 }: BuildPageMetadataArgs): Metadata => ({
     title,
     description,
+    ...(SITE_URL && path !== undefined && { alternates: { canonical: path } }),
     openGraph: {
         title,
         description,
@@ -37,7 +42,7 @@ export const buildPageMetadata = ({
         ...(type === "article" && { publishedTime, authors }),
     },
     twitter: {
-        card: "summary",
+        card: "summary_large_image",
         title,
         description,
     },

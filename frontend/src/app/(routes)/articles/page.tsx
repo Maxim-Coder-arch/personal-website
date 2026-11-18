@@ -12,6 +12,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
         description: t("articles.description"),
         siteName: t("siteName"),
         locale,
+        path: "/articles"
     });
 };
 
