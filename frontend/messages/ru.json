@@ -44,7 +44,19 @@
         },
         "telegram": "Telegram"
     },
-
+        "sectionNav": {
+        "label": "Навигация по секциям",
+        "open": "Открыть навигацию по секциям",
+        "close": "Закрыть навигацию по секциям",
+        "items": {
+            "hero": "INTRO",
+            "projects": "PROJECTS",
+            "techStack": "STACK",
+            "experience": "EXPERIENCE",
+            "thoughts": "THOUGHTS",
+            "scenic": "SCENIC"
+        }
+    },
     "footer": {
         "hero": {
             "eyebrow": "THANKS FOR VISITING",

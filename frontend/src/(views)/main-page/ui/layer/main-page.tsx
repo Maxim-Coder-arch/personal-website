@@ -4,6 +4,7 @@ import { TechStack } from "@/src/widgets/sections/main-page/tech-stack";
 import { Experience } from "@/src/widgets/sections/main-page/experience";
 import { ThoughtsDevelopment } from "@/src/widgets/sections/main-page/thoughts-development";
 import { Scenic } from "@/src/widgets/sections/main-page/scenic";
+import { SectionNav } from "@/src/widgets/layout/section-nav";
 
 import { MainPageLayout } from "./main-page-layout";
 
@@ -16,6 +17,7 @@ export const MainPage = () => {
             <Experience />
             <ThoughtsDevelopment />
             <Scenic />
+            <SectionNav />
         </MainPageLayout>
     )
 }
