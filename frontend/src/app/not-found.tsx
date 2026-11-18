@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { NotFoundPage } from "@/src/(views)/not-found-page";
 
-export const generateMetadata = async (): Promise<Metadata> => {
-    const t = await getTranslations("meta.notFound");
+import { buildPageMetadata } from "../shared/lib/helpers/build-page-metadata";
 
-    return {
-        title: t("title"),
-        description: t("description"),
-    };
+export const generateMetadata = async (): Promise<Metadata> => {
+    const [t, locale] = await Promise.all([getTranslations("meta"), getLocale()]);
+
+    return buildPageMetadata({
+        title: t("notFound.title"),
+        description: t("notFound.description"),
+        siteName: t("siteName"),
+        locale,
+        noIndex: true,
+    });
 };
 
 const NotFound = () => <NotFoundPage />;

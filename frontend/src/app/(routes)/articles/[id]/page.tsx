@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { ArticlePage } from "@/src/(views)/article-page";
 import { thoughtApi } from "@/src/entities/api/thoughts/thougths-api";
+import { buildPageMetadata } from "@/src/shared/lib/helpers/build-page-metadata";
 
 interface ArticleRouteProps {
     params: Promise<{ id: string }>;
@@ -17,12 +19,19 @@ export const generateMetadata = async ({
 
     if (!article) return {};
 
-    const t = await getTranslations("meta.article");
+    const [t, locale] = await Promise.all([getTranslations("meta"), getLocale()]);
 
-    return {
-        title: t("title", { title: article.title }),
-        description: article.subtitle,
-    };
+    return buildPageMetadata({
+        title: t("article.title", { title: article.title }),
+        description:
+            article.subtitle?.trim() ||
+            t("article.descriptionFallback", { title: article.title }),
+        siteName: t("siteName"),
+        locale,
+        type: "article",
+        publishedTime: article.createdAt,
+        authors: [t("author")],
+    });
 };
 
 const ArticleRoute = async ({ params }: ArticleRouteProps) => {
