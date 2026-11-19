@@ -15,8 +15,10 @@ import { SiteChrome } from "../widgets/layout/site-chrome/site-chrome";
 import { QueryProvider } from "./providers/query-provider";
 import { IntroProvider } from "./providers/intro-provider";
 
+import { YandexMetrika } from "../features/yandex-metrika";
+
 import { buildPageMetadata } from "../shared/lib/helpers/build-page-metadata";
-import { SITE_URL } from "../shared/config/site";
+import { SITE_URL, SITE_VERIFICATION } from "../shared/config/site";
 
 import "./styles/css/globals.css";
 import "./styles/scss/globals.scss";
@@ -39,6 +41,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
     keywords: t("keywords")
       .split(",")
       .map((keyword) => keyword.trim()),
+    verification: {
+      ...(SITE_VERIFICATION.google && { google: SITE_VERIFICATION.google }),
+      ...(SITE_VERIFICATION.yandex && { yandex: SITE_VERIFICATION.yandex }),
+    },
   };
 };
 
@@ -63,6 +69,7 @@ const RootLayout = async ({ children, modal }: RootLayoutProps) => {
                 <PageLoader />
                 <Menu />
                 <AnalyticsNotice />
+                <YandexMetrika />
               </>
             }
             bottom={<Footer />}

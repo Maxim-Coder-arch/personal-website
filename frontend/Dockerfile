@@ -1,3 +1,4 @@
+
 FROM node:22-alpine AS deps
 
 WORKDIR /app
@@ -26,6 +27,9 @@ COPY . .
 ARG BACKEND_URL
 ENV BACKEND_URL=${BACKEND_URL}
 
+ARG SITE_URL
+ENV SITE_URL=${SITE_URL}
+
 RUN test -n "$BACKEND_URL" || (echo "BACKEND_URL build arg is required" && exit 1)
 
 RUN npm run build
@@ -36,12 +40,14 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 
 ARG BACKEND_URL
+ARG SITE_URL
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
 ENV BACKEND_URL=${BACKEND_URL}
+ENV SITE_URL=${SITE_URL}
 
 COPY package.json package-lock.json ./
 
